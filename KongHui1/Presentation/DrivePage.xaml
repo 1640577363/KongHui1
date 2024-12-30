@@ -1,0 +1,98 @@
+﻿<Page x:Class="KongHui1.Presentation.DrivePage" 
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:KongHui1.Presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+  <Page.Background>
+    <SolidColorBrush Color="#F4F9FF"/>
+  </Page.Background>
+
+  <Grid Margin="20">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <!-- 驱动数量显示（加粗） -->
+    <TextBlock x:Name="DriversCountTextBlock" FontSize="30" FontWeight="Bold" Foreground="Black"
+               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,10"
+               Text="本地共发现0个驱动"/>
+
+    <!-- 按钮容器 -->
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50,100,10">
+      <!-- 一键更新按钮 -->
+      <Button Content="一键更新" Width="150" Height="40" Margin="0,0,10,0" FontSize="16" FontWeight="Bold"/>
+
+      <!-- 一键检测按钮 -->
+      <Button Content="一键检测" Width="150" Height="40" FontSize="16" FontWeight="Bold" Click="Detection_drive" />
+    </StackPanel>
+
+    <!-- 驱动信息滚动区域 -->
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+      <ItemsControl x:Name="DriversListBox">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <!-- 分组显示设备类别 -->
+            <Expander Header="{Binding Key}" IsExpanded="False" Width="1100" HorizontalAlignment="Center">
+              <ItemsControl ItemsSource="{Binding Items}">
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate>
+                    <!-- 使用 Grid 来布局 -->
+                    <Grid Margin="10" HorizontalAlignment="Stretch">
+                      <Grid.ColumnDefinitions>
+                        <!-- 第1列：多选框 -->
+                        <ColumnDefinition Width="Auto"/>
+                        <!-- 第2列：设备类和设备名称 -->
+                        <ColumnDefinition Width="*"/>
+                        <!-- 第3列：版本号 -->
+                        <ColumnDefinition Width="Auto"/>
+                        <!-- 第4列：最新版本 -->
+                        <ColumnDefinition Width="Auto"/>
+                        <!-- 第5列：更新按钮 -->
+                        <ColumnDefinition Width="Auto"/>
+                      </Grid.ColumnDefinitions>
+
+                      <!-- 多选框 -->
+                      <CheckBox Grid.Column="0" VerticalAlignment="Center" Margin="10,0,0,0"/>
+
+                      <!-- 设备类和设备名称 -->
+                      <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="10,0,0,0">
+                        <TextBlock Text="{Binding DeviceClassChinese}" FontSize="16" Foreground="Black"/>
+                        <TextBlock Text="{Binding DeviceName}" FontSize="14" Foreground="Gray"/>
+                      </StackPanel>
+
+                      <!-- 版本号 -->
+                      <TextBlock Grid.Column="2" Text="{Binding DriverVersion}" FontSize="12" Foreground="Gray"
+                                 VerticalAlignment="Center" HorizontalAlignment="Center" Margin="200,0,100,0"/>
+
+                      <!-- 最新版本 -->
+                      <TextBlock Grid.Column="3" Text="{Binding LatestDriverVersion}" FontSize="12" Foreground="Gray"
+                                 VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,100,0"/>
+
+                      <!-- 更新按钮 -->
+                      <Button Grid.Column="4" Content="更新" Width="60" Height="30" FontSize="12"
+                              HorizontalAlignment="Right" Margin="0,0,100,0">
+                        <Button.Style>
+                          <Style TargetType="Button">
+                            <Setter Property="Background" Value="#71A6F7"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="#71A6F7"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="CornerRadius" Value="15"/>
+                          </Style>
+                        </Button.Style>
+                      </Button>
+                    </Grid>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </Expander>
+          </DataTemplate> 
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+  </Grid>
+</Page>

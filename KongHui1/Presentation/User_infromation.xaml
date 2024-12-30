@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="KongHui1.Presentation.User_infromation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KongHui1.Presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+  <!-- 背景图 -->
+  <Page.Background>
+    <ImageBrush ImageSource="ms-appx:///Images/kh_login.png" Stretch="UniformToFill" />
+  </Page.Background>
+
+  <Grid>
+    <!-- 用户信息 Panel -->
+    <StackPanel x:Name="UserInfoPanel" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="50,50,50,0" Visibility="Visible">
+      <TextBlock Text="用户信息" FontSize="18" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Left" Margin="0,0,0,5" />
+      <Rectangle Height="2" Fill="Blue" Width="100" HorizontalAlignment="Left" Margin="0,0,0,10" />
+
+      <!-- 信息显示 -->
+      <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,5,0,0">
+        <TextBlock Text="账号：" FontSize="16" VerticalAlignment="Center" />
+        <TextBlock Text="123456789123" FontSize="16" VerticalAlignment="Center" FontWeight="Bold" />
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,5,0,0">
+        <TextBlock Text="用户名：" FontSize="16" VerticalAlignment="Center" />
+        <TextBlock Text="henu-001" FontSize="16" VerticalAlignment="Center" />
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,5,0,0">
+        <TextBlock Text="邮箱：" FontSize="16" VerticalAlignment="Center" />
+        <TextBlock Text="LeiJun@xiaomi.com" FontSize="16" VerticalAlignment="Center" />
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,5,0,0">
+        <TextBlock Text="手机号：" FontSize="16" VerticalAlignment="Center" />
+        <TextBlock Text="13800000000" FontSize="16" VerticalAlignment="Center" />
+      </StackPanel>
+
+      
+      <Button Content="修改信息" Width="200" Height="40" Click="ModifyInfoButton_Click" HorizontalAlignment="Center" Margin="0,20,0,0" />
+    </StackPanel>
+
+    
+    <StackPanel x:Name="ModifyInfoPanel" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="50,50,50,0" Visibility="Collapsed">
+      <TextBlock Text="修改信息" FontSize="18" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Left" Margin="0,0,0,5" />
+      <Rectangle Height="2" Fill="Blue" Width="100" HorizontalAlignment="Left" Margin="0,0,0,10" />
+
+      
+      <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,5,0,0">
+        <TextBlock Text="*用户名：" FontSize="16" VerticalAlignment="Center" Foreground="Red" />
+        <TextBox x:Name="UserNameBox1" PlaceholderText="请输入新用户名" Width="400" />
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,5,0,0">
+        <TextBlock Text="*邮箱：" FontSize="16" VerticalAlignment="Center" Foreground="Red" />
+        <TextBox x:Name="EmailBox1" PlaceholderText="请输入新邮箱" Width="400" />
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,5,0,0">
+        <TextBlock Text="*手机号：" FontSize="16" VerticalAlignment="Center" Foreground="Red" />
+        <TextBox x:Name="PhoneBox1" PlaceholderText="请输入新手机号" Width="400" />
+      </StackPanel>
+
+      
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="20" Margin="0,20,0,0">
+        <Button Content="保存修改" Width="150" Height="40" Click="SaveChangesButton_Click" />
+        <Button Content="取消修改" Width="150" Height="40" Click="CancelChangesButton_Click" />
+      </StackPanel>
+    </StackPanel>
+  </Grid>
+</Page>

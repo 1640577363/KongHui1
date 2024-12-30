@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="KongHui1.Presentation.system_backup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KongHui1.Presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+  <Page.Background>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+      <GradientStop Color="#D6ECF3" Offset="0.0"/>
+      <GradientStop Color="White" Offset="1.0"/>
+    </LinearGradientBrush>
+  </Page.Background>
+
+  <Grid>
+    <!-- Header with Back Button and Title -->
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0">
+      <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click" HorizontalAlignment="Left"/>
+      <TextBlock Text="系统备份与还原" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+    </StackPanel>
+
+    <!-- Instructional Text -->
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,80,30,30">
+      <TextBlock Text="1. 系统备份还原中用户可以选择相应的镜像版本通过重启电脑选择特定的按键（如F11或A）来进入备份或还原程序的界面。" 
+                 FontSize="20" TextAlignment="Left" Margin="0,10"/>
+      <TextBlock Text="2. 备份和还原是需要重启到程序界面，使用的是什么程序，这个界面是什么样（调用别的程序，类似还原精灵来实现，可以在bootloader中启动）。" 
+                 FontSize="20" TextAlignment="Left" Margin="0,10"/>
+      <TextBlock Text="3. 期望是这个程序文件是在bootloader可以选择启动，这样即使系统崩溃也不影响开机按F11进行一键还原。(安全模式机理)" 
+                 FontSize="20" TextAlignment="Left" Margin="0,10"/>
+    </StackPanel>
+  </Grid>
+</Page>

@@ -1,0 +1,108 @@
+﻿<Page
+    x:Class="KongHui1.Presentation.ProblemSolution"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KongHui1.Presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+  <Page.Background>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+      <GradientStop Color="#D6ECF3" Offset="0.0"/>
+      <GradientStop Color="White" Offset="1.0"/>
+    </LinearGradientBrush>
+  </Page.Background>
+
+  <StackPanel Margin="0,10,0,0">
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
+      <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click"/>
+      <TextBlock Text="问题排除" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
+    </StackPanel>
+
+    
+
+    <StackPanel Margin="0,20,0,0">
+      <StackPanel Orientation="Horizontal">
+        <TextBlock x:Name="MainTextBlock" Text="1.工控机在出现不开机现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center"/>
+        <ToggleButton x:Name="ToggleArrow" Content="▼" Click="ToggleArrow_Click" Tag="1" Width="30" Height="30" VerticalAlignment="Center"/>
+      </StackPanel>
+      <Border x:Name="AdditionalTextBlock" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Margin="0,5,0,0" Padding="5">
+        <TextBlock Text="1.检查电源是否有出现接触不良;
+2.检查内存、CPU、是否匹配该主板(如电压频率);
+3.检查内存槽、CPU座是否有异物;
+4.重新拆装CPU、内存,或者更换CPU、内存试一下;
+5.检查CPU座针脚是否有弯曲变形;
+6.可尝试把外接设备去除、试下是否正常;
+7.清CMOS放电、把BIOS恢复默认状态; " TextWrapping="Wrap"/>
+      </Border>
+    </StackPanel>
+
+    <StackPanel Margin="0,10,0,0">
+      <StackPanel Orientation="Horizontal">
+        <TextBlock x:Name="MainTextBlock2" Text="2.工控机在出现开机不显示现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center"/>
+        <ToggleButton x:Name="ToggleArrow2" Content="▼" Click="ToggleArrow_Click" Tag="2" Width="30" Height="30" VerticalAlignment="Center"/>
+      </StackPanel>
+      <Border x:Name="AdditionalTextBlock2" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Margin="0,5,0,0" Padding="5">
+        <TextBlock Text="1.检查电源：确保电源正常工作并供电。
+2.检查显示器连接：确保显示器连接牢固，选择正确的输入源。
+3.检查显卡和主板：确保显卡和主板没有故障并连接良好。
+4.检查内存条：确认内存条安装正确且无故障。" TextWrapping="Wrap"/>
+      </Border>
+    </StackPanel>
+
+    <StackPanel Margin="0,10,0,0">
+      <StackPanel Orientation="Horizontal">
+        <TextBlock x:Name="MainTextBlock3" Text="3.工控机在出现开机不进系统现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center"/>
+        <ToggleButton x:Name="ToggleArrow3" Content="▼" Click="ToggleArrow_Click" Tag="3" Width="30" Height="30" VerticalAlignment="Center"/>
+      </StackPanel>
+      <Border x:Name="AdditionalTextBlock3" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Margin="0,5,0,0" Padding="5">
+        <TextBlock Text="1.检查硬盘连接：确保硬盘连接正常且无故障。
+2.检查启动顺序：进入BIOS检查启动顺序，确保硬盘优先启动。
+3.修复启动引导：使用系统修复工具修复启动引导记录（如Windows启动修复）。
+4.检查内存：确保内存条安装正确且没有故障。
+5.检查硬盘故障：使用硬盘检测工具检查硬盘是否有坏道或故障。" TextWrapping="Wrap"/>
+      </Border>
+    </StackPanel>
+
+    <StackPanel Margin="0,10,0,0">
+      <StackPanel Orientation="Horizontal">
+        <TextBlock x:Name="MainTextBlock4" Text="4.工控机在出现蓝屏死机（BSOD），可以用以下方法来排查及解决。" VerticalAlignment="Center"/>
+        <ToggleButton x:Name="ToggleArrow4" Content="▼" Click="ToggleArrow_Click" Tag="4" Width="30" Height="30" VerticalAlignment="Center"/>
+      </StackPanel>
+      <Border x:Name="AdditionalTextBlock4" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Margin="0,5,0,0" Padding="5">
+        <TextBlock Text="1.更新或重装驱动程序：通过设备管理器更新显卡、声卡、网卡等驱动程序。
+2.检查硬件：使用内存检测工具检查内存条是否出现故障，检查硬盘是否有坏道。
+3.查看蓝屏错误代码，搜索解决方案。
+4.检查最近安装的软件，可能会引发冲突，尝试卸载软件。" TextWrapping="Wrap"/>
+      </Border>
+    </StackPanel>
+
+    <StackPanel Margin="0,10,0,0">
+      <StackPanel Orientation="Horizontal">
+        <TextBlock x:Name="MainTextBlock5" Text="5.工控机无法连接到互联网，可以用以下方法来排查及解决。" VerticalAlignment="Center"/>
+        <ToggleButton x:Name="ToggleArrow5" Content="▼" Click="ToggleArrow_Click" Tag="5" Width="30" Height="30" VerticalAlignment="Center"/>
+      </StackPanel>
+      <Border x:Name="AdditionalTextBlock5" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Margin="0,5,0,0" Padding="5">
+        <TextBlock Text="1.重启路由器和计算机，确保网络连接正常。
+2.检查计算机的网络设置，确保 IP 地址设置正确。可以尝试使用命令 ipconfig /release 和 ipconfig /renew 来重新获取 IP 地址。
+3.检查 DNS 设置：可以尝试使用公共 DNS（如 Google 的 8.8.8.8 和 8.8.4.4）。
+4.使用网络故障排除工具：在 Windows 中，右键点击网络图标，选择“故障排除”进行自动修复。" TextWrapping="Wrap"/>
+      </Border>
+    </StackPanel>
+    
+    <StackPanel Margin="0,10,0,0">
+      <StackPanel Orientation="Horizontal">
+        <TextBlock x:Name="MainTextBlock6" Text="6.工控机磁盘空间不足时，可以用以下方法来排查及解决。" VerticalAlignment="Center"/>
+        <ToggleButton x:Name="ToggleArrow6" Content="▼" Click="ToggleArrow_Click" Tag="6" Width="30" Height="30" VerticalAlignment="Center"/>
+      </StackPanel>
+      <Border x:Name="AdditionalTextBlock6" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Margin="0,5,0,0" Padding="5">
+        <TextBlock Text="1.使用“磁盘清理”工具删除临时文件、系统文件、缓存文件等。
+2.卸载不再使用的程序。
+3.清理浏览器缓存、下载文件夹中的文件等。
+4.将不常用的数据文件移到外部硬盘或云存储。" TextWrapping="Wrap"/>
+      </Border>
+    </StackPanel>
+    
+  </StackPanel>
+</Page>

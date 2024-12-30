@@ -1,0 +1,64 @@
+﻿<Page
+    x:Class="KongHui1.Presentation.Address_inquiry"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KongHui1.Presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+  <Page.Background>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+      <GradientStop Color="#D6ECF3" Offset="0.0"/>
+      <GradientStop Color="White" Offset="1.0"/>
+    </LinearGradientBrush>
+  </Page.Background>
+
+  <Grid Margin="10">
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
+      <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click"/>
+      <TextBlock Text="地址查询" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
+    </StackPanel>
+
+    <Grid  VerticalAlignment="Top" Margin="10, 40, 10, 10">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="2*" />
+        <ColumnDefinition Width="3*" />
+      </Grid.ColumnDefinitions>
+
+      <!-- Left Column -->
+      <StackPanel Margin="10" Grid.Column="0">
+        <TextBox PlaceholderText="请输入关键词" Margin="0,0,0,10" />
+        <TextBlock Text="深圳总公司·控汇" FontWeight="Bold" />
+        <TextBlock Text="电话：0755-27041051" />
+        <TextBlock Text="地址：深圳市龙华区大浪街道新石社区丽荣路1号昌毅工业区3栋五层、六层" Margin="0,0,0,10" />
+
+        <TextBlock Text="北京总公司·控汇" FontWeight="Bold" />
+        <TextBlock Text="电话：18910273182" />
+        <TextBlock Text="地址：北京市昌平区西三旗建材城东路新龙大厦B座1022室" Margin="0,0,0,10" />
+
+        <TextBlock Text="深圳市控瑞科技有限公司·控汇子公司" FontWeight="Bold" />
+        <TextBlock Text="电话：0755-29041051" />
+        <TextBlock Text="地址：深圳市龙华区大浪街道新石社区丽荣路1号昌毅工业区3栋五层、六层" />
+      </StackPanel>
+
+      <!-- Right Column -->
+      <StackPanel Margin="10" Grid.Column="1">
+        <TextBlock Text="深圳总公司控汇" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10" />
+        <Image Source="ms-appx:///Images/ComapnyBuilding.png" Stretch="Uniform" Margin="0,0,0,10" />
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+          <SymbolIcon Symbol="Mail" Margin="0,0,5,0"/>
+          <TextBlock Text="深圳市龙华区大浪街道新石社区丽荣路1号昌毅工业区3栋五层、六层" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+          <SymbolIcon Symbol="Phone" Margin="0,0,5,0"/>
+          <TextBlock Text="0755-27041051" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <SymbolIcon Symbol="Clock" Margin="0,0,5,0"/>
+          <TextBlock Text="周一至周五 9:00-18:00" />
+        </StackPanel>
+      </StackPanel>
+    </Grid>
+  </Grid>
+</Page>

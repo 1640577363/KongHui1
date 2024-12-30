@@ -1,0 +1,303 @@
+﻿<Page
+    x:Class="KongHui1.Presentation.FullCheckPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KongHui1.Presentation"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    mc:Ignorable="d">
+
+  <Page.Background>
+    <SolidColorBrush Color="#F4F9FF"/>
+  </Page.Background>
+
+
+  <Grid Margin="20">
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,10,0,20">
+      <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click" HorizontalAlignment="Left"/>
+      <TextBlock Text="全面体检" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
+    </StackPanel>
+
+
+    <Grid x:Name="Panel1" Visibility="Visible" Margin="20,50,20,20">
+      <!-- 上半部分：检测进度 -->
+      <StackPanel Height="150" Background="#F4F9FF" VerticalAlignment="Top" Margin="0,0,0,0">
+        <!-- 第一行：智能检测中 和 取消检测按钮 -->
+        <Grid Margin="50,10,0,0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+
+          <Ellipse x:Name="ScoreCircle" Width="100" Height="100"
+             VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-70,0,0,0">
+            <Ellipse.Fill>
+              <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                <GradientStop Color="#4A90E2" Offset="0.0"/>
+                <!-- 内层蓝色 -->
+                <GradientStop Color="#6EB1F7" Offset="1.0"/>
+                <!-- 外层浅蓝 -->
+              </RadialGradientBrush>
+            </Ellipse.Fill>
+            <Ellipse.Stroke>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFFFFF" Offset="0.0"/>
+                <!-- 白色光边 -->
+                <GradientStop Color="#D6EFFF" Offset="1.0"/>
+                <!-- 浅蓝外边 -->
+              </LinearGradientBrush>
+            </Ellipse.Stroke>
+            <Ellipse.StrokeThickness>4</Ellipse.StrokeThickness>
+          </Ellipse>
+
+          <!-- 居中显示分数文本 -->
+          <TextBlock x:Name="ScoreText" Text="N/A" FontSize="24"
+               VerticalAlignment="Center" HorizontalAlignment="Center"
+               Foreground="White" FontWeight="Bold" TextAlignment="Center"  Margin="-70,0,0,0"/>
+
+          <!-- 智能检测中的文本 -->
+          <TextBlock x:Name="scanstatusText" Text="智能检测中"
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Center" 
+                           FontSize="20" 
+                           FontWeight="Bold"
+                           Margin="200,0,0,0"/>
+
+          <!-- 取消检测按钮 -->
+          <StackPanel x:Name="cancelButtonPanel" Grid.Column="1" Margin="10,0,0,0" Visibility="Visible">
+            <Button x:Name="cancelButton" 
+                          Content="取消检测" 
+                          HorizontalAlignment="Right" 
+                          VerticalAlignment="Center" 
+                          Width="150" 
+                          Margin="800,0,0,0" 
+                          Grid.Column="1"
+                          Click="CancelButton_Click"/>
+          </StackPanel>
+          <StackPanel x:Name="fixButton" Visibility="Collapsed" Grid.Column="2" Margin="20,30,0,0">
+                <Button Content="一键修复" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Click="FixButton_Click"/>
+          </StackPanel>
+        </Grid>
+
+        <!-- 第二行文本：正在扫描病毒和安全防护 -->
+        <TextBlock x:Name="scanText" Text="正在扫描病毒和安全防护"
+                     HorizontalAlignment="Left" 
+                     VerticalAlignment="Center" 
+                     FontSize="16" 
+                     Margin="250,0,0,0"/>
+
+        <!-- 进度条 -->
+        <ProgressBar x:Name="progressBar" 
+                         Height="20" 
+                         Margin="50,5,50,0" 
+                         IsIndeterminate="True"/>
+      </StackPanel>
+
+      <!-- 下半部分：检测内容 -->
+      <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="0,170,0,0" Background="#F4F9FF">
+        <StackPanel>
+          <!-- 硬件健康检测 -->
+          <Expander IsExpanded="True" Margin="50,0,50,0" Background="#F4F9FF" Width="1500">
+            <Expander.Header>
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"/>
+                  <!-- 第一列 -->
+                  <ColumnDefinition Width="Auto"/>
+                  <!-- 第二列 -->
+                </Grid.ColumnDefinitions>
+                <!-- 第一列内容 -->
+                <TextBlock Text="硬件健康检测—7项" 
+         Foreground="Black" 
+         FontSize="16" 
+         VerticalAlignment="Center" 
+         HorizontalAlignment="Left" 
+         Margin="250,0,0,0"/>
+                <!-- 第二列内容 -->
+                <TextBlock Text="检查硬件是否有故障" 
+         Foreground="#585858" 
+         FontSize="14" 
+         VerticalAlignment="Center" 
+         HorizontalAlignment="Left" 
+         Grid.Column="1" 
+         Margin="150,0,0,0"/>
+              </Grid>
+            </Expander.Header>
+            <StackPanel>
+              <Grid>
+                <!-- 定义三列 -->
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"/>
+                  <!-- 第一列 -->
+                  <ColumnDefinition Width="Auto"/>
+                  <!-- 第二列 -->
+                  <ColumnDefinition Width="Auto"/>
+                  <!-- 第三列 -->
+                </Grid.ColumnDefinitions>
+
+                <!-- 第一列：项名 -->
+                <StackPanel Grid.Column="0" Margin="0,0,0,0">
+                  <TextBlock Text="CPU温度" Margin="10,0,0,0"/>
+                  <TextBlock Text="CPU使用率" Margin="10,20,0,0"/>
+                  <TextBlock Text="CPU风扇转速" Margin="10,20,0,0"/>
+                  <TextBlock Text="显卡温度" Margin="10,20,0,0"/>
+                  <TextBlock Text="显卡使用率" Margin="10,20,0,0"/>
+                  <TextBlock Text="内存使用率" Margin="10,20,0,0"/>
+                  <TextBlock Text="硬盘使用率" Margin="10,20,0,0"/>
+                </StackPanel>
+
+                <!-- 第二列：状态 -->
+                <StackPanel Grid.Column="1" Margin="150,0,0,0">
+                  <TextBlock Text="检查CPU温度是否持续低于90°" Margin="10,0,0,0"/>
+                  <TextBlock Text="检查CPU使用率是否持续低于90%" Margin="10,20,0,0"/>
+                  <TextBlock Text="检查CPU风扇是否持续转动" Margin="10,20,0,0"/>
+                  <TextBlock Text="检查显卡温度是否持续低于90°" Margin="10,20,0,0"/>
+                  <TextBlock Text="检查显卡使用率是否持续低于90%" Margin="10,20,0,0"/>
+                  <TextBlock Text="检查内存使用率是否持续低于90%" Margin="10,20,0,0"/>
+                  <TextBlock Text="检查硬盘使用率是否持续低于90%" Margin="10,20,0,0"/>
+                </StackPanel>
+
+                <!-- 第三列：结果 -->
+                <StackPanel Grid.Column="2" Margin="400,0,10,0">
+                  <TextBlock x:Name="CpuTemeratureTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,0,0,0"/>
+                  <TextBlock x:Name="CpuusageTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="CpufanTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="GraphicTemperatureTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="GraphicUsageTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="MemoryUsageTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="DiskUsageTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                </StackPanel>
+              </Grid>
+            </StackPanel>
+          </Expander>
+
+
+          <!-- 系统驱动检查 -->
+          <Expander IsExpanded="True" Margin="50,0,50,0" Background="#F4F9FF" Width="1500">
+            <Expander.Header>
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="系统驱动检查—7项" 
+                 Foreground="Black" 
+                 FontSize="16" 
+                 VerticalAlignment="Center" 
+                 Margin="250,0,0,0"/>
+                <TextBlock Text="检查驱动是否正常安装" 
+                 Foreground="#585858" 
+                 FontSize="14" 
+                 VerticalAlignment="Center" 
+                 Grid.Column="1" 
+                 Margin="150,0,0,0"/>
+              </Grid>
+            </Expander.Header>
+            <StackPanel>
+              <Grid>
+                <!-- 定义三列 -->
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"/>
+                  <!-- 第一列 -->
+                  <ColumnDefinition Width="Auto"/>
+                  <!-- 第二列 -->
+                  <ColumnDefinition Width="Auto"/>
+                  <!-- 第三列 -->
+                </Grid.ColumnDefinitions>
+
+                <!-- 第一列：项名 -->
+                <StackPanel Grid.Column="0" Margin="0,0,0,0">
+                  <TextBlock Text="CPU驱动" Margin="10,0,0,0"/>
+                  <TextBlock Text="显卡驱动" Margin="10,20,0,0"/>
+                  <TextBlock Text="网络适配器驱动" Margin="10,20,0,0"/>
+                  <TextBlock Text="声卡驱动" Margin="10,20,0,0"/>
+                  <TextBlock Text="存储设备驱动" Margin="10,20,0,0"/>
+                  <TextBlock Text="蓝牙驱动" Margin="10,20,0,0"/>
+                  <TextBlock Text="USB驱动" Margin="10,20,0,0"/>
+                </StackPanel>
+
+                <!-- 第二列：状态 -->
+                <StackPanel Grid.Column="1" Margin="150,0,0,0">
+                  <TextBlock Text="检查CPU驱动是否正常安装" Margin="10,0,0,0"/>
+                  <TextBlock Text="检查显卡驱动是否正常安装" Margin="10,20,0,0"/>
+                  <TextBlock Text="检查网络适配器驱动是否正常安装" Margin="10,20,0,0"/>
+                  <TextBlock Text="检查声卡驱动是否正常安装" Margin="10,20,0,0"/>
+                  <TextBlock Text="检查存储设备驱动是否正常安装" Margin="10,20,0,0"/>
+                  <TextBlock Text="检查蓝牙驱动是否正常安装" Margin="10,20,0,0"/>
+                  <TextBlock Text="检查USB驱动是否正常安装" Margin="10,20,0,0"/>
+                </StackPanel>
+
+                <!-- 第三列：结果 -->
+                <StackPanel Grid.Column="2" Margin="400,0,30,0">
+                  <TextBlock x:Name="CPUDriveText" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="GraphicDriveText" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="NetworkAdapterText" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="AudioDeviceText" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="StorageDeviceText" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="BluetoothText" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="USBText" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                </StackPanel>
+              </Grid>
+            </StackPanel>
+          </Expander>
+
+          <!-- 系统安全检查 -->
+          <Expander IsExpanded="True" Margin="50,0,50,0" Background="#F4F9FF" Width="1500">
+            <Expander.Header>
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="系统安全检查—2项" 
+                 Foreground="Black" 
+                 FontSize="16" 
+                 VerticalAlignment="Center" 
+                 Margin="250,0,0,0"/>
+                <TextBlock Text="检查系统安全防护软件是否开启" 
+                 Foreground="#585858" 
+                 FontSize="14" 
+                 VerticalAlignment="Center" 
+                 Grid.Column="1" 
+                 Margin="150,0,0,0"/>
+              </Grid>
+            </Expander.Header>
+            <StackPanel>
+              <Grid>
+                <!-- 定义三列 -->
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"/>
+                  <!-- 第一列 -->
+                  <ColumnDefinition Width="Auto"/>
+                  <!-- 第二列 -->
+                  <ColumnDefinition Width="Auto"/>
+                  <!-- 第三列 -->
+                </Grid.ColumnDefinitions>
+
+                <!-- 第一列：项名 -->
+                <StackPanel Grid.Column="0" Margin="0,0,0,0">
+                  <TextBlock Text="病毒和威胁防护" Margin="10,0,0,0"/>
+                  <TextBlock Text="防火墙和网络保护" Margin="10,20,0,0"/>
+                </StackPanel>
+
+                <!-- 第二列：状态 -->
+                <StackPanel Grid.Column="1" Margin="150,0,0,0">
+                  <TextBlock Text="检查病毒和威胁防护是否已开启°" Margin="10,0,0,0"/>
+                  <TextBlock Text="检查防火墙和网络保护是否已开启" Margin="10,20,0,0"/>
+                </StackPanel>
+
+                <!-- 第三列：结果 -->
+                <StackPanel Grid.Column="2" Margin="400,0,10,0">
+                  <TextBlock x:Name="VirusTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,0,0,0"/>
+                  <TextBlock x:Name="FirewallTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                </StackPanel>
+              </Grid>
+            </StackPanel>
+          </Expander>
+
+        </StackPanel>
+      </ScrollViewer>
+    </Grid>
+  </Grid>
+</Page>

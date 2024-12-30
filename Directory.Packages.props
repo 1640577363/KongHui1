@@ -1,0 +1,23 @@
+<Project ToolsVersion="15.0">
+  <!--
+    To update the version of Uno, you should instead update the Sdk version in the global.json file.
+
+    See https://aka.platform.uno/using-uno-sdk for more information.
+    See https://aka.platform.uno/using-uno-sdk#implicit-packages for more information regarding the Implicit Packages.
+  -->
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageVersion Include="CSharpMarkup.WinUI.LiveChartsCore.SkiaSharpView" Version="2.4.18" />
+    <PackageVersion Include="IronPython" Version="3.4.1" />
+    <PackageVersion Include="LibreHardwareMonitorLib" Version="0.9.3" />
+    <PackageVersion Include="LiveCharts" Version="0.9.7" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageVersion Include="OpenHardwareMonitor" Version="0.9.6" />
+    <PackageVersion Include="OxyPlot.Core" Version="2.2.0" />
+    <PackageVersion Include="OxyPlot.Pdf" Version="2.2.0" />
+    <PackageVersion Include="OxyPlot.WindowsForms" Version="2.2.0" />
+    <PackageVersion Include="System.Diagnostics.PerformanceCounter" Version="8.0.1" />
+    <PackageVersion Include="System.Management" Version="8.0.0" />
+  </ItemGroup>
+</Project>

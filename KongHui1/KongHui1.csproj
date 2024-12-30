@@ -1,0 +1,454 @@
+<Project Sdk="Uno.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0-windows10.0.19041;net8.0-desktop</TargetFrameworks>
+
+    <OutputType>Exe</OutputType>
+    <UnoSingleProject>true</UnoSingleProject>
+
+    <!-- Display name -->
+    <ApplicationTitle>KongHui1</ApplicationTitle>
+    <!-- App Identifier -->
+    <ApplicationId>com.companyname.KongHui1</ApplicationId>
+    <!-- Versions -->
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <!-- Package Publisher -->
+    <ApplicationPublisher>27735</ApplicationPublisher>
+    <!-- Package Description -->
+    <Description>KongHui1 powered by Uno Platform.</Description>
+    <!--
+      If you encounter this error message:
+
+        error NETSDK1148: A referenced assembly was compiled using a newer version of Microsoft.Windows.SDK.NET.dll.
+        Please update to a newer .NET SDK in order to reference this assembly.
+
+      This means that the two packages below must be aligned with the "build" version number of
+      the "Microsoft.Windows.SDK.BuildTools" package above, and the "revision" version number
+      must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
+    -->
+    <WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
+
+    <!--
+      UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
+      https://aka.platform.uno/singleproject-features
+    -->
+    <UnoFeatures>
+      Material;
+      Dsp;
+      Hosting;
+      Toolkit;
+      Logging;
+      MVUX;
+      Configuration;
+      Http;
+      Serialization;
+      Localization;
+      Navigation;
+      ThemeService;
+    </UnoFeatures>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Images\address_query.png" />
+    <None Remove="Images\add_que.png" />
+    <None Remove="Images\add_que1.png" />
+    <None Remove="Images\add_que2.png" />
+    <None Remove="Images\background.png" />
+    <None Remove="Images\BackgroundImage.png" />
+    <None Remove="Images\BackIcon.png" />
+    <None Remove="Images\bios_upgrade.png" />
+    <None Remove="Images\ComapnyBuilding.png" />
+    <None Remove="Images\complete_query.png" />
+    <None Remove="Images\CPU.png" />
+    <None Remove="Images\CPU1.png" />
+    <None Remove="Images\CPU2.png" />
+    <None Remove="Images\Disk.png" />
+    <None Remove="Images\Disk1.png" />
+    <None Remove="Images\Disk2.png" />
+    <None Remove="Images\DriveIcon.png" />
+    <None Remove="Images\feedback.png" />
+    <None Remove="Images\GPU.png" />
+    <None Remove="Images\GPU1.png" />
+    <None Remove="Images\GPU2.png" />
+    <None Remove="Images\GraphicsCardIcon.png" />
+    <None Remove="Images\HardDriveIcon.png" />
+    <None Remove="Images\HomeIcon.png" />
+    <None Remove="Images\kh_ima.png" />
+    <None Remove="Images\kh_login.png" />
+    <None Remove="Images\login_logo.png" />
+    <None Remove="Images\Logo.png" />
+    <None Remove="Images\mac_que.png" />
+    <None Remove="Images\mac_que1.png" />
+    <None Remove="Images\mac_que2.png" />
+    <None Remove="Images\main_pla.png" />
+    <None Remove="Images\main_pla1.png" />
+    <None Remove="Images\main_pla2.png" />
+    <None Remove="Images\Memory.png" />
+    <None Remove="Images\Memory1.png" />
+    <None Remove="Images\Memory2.png" />
+    <None Remove="Images\MotherboardIcon.png" />
+    <None Remove="Images\problem_resolution.png" />
+    <None Remove="Images\pro_eli.png" />
+    <None Remove="Images\pro_eli1.png" />
+    <None Remove="Images\pro_eli2.png" />
+    <None Remove="Images\pro_fee.png" />
+    <None Remove="Images\pro_fee1.png" />
+    <None Remove="Images\pro_fee2.png" />
+    <None Remove="Images\repair_platform.png" />
+    <None Remove="Images\right_arrow.png" />
+    <None Remove="Images\Scan.png" />
+    <None Remove="Images\Scan1.png" />
+    <None Remove="Images\Scan2.png" />
+    <None Remove="Images\SearchIcon.png" />
+    <None Remove="Images\SupportIcon.png" />
+    <None Remove="Images\SystemIcon.png" />
+    <None Remove="Images\system_backup.png" />
+    <None Remove="Images\system_download.png" />
+    <None Remove="Images\TiJian.png" />
+    <None Remove="Images\User.png" />
+    <None Remove="Images\warranty_query.png" />
+    <None Remove="Images\war_que.png" />
+    <None Remove="Images\war_que1.png" />
+    <None Remove="Images\war_que2.png" />
+    <None Remove="Presentation\Address_inquiry.xaml" />
+    <None Remove="Presentation\BIOS_upgrade.xaml" />
+    <None Remove="Presentation\cpu_detail.xaml" />
+    <None Remove="Presentation\disk_detail.xaml" />
+    <None Remove="Presentation\DrivePage.xaml" />
+    <None Remove="Presentation\FeedbackPage.xaml" />
+    <None Remove="Presentation\FullCheckPage.xaml" />
+    <None Remove="Presentation\gpu_detail.xaml" />
+    <None Remove="Presentation\HelpPage.xaml" />
+    <None Remove="Presentation\HomeCheckPage.xaml" />
+    <None Remove="Presentation\LoginPage.xaml" />
+    <None Remove="Presentation\memory_detail.xaml" />
+    <None Remove="Presentation\Mirroring_download.xaml" />
+    <None Remove="Presentation\ProblemSolution.xaml" />
+    <None Remove="Presentation\Quality_assurance.xaml" />
+    <None Remove="Presentation\RegisterPage.xaml" />
+    <None Remove="Presentation\Retrieve_Password.xaml" />
+    <None Remove="Presentation\SystemPage.xaml" />
+    <None Remove="Presentation\system_backup.xaml" />
+    <None Remove="Presentation\User_infromation.xaml" />
+    <None Remove="Python\cpu_usage_chart.png" />
+    <None Remove="Python\Disk_usage.png" />
+    <None Remove="Python\disk_usage_chart.png" />
+    <None Remove="Python\gpu_usage_chart.png" />
+    <None Remove="Python\memory_usage_chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\DrivePage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\DrivePage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\FullCheckPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\FullCheckPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\HelpPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\HelpPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\HomeCheckPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\HomeCheckPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\ProblemSolution.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\ProblemSolution.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\SystemPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\SystemPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\address_query.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\add_que.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\add_que1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\add_que2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\BackIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\bios_upgrade.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ComapnyBuilding.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\complete_query.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\CPU.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\CPU1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\CPU2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Disk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Disk1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Disk2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\DriveIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\feedback.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GPU.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GPU1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GPU2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GraphicsCardIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\HardDriveIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\HomeIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\kh_ima.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\kh_login.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\login_logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\mac_que.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\mac_que1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\mac_que2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\main_pla.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\main_pla1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\main_pla2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Memory.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Memory1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Memory2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MotherboardIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\problem_resolution.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\pro_eli.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\pro_eli1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\pro_eli2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\pro_fee.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\pro_fee1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\pro_fee2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\repair_platform.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\right_arrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Scan.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Scan1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Scan2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SearchIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SupportIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SystemIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\system_backup.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\system_download.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\TiJian.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\User.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\warranty_query.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\war_que.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\war_que1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\war_que2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CSharpMarkup.WinUI.LiveChartsCore.SkiaSharpView" />
+    <PackageReference Include="IronPython" />
+    <PackageReference Include="LibreHardwareMonitorLib" />
+    <PackageReference Include="LiveCharts" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="OpenHardwareMonitor" />
+    <PackageReference Include="OxyPlot.Core" />
+    <PackageReference Include="OxyPlot.Pdf" />
+    <PackageReference Include="OxyPlot.WindowsForms" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" />
+    <PackageReference Include="System.Management" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\LoginPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\LoginPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\RegisterPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\RegisterPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\Retrieve_Password.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\Retrieve_Password.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\FeedbackPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\FeedbackPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\Quality_assurance.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\Quality_assurance.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\Address_inquiry.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\Address_inquiry.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\Mirroring_download.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\Mirroring_download.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\system_backup.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\system_backup.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\BIOS_upgrade.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\BIOS_upgrade.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\cpu_detail.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\cpu_detail.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\disk_detail.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\disk_detail.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\memory_detail.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\memory_detail.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\gpu_detail.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Remove="Presentation\gpu_detail.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Presentation\User_infromation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,100 @@
+﻿<Page
+    x:Class="KongHui1.Presentation.FeedbackPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KongHui1.Presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+  <Page.Background>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+      <GradientStop Color="#D6ECF3" Offset="0.0"/>
+      <GradientStop Color="White" Offset="1.0"/>
+    </LinearGradientBrush>
+  </Page.Background>
+
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <Grid Margin="20">
+      <!-- 定义两列，左边30%，右边70% -->
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="0.6*"/>
+        <!-- 表单区域 -->
+        <ColumnDefinition Width="0.4*"/>
+        <!-- 已提交反馈区域 -->
+      </Grid.ColumnDefinitions>
+
+      <!-- Header -->
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Row="0" Margin="0,10,0,20" Grid.ColumnSpan="2">
+        <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click" HorizontalAlignment="Left"/>
+        <TextBlock Text="问题反馈" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
+      </StackPanel>
+
+      <!-- 垂直分隔线右移 -->
+      <Border BorderBrush="Gray" BorderThickness="1,0,1,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" 
+              Grid.Row="1" Grid.Column="0" Margin="0,0" Width="1"/>
+      <!-- 增加 Margin 并调整宽度 -->
+
+
+
+      <!-- 左侧表单区域 -->
+      <StackPanel Grid.Row="1" Grid.Column="0" Spacing="10" VerticalAlignment="Top" Margin="0,40,0,0">
+        <!-- 向下移动 -->
+        <!-- Problem Type -->
+        <TextBlock FontSize="16" Foreground="Black">
+          <Run Text="* " Foreground="Red"/>
+          <Run Text="问题类型"/>
+        </TextBlock>
+        <StackPanel x:Name="ProblemTypeStackPanel" Orientation="Horizontal" Spacing="20">
+          <RadioButton Content="设备状态" GroupName="ProblemType" Tag="0" FontSize="18"/>
+          <RadioButton Content="安全服务" GroupName="ProblemType" Tag="1" FontSize="18"/>
+          <RadioButton Content="硬件问题" GroupName="ProblemType" Tag="2" FontSize="18"/>
+          <RadioButton Content="驱动问题" GroupName="ProblemType" Tag="3" FontSize="18"/>
+          <RadioButton Content="系统问题" GroupName="ProblemType" Tag="4" FontSize="18"/>
+        </StackPanel>
+
+        <!-- Problem Description -->
+        <TextBlock FontSize="16" Foreground="Black">
+          <Run Text="* " Foreground="Red"/>
+          <Run Text="问题描述"/>
+        </TextBlock>
+        <StackPanel Padding="10">
+          <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="150">
+            <TextBox x:Name="PDTextBox" PlaceholderText="请描述您遇到的问题，您也可以上传图片或视频" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top"/>
+          </ScrollViewer>
+        </StackPanel>
+
+        <!-- User Details -->
+        <TextBlock FontSize="18" Foreground="Black">
+          <Run Text="* " Foreground="Red"/>
+          <Run Text="公司名称"/>
+        </TextBlock>
+        <TextBox x:Name="CompanyNameTextBox" PlaceholderText="请输入公司名称" Height="60"/>
+
+        <TextBlock FontSize="18" Foreground="Black">
+          <Run Text="* " Foreground="Red"/>
+          <Run Text="联系电话"/>
+        </TextBlock>
+        <TextBox  x:Name="ContactPhoneTextBox" PlaceholderText="请输入联系电话" Height="60"/>
+
+        <!-- Submit Button -->
+        <Button x:Name="SubmitButton" Content="提交反馈" Background="Blue" Foreground="White" FontSize="16" HorizontalAlignment="Center"
+                Margin="0,20,0,0" Width="200" Grid.Row="2" Grid.ColumnSpan="2" Click="SubmitButton_Click"/>
+      </StackPanel>
+
+      <!-- 右侧已提交反馈区域 -->
+      <StackPanel Grid.Row="1" Grid.Column="1" Padding="10" Margin="20,20,0,0">
+        <TextBlock Text="已提交的问题反馈" FontSize="24" FontWeight="Bold" Margin="0,20,0,20"/>
+
+        <!-- 这里展示已提交的问题反馈，使用一个列表控件 -->
+        <StackPanel x:Name="FeedbackList" Orientation="Vertical">
+          <!-- 示例内容 -->
+          <TextBlock Text="反馈 1: 问题描述..." Margin="0,0,0,10"/>
+          <TextBlock Text="反馈 2: 问题描述..." Margin="0,0,0,10"/>
+          <!-- 动态内容可以在代码后端中添加 -->
+        </StackPanel>
+      </StackPanel>
+
+    </Grid>
+  </ScrollViewer>
+</Page>
