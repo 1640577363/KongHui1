@@ -141,7 +141,13 @@ namespace KongHui1.Presentation
         {
             if (sender is Button button)
             {
-                button.Background = new SolidColorBrush(Microsoft.UI.Colors.Blue); // 恢复默认背景
+                // 将颜色字符串 "#71A6F7" 转换为 ARGB 值
+                byte a = 255;  // 默认完全不透明
+                byte r = 113;  // 红色分量
+                byte g = 166;  // 绿色分量
+                byte b = 247;  // 蓝色分量
+
+                button.Background = new SolidColorBrush(Microsoft.UI.Colors.DeepSkyBlue); // 恢复默认背景
             }
         }
         

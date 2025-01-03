@@ -9,7 +9,7 @@
   <Page.Resources>
     <!-- 按钮样式 -->
     <Style x:Key="ModernButtonStyle" TargetType="Button">
-      <Setter Property="Background" Value="Blue"/>
+      <Setter Property="Background" Value="DeepSkyBlue"/>
       <Setter Property="Foreground" Value="White"/>
       <Setter Property="CornerRadius" Value="5"/>
       <Setter Property="Padding" Value="10,5"/>
