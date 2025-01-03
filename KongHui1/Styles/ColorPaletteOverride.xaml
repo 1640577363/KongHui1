@@ -16,6 +16,7 @@
       <Color x:Key="TertiaryContainerColor">#CFE4FF</Color>
       <Color x:Key="OnTertiaryContainerColor">#001D36</Color>
       <Color x:Key="ErrorColor">#B3261E</Color>
+      <Color x:Key="ErrorContainerColor">#F9DEDC</Color>
       <Color x:Key="OnErrorColor">#FFFFFF</Color>
       <Color x:Key="ErrorContainerColor">#F9DEDC</Color>
       <Color x:Key="OnErrorContainerColor">#410E0B</Color>
