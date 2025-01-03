@@ -6,6 +6,30 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d">
 
+  <Page.Resources>
+    <!-- 按钮样式 -->
+    <Style x:Key="ModernButtonStyle" TargetType="Button">
+      <Setter Property="Background" Value="Blue"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="CornerRadius" Value="5"/>
+      <Setter Property="Padding" Value="10,5"/>
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="BorderBrush" Value="Transparent"/>
+      <Setter Property="Height" Value="40"/>
+      <Setter Property="Width" Value="150"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Background="{TemplateBinding Background}"
+                CornerRadius="5">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Page.Resources>
   <Page.Background>
     <SolidColorBrush Color="#F4F9FF"/>
   </Page.Background>
@@ -24,66 +48,55 @@
     <!-- 按钮容器 -->
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50,100,10">
       <!-- 一键更新按钮 -->
-      <Button Content="一键更新" Width="150" Height="40" Margin="0,0,10,0" FontSize="16" FontWeight="Bold"/>
-
+      <Button Content="一键更新"  Margin="0,0,10,0"  FontWeight="Bold" Style="{StaticResource ModernButtonStyle}" PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited"/>
       <!-- 一键检测按钮 -->
-      <Button Content="一键检测" Width="150" Height="40" FontSize="16" FontWeight="Bold" Click="Detection_drive" />
+      <Button Content="一键检测"  FontWeight="Bold" Click="Detection_drive"  Style="{StaticResource ModernButtonStyle}"  PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited"/>
     </StackPanel>
 
     <!-- 驱动信息滚动区域 -->
-    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" >
       <ItemsControl x:Name="DriversListBox">
         <ItemsControl.ItemTemplate>
           <DataTemplate>
             <!-- 分组显示设备类别 -->
-            <Expander Header="{Binding Key}" IsExpanded="False" Width="1100" HorizontalAlignment="Center">
-              <ItemsControl ItemsSource="{Binding Items}">
+            <Expander Header="{Binding Key}" IsExpanded="False" Width="1100" HorizontalAlignment="Center"  Foreground="Black">
+              <ItemsControl ItemsSource="{Binding Items}"  Foreground="Black">
                 <ItemsControl.ItemTemplate>
                   <DataTemplate>
                     <!-- 使用 Grid 来布局 -->
                     <Grid Margin="10" HorizontalAlignment="Stretch">
                       <Grid.ColumnDefinitions>
                         <!-- 第1列：多选框 -->
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="50"/>
                         <!-- 第2列：设备类和设备名称 -->
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="450"/>
                         <!-- 第3列：版本号 -->
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="150"/>
                         <!-- 第4列：最新版本 -->
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="150"/>
                         <!-- 第5列：更新按钮 -->
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="100"/>
                       </Grid.ColumnDefinitions>
 
                       <!-- 多选框 -->
-                      <CheckBox Grid.Column="0" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                      <CheckBox Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" />
 
                       <!-- 设备类和设备名称 -->
-                      <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="10,0,0,0">
-                        <TextBlock Text="{Binding DeviceClassChinese}" FontSize="16" Foreground="Black"/>
-                        <TextBlock Text="{Binding DeviceName}" FontSize="14" Foreground="Gray"/>
+                      <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10,0,0,0" >
+                        <TextBlock Text="{Binding DeviceClassChinese}" FontSize="16" Foreground="Black" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding DeviceName}" FontSize="14" Foreground="Black" HorizontalAlignment="Left"/>
                       </StackPanel>
 
                       <!-- 版本号 -->
                       <TextBlock Grid.Column="2" Text="{Binding DriverVersion}" FontSize="12" Foreground="Gray"
-                                 VerticalAlignment="Center" HorizontalAlignment="Center" Margin="200,0,100,0"/>
+                                 VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,20,0"/>
 
                       <!-- 最新版本 -->
                       <TextBlock Grid.Column="3" Text="{Binding LatestDriverVersion}" FontSize="12" Foreground="Gray"
-                                 VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,100,0"/>
+                                 VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,20,0"/>
 
                       <!-- 更新按钮 -->
-                      <Button Grid.Column="4" Content="更新" Width="60" Height="30" FontSize="12"
-                              HorizontalAlignment="Right" Margin="0,0,100,0">
-                        <Button.Style>
-                          <Style TargetType="Button">
-                            <Setter Property="Background" Value="#71A6F7"/>
-                            <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="BorderBrush" Value="#71A6F7"/>
-                            <Setter Property="BorderThickness" Value="1"/>
-                            <Setter Property="CornerRadius" Value="15"/>
-                          </Style>
-                        </Button.Style>
+                      <Button Grid.Column="4" Content="更新" Width="60" Height="30" FontSize="12" HorizontalAlignment="Right" Margin="0,0,10,0" Style="{StaticResource ModernButtonStyle}" PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited">
                       </Button>
                     </Grid>
                   </DataTemplate>

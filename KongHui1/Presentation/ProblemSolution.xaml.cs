@@ -12,6 +12,9 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage.Pickers;
+using System.IO;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -21,6 +24,7 @@ namespace KongHui1.Presentation;
 /// </summary>
 public sealed partial class ProblemSolution : Page
 {
+    private string documentPath = @"D:\1.txt";
     public ProblemSolution()
     {
         this.InitializeComponent();
@@ -75,5 +79,36 @@ public sealed partial class ProblemSolution : Page
         {
             Frame.GoBack();   // 返回到前一个页面
         }
+    }
+    private async void DownloadButton_Click(object sender, RoutedEventArgs e)
+    {
+        // 创建文件保存对话框
+        try
+        {
+            // 获取指定路径的文件
+            StorageFile file = await StorageFile.GetFileFromPathAsync(documentPath);
+
+            // 打开文件
+            await Windows.System.Launcher.LaunchFileAsync(file);
+
+            // 提示用户文件已打开
+           // var messageDialog = new MessageDialog("文件已成功打开。");
+           // await messageDialog.ShowAsync();
+        }
+        catch (Exception ex)
+        {
+            // 处理异常
+            var messageDialog = new MessageDialog("无法打开文件: " + ex.Message);
+            await messageDialog.ShowAsync();
+        }
+    }
+    private async Task ShowMessageDialog(string message)
+    {
+        // 确保在 UI 线程上显示消息对话框
+        await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+        {
+            var messageDialog = new MessageDialog(message);
+            await messageDialog.ShowAsync();
+        });
     }
 }

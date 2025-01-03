@@ -7,6 +7,42 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+  <Page.Resources>
+    <!-- 卡片样式 -->
+    <Style x:Key="CardStyle" TargetType="Border">
+      <Setter Property="Background" Value="White"/>
+      <Setter Property="CornerRadius" Value="10"/>
+      <Setter Property="Padding" Value="15"/>
+      <Setter Property="Margin" Value="10"/>
+      <Setter Property="Shadow">
+        <Setter.Value>
+          <ThemeShadow/>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <!-- 按钮样式 -->
+    <Style x:Key="ModernButtonStyle" TargetType="Button">
+      <Setter Property="Background" Value="#71A6F7"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="CornerRadius" Value="5"/>
+      <Setter Property="Padding" Value="10,5"/>
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="BorderBrush" Value="Transparent"/>
+      <Setter Property="Height" Value="40"/>
+      <Setter Property="Width" Value="50"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Background="{TemplateBinding Background}"
+                CornerRadius="5">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Page.Resources>
   <Page.Background>
     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
       <GradientStop Color="#D6ECF3" Offset="0.0"/>
@@ -14,95 +50,348 @@
     </LinearGradientBrush>
   </Page.Background>
 
+
   <StackPanel Margin="0,10,0,0">
     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
-      <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click"/>
-      <TextBlock Text="问题排除" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
+      <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click" />
+      <TextBlock Text="问题排除" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"  Foreground="Black"/>
     </StackPanel>
 
-    
+    <Border CornerRadius="10" Padding="10" Margin="10,5" BorderBrush="Gray" BorderThickness="1">
+      <Grid >
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="2*"/>
+          <!-- 占用两倍宽度 -->
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+        <!-- 表头 -->
+        <Border Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="#0078D7">
+          <TextBlock Text="常见问题" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" />
+        </Border>
+        <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Background="#0078D7">
+          <TextBlock Text="帮助文档" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" />
+        </Border>
 
-    <StackPanel Margin="0,20,0,0">
-      <StackPanel Orientation="Horizontal">
-        <TextBlock x:Name="MainTextBlock" Text="1.工控机在出现不开机现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center"/>
-        <ToggleButton x:Name="ToggleArrow" Content="▼" Click="ToggleArrow_Click" Tag="1" Width="30" Height="30" VerticalAlignment="Center"/>
-      </StackPanel>
-      <Border x:Name="AdditionalTextBlock" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Margin="0,5,0,0" Padding="5">
-        <TextBlock Text="1.检查电源是否有出现接触不良;
-2.检查内存、CPU、是否匹配该主板(如电压频率);
-3.检查内存槽、CPU座是否有异物;
-4.重新拆装CPU、内存,或者更换CPU、内存试一下;
-5.检查CPU座针脚是否有弯曲变形;
-6.可尝试把外接设备去除、试下是否正常;
-7.清CMOS放电、把BIOS恢复默认状态; " TextWrapping="Wrap"/>
-      </Border>
-    </StackPanel>
+        <!-- 单元格 -->
+        <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
+          <StackPanel Margin="0,20,0,0">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock x:Name="MainTextBlock" Text="1.工控机在出现不开机现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
+              <ToggleButton x:Name="ToggleArrow" Content="▼" Click="ToggleArrow_Click" Tag="1" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
+            </StackPanel>
+            <Border x:Name="AdditionalTextBlock" Visibility="Collapsed" CornerRadius="10" Padding="10" Margin="10,5" BorderBrush="Gray" BorderThickness="1"  Width="600"  HorizontalAlignment="Left" Style="{StaticResource CardStyle}">
+              <TextBlock  TextWrapping="Wrap"  Foreground="Black">
+  <Run Text="1.检查电源是否有出现接触不良。"/>
+  <LineBreak/>
+  <Run Text="2.检查内存、CPU、是否匹配该主板(如电压频率)。"/>
+  <LineBreak/>
+  <Run Text="3.检查内存槽、CPU座是否有异物。"/>
+  <LineBreak/>
+  <Run Text="4.重新拆装CPU、内存,或者更换CPU、内存试一下。"/>
+  <LineBreak/>
+  <Run Text="5.检查CPU座针脚是否有弯曲变形。"/>
+  <LineBreak/>
+  <Run Text="6.可尝试把外接设备去除、试下是否正常。"/>
+  <LineBreak/>
+  <Run Text="7.清CMOS放电、把BIOS恢复默认状态。"/>
+              </TextBlock>
+            </Border>
+          </StackPanel>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
+          <Button x:Name="DownloadButton1" Content="下载" Click="DownloadButton_Click"    Style="{StaticResource ModernButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
 
-    <StackPanel Margin="0,10,0,0">
-      <StackPanel Orientation="Horizontal">
-        <TextBlock x:Name="MainTextBlock2" Text="2.工控机在出现开机不显示现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center"/>
-        <ToggleButton x:Name="ToggleArrow2" Content="▼" Click="ToggleArrow_Click" Tag="2" Width="30" Height="30" VerticalAlignment="Center"/>
-      </StackPanel>
-      <Border x:Name="AdditionalTextBlock2" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Margin="0,5,0,0" Padding="5">
-        <TextBlock Text="1.检查电源：确保电源正常工作并供电。
-2.检查显示器连接：确保显示器连接牢固，选择正确的输入源。
-3.检查显卡和主板：确保显卡和主板没有故障并连接良好。
-4.检查内存条：确认内存条安装正确且无故障。" TextWrapping="Wrap"/>
-      </Border>
-    </StackPanel>
+        <!-- 单元格 -->
+        <Border Grid.Row="2" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
+          <StackPanel Margin="0,10,0,0" >
+            <StackPanel Orientation="Horizontal">
+              <TextBlock x:Name="MainTextBlock2" Text="2.工控机在出现开机不显示现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
+              <ToggleButton x:Name="ToggleArrow2" Content="▼" Click="ToggleArrow_Click" Tag="2" Width="30" Height="30" VerticalAlignment="Center"  Foreground="Black"/>
+            </StackPanel>
+            <Border x:Name="AdditionalTextBlock2" Visibility="Collapsed" CornerRadius="10" Padding="10" Margin="10,5" BorderBrush="Gray" BorderThickness="1"  Width="600"  HorizontalAlignment="Left" Style="{StaticResource CardStyle}">
+              <TextBlock  TextWrapping="Wrap"  Foreground="Black">
+  <Run Text="1.检查电源：确保电源正常工作并供电。"/>
+  <LineBreak/>
+  <Run Text="2.检查显示器连接：确保显示器连接牢固，选择正确的输入源。"/>
+  <LineBreak/>
+  <Run Text="3.检查显卡和主板：确保显卡和主板没有故障并连接良好。"/>
+  <LineBreak/>
+  <Run Text="4.检查内存条：确认内存条安装正确且无故障。"/>
+              </TextBlock>
+            </Border>
+          </StackPanel>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
+          <Button x:Name="DownloadButton2" Content="下载" Click="DownloadButton_Click"    Style="{StaticResource ModernButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
 
-    <StackPanel Margin="0,10,0,0">
-      <StackPanel Orientation="Horizontal">
-        <TextBlock x:Name="MainTextBlock3" Text="3.工控机在出现开机不进系统现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center"/>
-        <ToggleButton x:Name="ToggleArrow3" Content="▼" Click="ToggleArrow_Click" Tag="3" Width="30" Height="30" VerticalAlignment="Center"/>
-      </StackPanel>
-      <Border x:Name="AdditionalTextBlock3" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Margin="0,5,0,0" Padding="5">
-        <TextBlock Text="1.检查硬盘连接：确保硬盘连接正常且无故障。
-2.检查启动顺序：进入BIOS检查启动顺序，确保硬盘优先启动。
-3.修复启动引导：使用系统修复工具修复启动引导记录（如Windows启动修复）。
-4.检查内存：确保内存条安装正确且没有故障。
-5.检查硬盘故障：使用硬盘检测工具检查硬盘是否有坏道或故障。" TextWrapping="Wrap"/>
-      </Border>
-    </StackPanel>
+        <!-- 单元格 -->
+        <Border Grid.Row="3" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
+          <StackPanel Margin="0,10,0,0" >
+            <StackPanel Orientation="Horizontal">
+              <TextBlock x:Name="MainTextBlock3" Text="3.工控机在出现开机不进系统现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
+              <ToggleButton x:Name="ToggleArrow3" Content="▼" Click="ToggleArrow_Click" Tag="3" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
+            </StackPanel>
+            <Border x:Name="AdditionalTextBlock3" Visibility="Collapsed" CornerRadius="10" Padding="10" Margin="10,5" BorderBrush="Gray" BorderThickness="1"  Width="600"  HorizontalAlignment="Left" Style="{StaticResource CardStyle}">
+              <TextBlock  TextWrapping="Wrap" Foreground="Black">
+  <Run Text="1.检查硬盘连接：确保硬盘连接正常且无故障。"/>
+  <LineBreak/>
+  <Run Text="2.检查启动顺序：进入BIOS检查启动顺序，确保硬盘优先启动。"/>
+  <LineBreak/>
+  <Run Text="3.修复启动引导：使用系统修复工具修复启动引导记录（如Windows启动修复）。"/>
+  <LineBreak/>
+  <Run Text="4.检查内存：确保内存条安装正确且没有故障。"/>
+  <LineBreak/>
+  <Run Text="5.检查硬盘故障：使用硬盘检测工具检查硬盘是否有坏道或故障。"/>
+              </TextBlock>
+            </Border>
+          </StackPanel>
+        </Border>
+        <Border Grid.Row="3" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
+          <Button x:Name="DownloadButton3" Content="下载" Click="DownloadButton_Click"    Style="{StaticResource ModernButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
 
-    <StackPanel Margin="0,10,0,0">
-      <StackPanel Orientation="Horizontal">
-        <TextBlock x:Name="MainTextBlock4" Text="4.工控机在出现蓝屏死机（BSOD），可以用以下方法来排查及解决。" VerticalAlignment="Center"/>
-        <ToggleButton x:Name="ToggleArrow4" Content="▼" Click="ToggleArrow_Click" Tag="4" Width="30" Height="30" VerticalAlignment="Center"/>
-      </StackPanel>
-      <Border x:Name="AdditionalTextBlock4" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Margin="0,5,0,0" Padding="5">
-        <TextBlock Text="1.更新或重装驱动程序：通过设备管理器更新显卡、声卡、网卡等驱动程序。
-2.检查硬件：使用内存检测工具检查内存条是否出现故障，检查硬盘是否有坏道。
-3.查看蓝屏错误代码，搜索解决方案。
-4.检查最近安装的软件，可能会引发冲突，尝试卸载软件。" TextWrapping="Wrap"/>
-      </Border>
-    </StackPanel>
+        <!-- 单元格 -->
+        <Border Grid.Row="4" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
+          <StackPanel Margin="0,10,0,0" >
+            <StackPanel Orientation="Horizontal">
+              <TextBlock x:Name="MainTextBlock4" Text="4.工控机在出现蓝屏死机（BSOD），可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
+              <ToggleButton x:Name="ToggleArrow4" Content="▼" Click="ToggleArrow_Click" Tag="4" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
+            </StackPanel>
+            <Border x:Name="AdditionalTextBlock4" Visibility="Collapsed"  CornerRadius="10" Padding="10" Margin="10,5" BorderBrush="Gray" BorderThickness="1"  Width="600"  HorizontalAlignment="Left"  Style="{StaticResource CardStyle}">
+              <TextBlock  TextWrapping="Wrap" Foreground="Black">
+  <Run Text="1.更新或重装驱动程序：通过设备管理器更新显卡、声卡、网卡等驱动程序。"/>
+  <LineBreak/>
+  <Run Text="2.检查硬件：使用内存检测工具检查内存条是否出现故障，检查硬盘是否有坏道。"/>
+  <LineBreak/>
+  <Run Text="3.查看蓝屏错误代码，搜索解决方案。"/>
+  <LineBreak/>
+  <Run Text="4.检查最近安装的软件，可能会引发冲突，尝试卸载软件。"/>
+              </TextBlock>
+            </Border>
+          </StackPanel>
+        </Border>
+        <Border Grid.Row="4" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
+          <Button x:Name="DownloadButton4" Content="下载" Click="DownloadButton_Click"    Style="{StaticResource ModernButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
 
-    <StackPanel Margin="0,10,0,0">
-      <StackPanel Orientation="Horizontal">
-        <TextBlock x:Name="MainTextBlock5" Text="5.工控机无法连接到互联网，可以用以下方法来排查及解决。" VerticalAlignment="Center"/>
-        <ToggleButton x:Name="ToggleArrow5" Content="▼" Click="ToggleArrow_Click" Tag="5" Width="30" Height="30" VerticalAlignment="Center"/>
-      </StackPanel>
-      <Border x:Name="AdditionalTextBlock5" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Margin="0,5,0,0" Padding="5">
-        <TextBlock Text="1.重启路由器和计算机，确保网络连接正常。
-2.检查计算机的网络设置，确保 IP 地址设置正确。可以尝试使用命令 ipconfig /release 和 ipconfig /renew 来重新获取 IP 地址。
-3.检查 DNS 设置：可以尝试使用公共 DNS（如 Google 的 8.8.8.8 和 8.8.4.4）。
-4.使用网络故障排除工具：在 Windows 中，右键点击网络图标，选择“故障排除”进行自动修复。" TextWrapping="Wrap"/>
-      </Border>
-    </StackPanel>
-    
-    <StackPanel Margin="0,10,0,0">
-      <StackPanel Orientation="Horizontal">
-        <TextBlock x:Name="MainTextBlock6" Text="6.工控机磁盘空间不足时，可以用以下方法来排查及解决。" VerticalAlignment="Center"/>
-        <ToggleButton x:Name="ToggleArrow6" Content="▼" Click="ToggleArrow_Click" Tag="6" Width="30" Height="30" VerticalAlignment="Center"/>
-      </StackPanel>
-      <Border x:Name="AdditionalTextBlock6" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Margin="0,5,0,0" Padding="5">
-        <TextBlock Text="1.使用“磁盘清理”工具删除临时文件、系统文件、缓存文件等。
-2.卸载不再使用的程序。
-3.清理浏览器缓存、下载文件夹中的文件等。
-4.将不常用的数据文件移到外部硬盘或云存储。" TextWrapping="Wrap"/>
-      </Border>
-    </StackPanel>
-    
+        <!-- 单元格 -->
+        <Border Grid.Row="5" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
+          <StackPanel Margin="0,10,0,0" >
+            <StackPanel Orientation="Horizontal">
+              <TextBlock x:Name="MainTextBlock5" Text="5.工控机无法连接到互联网，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
+              <ToggleButton x:Name="ToggleArrow5" Content="▼" Click="ToggleArrow_Click" Tag="5" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
+            </StackPanel>
+            <Border x:Name="AdditionalTextBlock5" Visibility="Collapsed" CornerRadius="10" Padding="10" Margin="10,5" BorderBrush="Gray" BorderThickness="1"  Width="600"  HorizontalAlignment="Left" Style="{StaticResource CardStyle}">
+              <TextBlock TextWrapping="Wrap" Foreground="Black">
+  <Run Text="1.重启路由器和计算机，确保网络连接正常。"/>
+  <LineBreak/>
+  <Run Text="2.检查计算机的网络设置，确保 IP 地址设置正确。可以尝试使用命令 ipconfig /release 和 ipconfig /renew 来重新获取 IP 地址。"/>
+  <LineBreak/>
+  <Run Text="3.检查 DNS 设置：可以尝试使用公共 DNS（如 Google 的 8.8.8.8 和 8.8.4.4）。"/>
+  <LineBreak/>
+  <Run Text="4.使用网络故障排除工具：在 Windows 中，右键点击网络图标，选择“故障排除”进行自动修复。"/>
+              </TextBlock>
+            </Border>
+          </StackPanel>
+        </Border>
+        <Border Grid.Row="5" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
+          <Button x:Name="DownloadButton5" Content="下载" Click="DownloadButton_Click"    Style="{StaticResource ModernButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+
+        <!-- 单元格 -->
+        <Border Grid.Row="6" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
+          <StackPanel Margin="0,10,0,0" >
+            <StackPanel Orientation="Horizontal">
+              <TextBlock x:Name="MainTextBlock6" Text="6.工控机磁盘空间不足时，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
+              <ToggleButton x:Name="ToggleArrow6" Content="▼" Click="ToggleArrow_Click" Tag="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
+            </StackPanel>
+            <Border x:Name="AdditionalTextBlock6" Visibility="Collapsed" CornerRadius="10" Padding="10" Margin="10,5" BorderBrush="Gray" BorderThickness="1"  Width="600"  HorizontalAlignment="Left" Style="{StaticResource CardStyle}">
+              <TextBlock  TextWrapping="Wrap" Foreground="Black">
+  <Run Text="1.使用“磁盘清理”工具删除临时文件、系统文件、缓存文件等。"/>
+  <LineBreak/>
+  <Run Text="2.卸载不再使用的程序。"/>
+  <LineBreak/>
+  <Run Text="3.清理浏览器缓存、下载文件夹中的文件等。"/>
+  <LineBreak/>
+  <Run Text="4.将不常用的数据文件移到外部硬盘或云存储。"/>
+              </TextBlock>
+            </Border>
+          </StackPanel>
+        </Border>
+        <Border Grid.Row="6" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
+          <Button x:Name="DownloadButton6" Content="下载" Click="DownloadButton_Click"    Style="{StaticResource ModernButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+
+        
+        <!--<Grid Grid.Row="0" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="0,20,0,0" Grid.Row="0" Grid.Column="0">
+          <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="MainTextBlock" Text="1.工控机在出现不开机现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
+            <ToggleButton x:Name="ToggleArrow" Content="▼" Click="ToggleArrow_Click" Tag="1" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
+          </StackPanel>
+          <Border x:Name="AdditionalTextBlock" Visibility="Collapsed" CornerRadius="10" Padding="10" Margin="10,5" BorderBrush="Gray" BorderThickness="1"  Width="600"  HorizontalAlignment="Left" Style="{StaticResource CardStyle}">
+            <TextBlock  TextWrapping="Wrap"  Foreground="Black">
+          <Run Text="1.检查电源是否有出现接触不良。"/>
+          <LineBreak/>
+          <Run Text="2.检查内存、CPU、是否匹配该主板(如电压频率)。"/>
+          <LineBreak/>
+          <Run Text="3.检查内存槽、CPU座是否有异物。"/>
+          <LineBreak/>
+          <Run Text="4.重新拆装CPU、内存,或者更换CPU、内存试一下。"/>
+          <LineBreak/>
+          <Run Text="5.检查CPU座针脚是否有弯曲变形。"/>
+          <LineBreak/>
+          <Run Text="6.可尝试把外接设备去除、试下是否正常。"/>
+          <LineBreak/>
+          <Run Text="7.清CMOS放电、把BIOS恢复默认状态。"/>
+            </TextBlock>
+          </Border>
+        </StackPanel>
+        <Button x:Name="DownloadButton1" Content="下载帮助文档" Click="DownloadButton_Click"   Margin="0,0,200,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource ModernButtonStyle}"/>
+      </Grid>
+
+      <Grid Grid.Row="1" >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="0,10,0,0" Grid.Row="1" Grid.Column="0">
+          <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="MainTextBlock2" Text="2.工控机在出现开机不显示现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
+            <ToggleButton x:Name="ToggleArrow2" Content="▼" Click="ToggleArrow_Click" Tag="2" Width="30" Height="30" VerticalAlignment="Center"  Foreground="Black"/>
+          </StackPanel>
+            <Border x:Name="AdditionalTextBlock2" Visibility="Collapsed" CornerRadius="10" Padding="10" Margin="10,5" BorderBrush="Gray" BorderThickness="1"  Width="600"  HorizontalAlignment="Left" Style="{StaticResource CardStyle}">
+              <TextBlock  TextWrapping="Wrap"  Foreground="Black">
+          <Run Text="1.检查电源：确保电源正常工作并供电。"/>
+          <LineBreak/>
+          <Run Text="2.检查显示器连接：确保显示器连接牢固，选择正确的输入源。"/>
+          <LineBreak/>
+          <Run Text="3.检查显卡和主板：确保显卡和主板没有故障并连接良好。"/>
+          <LineBreak/>
+          <Run Text="4.检查内存条：确认内存条安装正确且无故障。"/>
+              </TextBlock>
+            </Border>
+          </StackPanel>
+        <Button x:Name="DownloadButton2" Content="下载帮助文档" Click="DownloadButton_Click" VerticalAlignment="Center"  Margin="0,0,200,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource ModernButtonStyle}" />
+      </Grid>
+
+      <Grid Grid.Row="2" >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="0,10,0,0" Grid.Row="2" Grid.Column="0">
+          <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="MainTextBlock3" Text="3.工控机在出现开机不进系统现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
+            <ToggleButton x:Name="ToggleArrow3" Content="▼" Click="ToggleArrow_Click" Tag="3" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
+          </StackPanel>
+          <Border x:Name="AdditionalTextBlock3" Visibility="Collapsed" CornerRadius="10" Padding="10" Margin="10,5" BorderBrush="Gray" BorderThickness="1"  Width="600"  HorizontalAlignment="Left" Style="{StaticResource CardStyle}">
+            <TextBlock  TextWrapping="Wrap" Foreground="Black">
+          <Run Text="1.检查硬盘连接：确保硬盘连接正常且无故障。"/>
+          <LineBreak/>
+          <Run Text="2.检查启动顺序：进入BIOS检查启动顺序，确保硬盘优先启动。"/>
+          <LineBreak/>
+          <Run Text="3.修复启动引导：使用系统修复工具修复启动引导记录（如Windows启动修复）。"/>
+          <LineBreak/>
+          <Run Text="4.检查内存：确保内存条安装正确且没有故障。"/>
+          <LineBreak/>
+          <Run Text="5.检查硬盘故障：使用硬盘检测工具检查硬盘是否有坏道或故障。"/>
+            </TextBlock>
+          </Border>
+        </StackPanel>
+        <Button x:Name="DownloadButton3" Content="下载帮助文档" Click="DownloadButton_Click" VerticalAlignment="Center"  Margin="0,0,200,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource ModernButtonStyle}"/>
+      </Grid>
+
+      <Grid Grid.Row="3" >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="0,10,0,0" Grid.Row="3" Grid.Column="0">
+          <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="MainTextBlock4" Text="4.工控机在出现蓝屏死机（BSOD），可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
+            <ToggleButton x:Name="ToggleArrow4" Content="▼" Click="ToggleArrow_Click" Tag="4" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
+          </StackPanel>
+          <Border x:Name="AdditionalTextBlock4" Visibility="Collapsed"  CornerRadius="10" Padding="10" Margin="10,5" BorderBrush="Gray" BorderThickness="1"  Width="600"  HorizontalAlignment="Left"  Style="{StaticResource CardStyle}">
+            <TextBlock  TextWrapping="Wrap" Foreground="Black">
+          <Run Text="1.更新或重装驱动程序：通过设备管理器更新显卡、声卡、网卡等驱动程序。"/>
+          <LineBreak/>
+          <Run Text="2.检查硬件：使用内存检测工具检查内存条是否出现故障，检查硬盘是否有坏道。"/>
+          <LineBreak/>
+          <Run Text="3.查看蓝屏错误代码，搜索解决方案。"/>
+          <LineBreak/>
+          <Run Text="4.检查最近安装的软件，可能会引发冲突，尝试卸载软件。"/>
+            </TextBlock>
+          </Border>
+        </StackPanel>
+        <Button x:Name="DownloadButton4" Content="下载帮助文档" Click="DownloadButton_Click" VerticalAlignment="Center"  Margin="0,0,200,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource ModernButtonStyle}"/>
+      </Grid>
+
+      <Grid Grid.Row="4" >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="0,10,0,0" Grid.Row="4" Grid.Column="0">
+          <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="MainTextBlock5" Text="5.工控机无法连接到互联网，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
+            <ToggleButton x:Name="ToggleArrow5" Content="▼" Click="ToggleArrow_Click" Tag="5" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
+          </StackPanel>
+          <Border x:Name="AdditionalTextBlock5" Visibility="Collapsed" CornerRadius="10" Padding="10" Margin="10,5" BorderBrush="Gray" BorderThickness="1"  Width="600"  HorizontalAlignment="Left" Style="{StaticResource CardStyle}">
+            <TextBlock TextWrapping="Wrap" Foreground="Black">
+          <Run Text="1.重启路由器和计算机，确保网络连接正常。"/>
+          <LineBreak/>
+          <Run Text="2.检查计算机的网络设置，确保 IP 地址设置正确。可以尝试使用命令 ipconfig /release 和 ipconfig /renew 来重新获取 IP 地址。"/>
+          <LineBreak/>
+          <Run Text="3.检查 DNS 设置：可以尝试使用公共 DNS（如 Google 的 8.8.8.8 和 8.8.4.4）。"/>
+          <LineBreak/>
+          <Run Text="4.使用网络故障排除工具：在 Windows 中，右键点击网络图标，选择“故障排除”进行自动修复。"/>
+            </TextBlock>
+          </Border>
+        </StackPanel>
+        <Button x:Name="DownloadButton5" Content="下载帮助文档" Click="DownloadButton_Click" VerticalAlignment="Center"  Margin="0,0,200,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource ModernButtonStyle}"/>
+      </Grid>
+
+      <Grid Grid.Row="5" >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="0,10,0,0" Grid.Row="5" Grid.Column="0">
+          <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="MainTextBlock6" Text="6.工控机磁盘空间不足时，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
+            <ToggleButton x:Name="ToggleArrow6" Content="▼" Click="ToggleArrow_Click" Tag="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
+          </StackPanel>
+          <Border x:Name="AdditionalTextBlock6" Visibility="Collapsed" CornerRadius="10" Padding="10" Margin="10,5" BorderBrush="Gray" BorderThickness="1"  Width="600"  HorizontalAlignment="Left" Style="{StaticResource CardStyle}">
+            <TextBlock  TextWrapping="Wrap" Foreground="Black">
+          <Run Text="1.使用“磁盘清理”工具删除临时文件、系统文件、缓存文件等。"/>
+          <LineBreak/>
+          <Run Text="2.卸载不再使用的程序。"/>
+          <LineBreak/>
+          <Run Text="3.清理浏览器缓存、下载文件夹中的文件等。"/>
+          <LineBreak/>
+          <Run Text="4.将不常用的数据文件移到外部硬盘或云存储。"/>
+            </TextBlock>
+          </Border>
+        </StackPanel>
+        <Button x:Name="DownloadButton6" Content="下载帮助文档" Click="DownloadButton_Click" VerticalAlignment="Center"  Margin="0,0,200,0"  Grid.Row="0" Grid.Column="1" Style="{StaticResource ModernButtonStyle}"/>
+      </Grid>-->
+    </Grid>
+    </Border>
   </StackPanel>
 </Page>

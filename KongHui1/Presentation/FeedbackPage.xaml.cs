@@ -22,15 +22,15 @@ using Windows.UI.Popups;
 
 namespace KongHui1.Presentation
 {
-	/// <summary>
-	/// An empty page that can be used on its own or navigated to within a Frame.
-	/// </summary>
-	public sealed partial class FeedbackPage : Page
-	{
-		public FeedbackPage()
-		{
-			this.InitializeComponent();
-		}
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class FeedbackPage : Page
+    {
+        public FeedbackPage()
+        {
+            this.InitializeComponent();
+        }
 
         private void BackButton_Click(object sender, PointerRoutedEventArgs e)
         {
@@ -43,8 +43,8 @@ namespace KongHui1.Presentation
         {
             // 获取页面上的控件值
             string problemType = GetSelectedProblemTypeIndex();
-            string problemDescription = PDTextBox.Text; 
-            string companyName = CompanyNameTextBox.Text; 
+            string problemDescription = PDTextBox.Text;
+            string companyName = CompanyNameTextBox.Text;
             string contactPhone = ContactPhoneTextBox.Text;
 
             HttpClient client = new HttpClient();
@@ -52,6 +52,10 @@ namespace KongHui1.Presentation
             if (!string.IsNullOrEmpty(LoginPage.Token))
             {
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", LoginPage.Token);
+            }
+            else
+            {
+                ShowMessage("请先登录");
             }
             // 准备请求的 URL 和数据+
             string url = "http://10.12.36.204:8080/Issues_support/Issues_support"; // 后端 API 地址
@@ -69,8 +73,8 @@ namespace KongHui1.Presentation
             // 将数据转换为 JSON 格式
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            
-            
+
+
             var response = await client.PostAsync(url, content);
 
             var responseString = await response.Content.ReadAsStringAsync();
@@ -101,7 +105,7 @@ namespace KongHui1.Presentation
 
         private string GetSelectedProblemTypeIndex()
         {
-            foreach (var radioButton in ProblemTypeStackPanel.Children) 
+            foreach (var radioButton in ProblemTypeStackPanel.Children)
             {
                 var radio = radioButton as RadioButton;
                 if (radio != null && radio.IsChecked == true)

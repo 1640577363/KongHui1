@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 
 namespace KongHui1.Presentation
 {
@@ -128,5 +129,21 @@ namespace KongHui1.Presentation
             // 更新驱动数量显示
             DriversCountTextBlock.Text = $"本地共发现 {driverInfoList.Count} 个驱动";
         }
+        private void Button_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.Background = new SolidColorBrush(Microsoft.UI.Colors.LightGray); // 鼠标悬停时背景变浅灰
+            }
+        }
+
+        private void Button_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.Background = new SolidColorBrush(Microsoft.UI.Colors.Blue); // 恢复默认背景
+            }
+        }
+        
     }
 }

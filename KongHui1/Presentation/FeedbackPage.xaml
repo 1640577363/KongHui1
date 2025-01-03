@@ -46,11 +46,11 @@
           <Run Text="问题类型"/>
         </TextBlock>
         <StackPanel x:Name="ProblemTypeStackPanel" Orientation="Horizontal" Spacing="20">
-          <RadioButton Content="设备状态" GroupName="ProblemType" Tag="0" FontSize="18"/>
-          <RadioButton Content="安全服务" GroupName="ProblemType" Tag="1" FontSize="18"/>
-          <RadioButton Content="硬件问题" GroupName="ProblemType" Tag="2" FontSize="18"/>
-          <RadioButton Content="驱动问题" GroupName="ProblemType" Tag="3" FontSize="18"/>
-          <RadioButton Content="系统问题" GroupName="ProblemType" Tag="4" FontSize="18"/>
+          <RadioButton Content="设备状态" GroupName="ProblemType" Tag="0" FontSize="18" Foreground="Black"/>
+          <RadioButton Content="安全服务" GroupName="ProblemType" Tag="1" FontSize="18" Foreground="Black"/>
+          <RadioButton Content="硬件问题" GroupName="ProblemType" Tag="2" FontSize="18" Foreground="Black"/>
+          <RadioButton Content="驱动问题" GroupName="ProblemType" Tag="3" FontSize="18" Foreground="Black"/>
+          <RadioButton Content="系统问题" GroupName="ProblemType" Tag="4" FontSize="18" Foreground="Black"/>
         </StackPanel>
 
         <!-- Problem Description -->
@@ -87,10 +87,10 @@
         <TextBlock Text="已提交的问题反馈" FontSize="24" FontWeight="Bold" Margin="0,20,0,20"/>
 
         <!-- 这里展示已提交的问题反馈，使用一个列表控件 -->
-        <StackPanel x:Name="FeedbackList" Orientation="Vertical">
+        <StackPanel x:Name="FeedbackList" Orientation="Vertical" >
           <!-- 示例内容 -->
-          <TextBlock Text="反馈 1: 问题描述..." Margin="0,0,0,10"/>
-          <TextBlock Text="反馈 2: 问题描述..." Margin="0,0,0,10"/>
+          <TextBlock Text="反馈 1: 问题描述..." Margin="0,0,0,10" Foreground="Black"/>
+          <TextBlock Text="反馈 2: 问题描述..." Margin="0,0,0,10" Foreground="Black"/>
           <!-- 动态内容可以在代码后端中添加 -->
         </StackPanel>
       </StackPanel>

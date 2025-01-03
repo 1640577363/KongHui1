@@ -23,8 +23,8 @@
     <StackPanel Margin="0,60,0,0">
       <!-- Added Margin to move elements down -->
       <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,20">
-        <TextBlock Text="* 整机序列号" FontSize="20" VerticalAlignment="Center" Margin="0,0,10,0"/>
-        <TextBox Width="200" PlaceholderText="请输入整机序列号" Margin="0,0,10,0"/>
+        <TextBlock Text="整机序列号:" FontSize="20" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Black"/>
+        <TextBox x:Name="SerialNumberTextBox" Width="250"  PlaceholderText="请输入整机序列号" Margin="0,0,10,0" FontSize="14"  Height="Auto" />
         <Button Content="点击查询" Background="Blue" Foreground="White" Width="150" />
       </StackPanel>
 
@@ -33,24 +33,24 @@
       <Border Background="White" CornerRadius="8" Padding="10" BorderBrush="LightGray" BorderThickness="1">
         <StackPanel>
           <StackPanel Orientation="Horizontal">
-            <TextBlock Text="序列号：" Width="100"/>
-            <TextBlock Text="5CD32727ZG" />
+            <TextBlock Text="序列号：" Width="100" Foreground="Black"/>
+            <TextBlock Text="5CD32727ZG"  Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" >
+            <TextBlock Text="保修类型：" Width="100" Foreground="Black"/>
+            <TextBlock Text="基本保修"  Foreground="Black" />
           </StackPanel>
           <StackPanel Orientation="Horizontal">
-            <TextBlock Text="保修类型：" Width="100"/>
-            <TextBlock Text="基本保修" />
+            <TextBlock Text="状态：" Width="100" Foreground="Black"/>
+            <TextBlock Text="未过保"  Foreground="Black"/>
           </StackPanel>
           <StackPanel Orientation="Horizontal">
-            <TextBlock Text="状态：" Width="100"/>
-            <TextBlock Text="未过保" />
+            <TextBlock Text="起止日期：" Width="100" Foreground="Black"/>
+            <TextBlock Text="2024-09-20" Foreground="Black"/>
           </StackPanel>
           <StackPanel Orientation="Horizontal">
-            <TextBlock Text="起止日期：" Width="100"/>
-            <TextBlock Text="2024-09-20" />
-          </StackPanel>
-          <StackPanel Orientation="Horizontal">
-            <TextBlock Text="截至日期：" Width="100"/>
-            <TextBlock Text="2025-09-20" />
+            <TextBlock Text="截至日期：" Width="100" Foreground="Black"/>
+            <TextBlock Text="2025-09-20" Foreground="Black"/>
           </StackPanel>
         </StackPanel>
       </Border>
