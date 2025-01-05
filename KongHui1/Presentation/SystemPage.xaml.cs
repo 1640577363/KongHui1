@@ -53,4 +53,19 @@ public sealed partial class SystemPage : Page
     {
         Frame.Navigate(typeof(BIOS_upgrade));
     }
+    private void OnPointerEntered(object sender, PointerRoutedEventArgs e)
+    {
+        if (sender is Border border)
+        {
+            border.Background = new SolidColorBrush(Microsoft.UI.Colors.LightGray); // 鼠标悬停时背景变浅灰
+        }
+    }
+
+    private void OnPointerExited(object sender, PointerRoutedEventArgs e)
+    {
+        if (sender is Border border)
+        {
+            border.Background = new SolidColorBrush(Microsoft.UI.Colors.White); // 恢复默认背景
+        }
+    }
 }
