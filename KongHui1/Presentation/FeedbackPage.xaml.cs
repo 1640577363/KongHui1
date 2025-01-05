@@ -17,6 +17,7 @@ using Newtonsoft.Json;
 using System.Text;
 using System.Management;
 using Windows.UI.Popups;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -41,7 +42,8 @@ namespace KongHui1.Presentation
         }
         private async void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            Debug.WriteLine("Button Clicked!");
+
             // 获取页面上的控件值
             string problemType = GetSelectedProblemTypeIndex();
             string problemDescription = PDTextBox.Text; 

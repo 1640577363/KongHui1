@@ -114,12 +114,12 @@
         <StackPanel x:Name="FeedbackList" Orientation="Vertical" Spacing="15">
           <!-- 动态内容：每个问题都作为一个独立区域 -->
           <StackPanel Orientation="Vertical" Padding="15" Background="White" BorderBrush="Gray" BorderThickness="1">
-            <TextBlock Text="问题描述：" FontWeight="Bold" Margin="0,0,0,5"/>
-            <TextBlock Text="设备无法启动" Margin="0,0,0,10"/>
+            <TextBlock x:Name="problemDescription"    Text="问题描述：" FontWeight="Bold" Margin="0,0,0,5"/>
+            <TextBlock  Text="设备无法启动" Margin="0,0,0,10"/>
             <!-- 示例问题描述 -->
 
             <TextBlock Text="解决方案：" FontWeight="Bold" Margin="0,0,0,5"/>
-            <TextBlock Text="重新启动设备并检查电源连接" Margin="0,0,0,10"/>
+            <TextBlock x:Name="resolutionMethod" Text="重新启动设备并检查电源连接" Margin="0,0,0,10"/>
             <!-- 示例解决方案 -->
           </StackPanel>
 

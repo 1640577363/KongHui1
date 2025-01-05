@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="KongHui1.Presentation.Quality_assurance"
+    x:Class="KongHui1.Presentation.CompleteQuery"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:KongHui1.Presentation"
@@ -17,7 +17,7 @@
   <Grid Padding="20">
     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
       <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click"/>
-      <TextBlock Text="质保查询" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
+      <TextBlock Text="整机查询" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
     </StackPanel>
 
     <StackPanel Margin="0,60,0,0">
@@ -34,23 +34,35 @@
         <StackPanel>
           <StackPanel Orientation="Horizontal">
             <TextBlock Text="序列号：" Width="100" Foreground="Black"/>
-            <TextBlock Text="5CD32727ZG"  Foreground="Black"/>
+            <TextBlock Text="67G11299-H406-4E35-BM83-95E70FR561T0"  Foreground="Black"/>
           </StackPanel>
           <StackPanel Orientation="Horizontal" >
-            <TextBlock Text="保修类型：" Width="100" Foreground="Black"/>
-            <TextBlock Text="基本保修"  Foreground="Black" />
+            <TextBlock Text="工控机型号：" Width="100" Foreground="Black"/>
+            <TextBlock Text=""  Foreground="Black" />
           </StackPanel>
           <StackPanel Orientation="Horizontal">
-            <TextBlock Text="状态：" Width="100" Foreground="Black"/>
-            <TextBlock Text="未过保"  Foreground="Black"/>
+            <TextBlock Text="硬盘ID" Width="100" Foreground="Black"/>
+            <TextBlock Text=""  Foreground="Black"/>
           </StackPanel>
           <StackPanel Orientation="Horizontal">
-            <TextBlock Text="起始日期：" Width="100" Foreground="Black"/>
-            <TextBlock Text="2024-09-20" Foreground="Black"/>
+            <TextBlock Text="主板型号：" Width="100" Foreground="Black"/>
+            <TextBlock Text="" Foreground="Black"/>
           </StackPanel>
           <StackPanel Orientation="Horizontal">
-            <TextBlock Text="截至日期：" Width="100" Foreground="Black"/>
-            <TextBlock Text="2025-09-20" Foreground="Black"/>
+            <TextBlock Text="处理器：" Width="100" Foreground="Black"/>
+            <TextBlock Text="" Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="内存：" Width="100" Foreground="Black"/>
+            <TextBlock Text="" Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="硬盘：" Width="100" Foreground="Black"/>
+            <TextBlock Text="" Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="操作系统：" Width="100" Foreground="Black"/>
+            <TextBlock Text="" Foreground="Black"/>
           </StackPanel>
         </StackPanel>
       </Border>
