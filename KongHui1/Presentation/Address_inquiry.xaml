@@ -6,10 +6,56 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-  <Page.Background>
+  
+  <Page.Resources>
+    <!-- 卡片样式 -->
+    <Style x:Key="CardStyle" TargetType="Border">
+      <Setter Property="Background" Value="White"/>
+      <Setter Property="CornerRadius" Value="10"/>
+      <Setter Property="Padding" Value="15"/>
+      <Setter Property="Margin" Value="10"/>
+      <Setter Property="Shadow">
+        <Setter.Value>
+          <ThemeShadow/>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <!-- 按钮样式 -->
+    <Style x:Key="ModernButtonStyle" TargetType="Button">
+      <Setter Property="Background" Value="Blue" />
+      <Setter Property="Foreground" Value="White" />
+      <Setter Property="CornerRadius" Value="5" />
+      <Setter Property="Padding" Value="10,5" />
+      <Setter Property="FontSize" Value="16" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="BorderBrush" Value="Transparent" />
+      <Setter Property="Height" Value="35" />
+      <Setter Property="Width" Value="80" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Background="{TemplateBinding Background}" CornerRadius="5">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <!--输入框样式-->
+    <Style x:Key="ModernTextBoxStyle" TargetType="TextBox">
+      <Setter Property="Background" Value="White"/>
+      <Setter Property="Foreground" Value="Black"/>
+      <Setter Property="BorderBrush" Value="#0078D7"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="CornerRadius" Value="3"/>
+      <Setter Property="Padding" Value="3"/>
+      <Setter Property="FontSize" Value="16"/>
+    </Style>
+  </Page.Resources>
+  
+    <Page.Background>
     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-      <GradientStop Color="#D6ECF3" Offset="0.0"/>
+      <GradientStop Color="#E3F2FD" Offset="0.0"/>
       <GradientStop Color="White" Offset="1.0"/>
     </LinearGradientBrush>
   </Page.Background>
@@ -17,46 +63,73 @@
   <Grid Margin="10">
     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
       <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click"/>
-      <TextBlock Text="地址查询" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
+      <TextBlock Text="地址查询" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black" />
     </StackPanel>
 
-    <Grid  VerticalAlignment="Top" Margin="10, 40, 10, 10">
+    <Grid  VerticalAlignment="Top" Margin="0, 40, 10, 10">
+      
+      
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="2*" />
         <ColumnDefinition Width="3*" />
       </Grid.ColumnDefinitions>
-
+      
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+          <RowDefinition Height="20" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
       <!-- Left Column -->
-      <StackPanel Margin="10" Grid.Column="0">
-        <TextBox PlaceholderText="请输入关键词" Margin="0,0,0,10" />
-        <TextBlock Text="深圳总公司·控汇" FontWeight="Bold" />
-        <TextBlock Text="电话：0755-27041051" />
-        <TextBlock Text="地址：深圳市龙华区大浪街道新石社区丽荣路1号昌毅工业区3栋五层、六层" Margin="0,0,0,10" />
-
-        <TextBlock Text="北京总公司·控汇" FontWeight="Bold" />
-        <TextBlock Text="电话：18910273182" />
-        <TextBlock Text="地址：北京市昌平区西三旗建材城东路新龙大厦B座1022室" Margin="0,0,0,10" />
-
-        <TextBlock Text="深圳市控瑞科技有限公司·控汇子公司" FontWeight="Bold" />
-        <TextBlock Text="电话：0755-29041051" />
-        <TextBlock Text="地址：深圳市龙华区大浪街道新石社区丽荣路1号昌毅工业区3栋五层、六层" />
+      <StackPanel Margin="10" Grid.Column="0" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+        <TextBox PlaceholderText="请输入关键词" Margin="0,0,40,10"  Width="350" Height="40" Style="{StaticResource ModernTextBoxStyle}" />
+        <Button Content="搜索"  Style="{StaticResource ModernButtonStyle}" PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited"/>
       </StackPanel>
 
+      <Border Width="490" Height="90" Background="Gray" CornerRadius="10" Margin="10,10,0,0" Opacity="0.2" Grid.Column="0" Grid.Row="1"/>
+      <Border Width="490" Height="90" Background="White" CornerRadius="10"   Grid.Column="0" Grid.Row="1">
+        <StackPanel Margin="10"   Grid.Column="0" Grid.Row="1">
+          <TextBlock Text="深圳总公司·控汇" FontWeight="Bold"  Foreground="Black"/>
+          <TextBlock Text="电话：0755-27041051"  Foreground="Black"/>
+          <TextBlock Text="地址：深圳市龙华区大浪街道新石社区丽荣路1号昌毅工业区3栋五层、六层" Margin="0,0,0,10"  Foreground="Black"/>
+        </StackPanel>
+      </Border>
+      <Border Width="490" Height="90" Background="Gray" CornerRadius="10" Margin="10,10,0,0" Opacity="0.2" Grid.Column="0" Grid.Row="2"/>
+      <Border Width="490" Height="90" Background="White" CornerRadius="10"   Grid.Column="0" Grid.Row="2">
+        <StackPanel Margin="10" Grid.Column="0" Grid.Row="2">
+        <TextBlock Text="北京总公司·控汇" FontWeight="Bold"  Foreground="Black"/>
+        <TextBlock Text="电话：18910273182"  Foreground="Black"/>
+        <TextBlock Text="地址：北京市昌平区西三旗建材城东路新龙大厦B座1022室" Margin="0,0,0,10"  Foreground="Black"/>
+      </StackPanel>
+      </Border>
+      <Border Width="490" Height="90" Background="Gray" CornerRadius="10" Margin="10,10,0,0" Opacity="0.2" Grid.Column="0" Grid.Row="3"/>
+      <Border Width="490" Height="90" Background="White" CornerRadius="10"   Grid.Column="0" Grid.Row="3">
+        <StackPanel Margin="10" Grid.Column="0" Grid.Row="3">
+        <TextBlock Text="深圳市控瑞科技有限公司·控汇子公司" FontWeight="Bold"  Foreground="Black"/>
+        <TextBlock Text="电话：0755-29041051" Foreground="Black"/>
+        <TextBlock Text="地址：深圳市龙华区大浪街道新石社区丽荣路1号昌毅工业区3栋五层、六层"  Foreground="Black"/>
+      </StackPanel>
+      </Border>
       <!-- Right Column -->
-      <StackPanel Margin="10" Grid.Column="1">
-        <TextBlock Text="深圳总公司控汇" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10" />
-        <Image Source="ms-appx:///Images/ComapnyBuilding.png" Stretch="Uniform" Margin="0,0,0,10" />
-        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-          <SymbolIcon Symbol="Mail" Margin="0,0,5,0"/>
-          <TextBlock Text="深圳市龙华区大浪街道新石社区丽荣路1号昌毅工业区3栋五层、六层" />
+      <StackPanel Margin="30,10,10,10" Grid.Column="1" Grid.Row="0" Grid.RowSpan="5">
+        <TextBlock Text="深圳总公司控汇" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"   Foreground="Black"/>
+        <Image Source="ms-appx:///Images/ComapnyBuilding.png" Stretch="Uniform" Margin="0,0,0,10"  />
+      </StackPanel>
+      <StackPanel  Margin="30,0,0,5" Grid.Column="1" Grid.Row="5">
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+          <SymbolIcon Symbol="MapPin" Margin="0,0,5,0"  Foreground="Black"/>
+          <TextBlock Text="深圳市龙华区大浪街道新石社区丽荣路1号昌毅工业区3栋五层、六层"  Foreground="Black"/>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-          <SymbolIcon Symbol="Phone" Margin="0,0,5,0"/>
-          <TextBlock Text="0755-27041051" />
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+          <SymbolIcon Symbol="Phone" Margin="0,0,5,0" Foreground="Black"/>
+          <TextBlock Text="0755-27041051"  Foreground="Black"/>
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-          <SymbolIcon Symbol="Clock" Margin="0,0,5,0"/>
-          <TextBlock Text="周一至周五 9:00-18:00" />
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+          <SymbolIcon Symbol="Clock" Margin="0,0,5,0" Foreground="Black"/>
+          <TextBlock Text="周一至周五 9:00-18:00"  Foreground="Black"/>
         </StackPanel>
       </StackPanel>
     </Grid>
