@@ -6,7 +6,47 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+  <Page.Resources>
+    <!--输入框样式-->
+    <Style x:Key="ModernTextBoxStyle" TargetType="TextBox">
+      <Setter Property="Background" Value="White"/>
+      <!-- 背景颜色 -->
+      <Setter Property="BorderBrush" Value="#0078D7"/>
+      <!-- 边框颜色 -->
+      <Setter Property="BorderThickness" Value="2"/>
+      <!-- 边框宽度 -->
+      <Setter Property="CornerRadius" Value="3"/>
+      <!-- 圆角半径 -->
+      <Setter Property="Padding" Value="3"/>
+      <!-- 内边距 -->
+      <Setter Property="FontSize" Value="16"/>
+      <!-- 字体大小 -->
+      <Setter Property="Foreground" Value="Black"/>
+      <!-- 文字颜色 -->
+    </Style>
 
+    <!-- 按钮样式 -->
+    <Style x:Key="ModernButtonStyle" TargetType="Button">
+      <Setter Property="Background" Value="Blue" />
+      <Setter Property="Foreground" Value="White" />
+      <Setter Property="CornerRadius" Value="5" />
+      <Setter Property="Padding" Value="10,5" />
+      <Setter Property="FontSize" Value="16" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="BorderBrush" Value="Transparent" />
+      <Setter Property="Height" Value="35" />
+      <Setter Property="Width" Value="100" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Background="{TemplateBinding Background}" CornerRadius="5">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+     </Style>
+  </Page.Resources>
   <Page.Background>
     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
       <GradientStop Color="#D6ECF3" Offset="0.0"/>
@@ -17,43 +57,48 @@
   <Grid Padding="20">
     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
       <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click"/>
-      <TextBlock Text="质保查询" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
+      <TextBlock Text="质保查询" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
     </StackPanel>
 
     <StackPanel Margin="0,60,0,0">
       <!-- Added Margin to move elements down -->
       <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,20">
-        <TextBlock Text="整机序列号:" FontSize="20" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Black"/>
-        <TextBox x:Name="SerialNumberTextBox" Width="250"  PlaceholderText="请输入整机序列号" Margin="0,0,10,0" FontSize="14"  Height="Auto" />
-        <Button Content="点击查询" Background="Blue" Foreground="White" Width="150" />
+        <TextBlock Text="整机序列号:" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Black"/>
+        <TextBox x:Name="SerialNumberTextBox" Width="250"  PlaceholderText="请输入整机序列号"   Height="Auto"  Style="{StaticResource ModernTextBoxStyle}" VerticalAlignment="Center" Margin="0,0,20,0"/>
+        <Button Content="点击查询"   Style="{StaticResource ModernButtonStyle}" PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited"/>
       </StackPanel>
 
       <TextBlock Text="查询结果" Margin="0,0,0,10" FontSize="24" FontWeight="Bold" Foreground="Black"/>
 
-      <Border Background="White" CornerRadius="8" Padding="10" BorderBrush="LightGray" BorderThickness="1">
-        <StackPanel>
-          <StackPanel Orientation="Horizontal">
-            <TextBlock Text="序列号：" Width="100" Foreground="Black"/>
-            <TextBlock Text="5CD32727ZG"  Foreground="Black"/>
+      <Grid>
+        <!-- 模拟阴影 -->
+        <Border Background="Gray"  Width="600" CornerRadius="10" Padding="10" Margin="10,10,0,0" Opacity="0.2"  HorizontalAlignment="Left"/>
+        <!-- 实际内容 -->
+        <Border Background="White" Width="600" CornerRadius="10" Padding="10"    HorizontalAlignment="Left">
+          <StackPanel>
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="序列号：" Width="100" Foreground="Black" />
+              <TextBlock Text="00F11576-N476-4G65-QW83-99E70RR561D6" Foreground="Black" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="保修类型：" Width="100" Foreground="Black" />
+              <TextBlock Text="基本保修" Foreground="Black" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="状态：" Width="100" Foreground="Black" />
+              <TextBlock Text="未过保" Foreground="Black" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="起始日期：" Width="100" Foreground="Black" />
+              <TextBlock Text="2024-09-20" Foreground="Black" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="截至日期：" Width="100" Foreground="Black" />
+              <TextBlock Text="2025-09-20" Foreground="Black" />
+            </StackPanel>
           </StackPanel>
-          <StackPanel Orientation="Horizontal" >
-            <TextBlock Text="保修类型：" Width="100" Foreground="Black"/>
-            <TextBlock Text="基本保修"  Foreground="Black" />
-          </StackPanel>
-          <StackPanel Orientation="Horizontal">
-            <TextBlock Text="状态：" Width="100" Foreground="Black"/>
-            <TextBlock Text="未过保"  Foreground="Black"/>
-          </StackPanel>
-          <StackPanel Orientation="Horizontal">
-            <TextBlock Text="起始日期：" Width="100" Foreground="Black"/>
-            <TextBlock Text="2024-09-20" Foreground="Black"/>
-          </StackPanel>
-          <StackPanel Orientation="Horizontal">
-            <TextBlock Text="截至日期：" Width="100" Foreground="Black"/>
-            <TextBlock Text="2025-09-20" Foreground="Black"/>
-          </StackPanel>
-        </StackPanel>
-      </Border>
+        </Border>
+      </Grid>
     </StackPanel>
   </Grid>
 </Page>
