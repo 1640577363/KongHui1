@@ -112,6 +112,7 @@
     <None Remove="Images\war_que2.png" />
     <None Remove="Presentation\Address_inquiry.xaml" />
     <None Remove="Presentation\BIOS_upgrade.xaml" />
+    <None Remove="Presentation\CompleteQuery.xaml" />
     <None Remove="Presentation\cpu_detail.xaml" />
     <None Remove="Presentation\disk_detail.xaml" />
     <None Remove="Presentation\DrivePage.xaml" />
@@ -444,6 +445,11 @@
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Remove="Presentation\gpu_detail.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Presentation\CompleteQuery.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Presentation\User_infromation.xaml">

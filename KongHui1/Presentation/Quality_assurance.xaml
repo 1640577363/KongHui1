@@ -78,7 +78,7 @@
           <StackPanel>
             <StackPanel Orientation="Horizontal">
               <TextBlock Text="序列号：" Width="100" Foreground="Black" />
-              <TextBlock Text="5CD32727ZG" Foreground="Black" />
+              <TextBlock Text="00F11576-N476-4G65-QW83-99E70RR561D6" Foreground="Black" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
               <TextBlock Text="保修类型：" Width="100" Foreground="Black" />
@@ -89,7 +89,7 @@
               <TextBlock Text="未过保" Foreground="Black" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-              <TextBlock Text="起止日期：" Width="100" Foreground="Black" />
+              <TextBlock Text="起始日期：" Width="100" Foreground="Black" />
               <TextBlock Text="2024-09-20" Foreground="Black" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">

@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="KongHui1.Presentation.CompleteQuery"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KongHui1.Presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+  <Page.Background>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+      <GradientStop Color="#D6ECF3" Offset="0.0"/>
+      <GradientStop Color="White" Offset="1.0"/>
+    </LinearGradientBrush>
+  </Page.Background>
+
+  <Grid Padding="20">
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
+      <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click"/>
+      <TextBlock Text="整机查询" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
+    </StackPanel>
+
+    <StackPanel Margin="0,60,0,0">
+      <!-- Added Margin to move elements down -->
+      <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,20">
+        <TextBlock Text="整机序列号:" FontSize="20" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Black"/>
+        <TextBox x:Name="SerialNumberTextBox" Width="250"  PlaceholderText="请输入整机序列号" Margin="0,0,10,0" FontSize="14"  Height="Auto" />
+        <Button Content="点击查询" Background="Blue" Foreground="White" Width="150" />
+      </StackPanel>
+
+      <TextBlock Text="查询结果" Margin="0,0,0,10" FontSize="24" FontWeight="Bold" Foreground="Black"/>
+
+      <Border Background="White" CornerRadius="8" Padding="10" BorderBrush="LightGray" BorderThickness="1">
+        <StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="序列号：" Width="100" Foreground="Black"/>
+            <TextBlock Text="67G11299-H406-4E35-BM83-95E70FR561T0"  Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" >
+            <TextBlock Text="工控机型号：" Width="100" Foreground="Black"/>
+            <TextBlock Text=""  Foreground="Black" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="硬盘ID" Width="100" Foreground="Black"/>
+            <TextBlock Text=""  Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="主板型号：" Width="100" Foreground="Black"/>
+            <TextBlock Text="" Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="处理器：" Width="100" Foreground="Black"/>
+            <TextBlock Text="" Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="内存：" Width="100" Foreground="Black"/>
+            <TextBlock Text="" Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="硬盘：" Width="100" Foreground="Black"/>
+            <TextBlock Text="" Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="操作系统：" Width="100" Foreground="Black"/>
+            <TextBlock Text="" Foreground="Black"/>
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </Grid>
+</Page>

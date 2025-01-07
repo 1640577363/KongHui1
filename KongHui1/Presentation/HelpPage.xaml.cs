@@ -60,7 +60,8 @@ public sealed partial class HelpPage : Page
     {
         // 在这里添加整机查询的逻辑
         // 例如，查询设备的详细信息
-        Debug.WriteLine("整机查询按钮被点击");
+        //Debug.WriteLine("整机查询按钮被点击");
+        Frame.Navigate(typeof(CompleteQuery));
     }
 
     private void OnWarrantyQueryTapped(object sender, TappedRoutedEventArgs e)
