@@ -45,6 +45,19 @@ namespace KongHui1.Presentation
         {
             UpdateButtonSelection((Button)sender);
             MainFrame.Navigate(typeof(HelpPage));
+            //UpdateButtonSelection((Button)sender);
+
+            //// 检查用户是否已经登录
+            //if (LoginPage.IsLogin)
+            //{
+            //    // 如果已登录，导航到 HelpPage.xaml
+            //    MainFrame.Navigate(typeof(HelpPage));
+            //}
+            //else
+            //{
+            //    // 如果未登录，导航到 LoginPage.xaml
+            //    this.Frame.Navigate(typeof(LoginPage));
+            //}
         }
 
         // PointerEntered 事件处理程序 - 将光标改为手形
