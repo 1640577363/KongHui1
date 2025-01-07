@@ -32,7 +32,7 @@ public sealed partial class LoginPage : Page
 
 
         // 准备请求的 URL 和数据
-        string url = "http://10.14.52.222:8080/login"; // 后端 API 地址
+        string url = "http://10.12.36.204:8080/login"; // 后端 API 地址
         var values = new Dictionary<string, string>
         {
             { "username", account },

@@ -199,8 +199,8 @@ namespace KongHui1.Presentation
         private async Task RunDiskSpacePythonScript()
         {
 
-            string ScriptPath1 = @"D:\VSKongHui\KongHui1\Python\disk_space.py";
-            string ScriptPath2 = @"D:\VSKongHui\KongHui1\Python\disk_detail.py";
+            string ScriptPath1 = @"..\..\KongHui1\Python\disk_space.py";
+            string ScriptPath2 = @"..\..\KongHui1\Python\disk_detail.py";
 
             var startInfo1 = new ProcessStartInfo
             {

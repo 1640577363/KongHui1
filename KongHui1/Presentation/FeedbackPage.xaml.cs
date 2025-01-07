@@ -10,60 +10,80 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Mono.Unix.Native;
 using Newtonsoft.Json;
-using System.Text;
 using System.Management;
 using Windows.UI.Popups;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using Windows.UI;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+using System.Collections.ObjectModel;
+using System.ComponentModel;  // 需要引入这个命名空间
+using System.Net.Http;
+using System.Text;
 
 namespace KongHui1.Presentation
 {
-	/// <summary>
-	/// An empty page that can be used on its own or navigated to within a Frame.
-	/// </summary>
-	public sealed partial class FeedbackPage : Page
-	{
-		public FeedbackPage()
-		{
-			this.InitializeComponent();
-            StartGetFeedback();
+    public sealed partial class FeedbackPage : Page, INotifyPropertyChanged
+    {
+        private string _hardwareId;  // 硬盘ID字段
 
+        public string HardwareId
+        {
+            get => _hardwareId;
+            set
+            {
+                if (_hardwareId != value)
+                {
+                    _hardwareId = value;
+                    OnPropertyChanged(nameof(HardwareId));  // 通知 UI 更新
+                }
+            }
+        }
+
+        public ObservableCollection<Row> Feedbacks { get; set; }  // 反馈项集合
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public FeedbackPage()
+        {
+            this.InitializeComponent();
+            Feedbacks = new ObservableCollection<Row>();  // 初始化集合
+            this.DataContext = this;  // 设置数据上下文，绑定属性
+            StartGetFeedback();  // 获取反馈
         }
 
         private void BackButton_Click(object sender, PointerRoutedEventArgs e)
         {
-            if (Frame.CanGoBack)  // 使用 this.Frame 引用当前页面的 Frame
+            if (Frame.CanGoBack)
             {
-                Frame.GoBack();   // 返回到前一个页面
+                Frame.GoBack();
             }
         }
+
         private async void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Button Clicked!");
-
-            // 获取页面上的控件值
-            string problemType = GetSelectedProblemTypeIndex();
-            string problemDescription = PDTextBox.Text; 
-            string companyName = CompanyNameTextBox.Text; 
-            string contactPhone = ContactPhoneTextBox.Text;
-
-            HttpClient client = new HttpClient();
-
-            if (!string.IsNullOrEmpty(LoginPage.Token))
+            try
             {
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", LoginPage.Token);
-            }
-            // 准备请求的 URL 和数据+
-            string url = "http://10.14.52.222:8080/Issues_support/Issues_support"; // 后端 API 地址
-            string hardwareId = GetHardDiskID();
-            var values = new Dictionary<string, string>
+                Debug.WriteLine("Button Clicked!");
+
+                // 获取页面上的控件值
+                string problemType = GetSelectedProblemTypeIndex();
+                string problemDescription = PDTextBox.Text;
+                string companyName = CompanyNameTextBox.Text;
+                string contactPhone = ContactPhoneTextBox.Text;
+
+                string hardwareId = GetHardDiskID();
+
+                HttpClient client = new HttpClient();
+
+                //if (!string.IsNullOrEmpty(LoginPage.Token))
+                //{
+                //    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", LoginPage.Token);
+                //}
+                String Token = "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjEwLjE0LjQzLjMyQFR1ZSBKYW4gMDcgMTQ6NDU6NTUgQ1NUIDIwMjUifQ.Lzy1IdZWJuNzR2h6-jZf9994ct2Yg6ROMYv5kORVHpKs4XbCtRHrBWrMVAd7oAjYC9vAZR713eX04mSZaXRDEw";
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
+                string url = "http://10.12.36.204:8080/Issues_support/Issues_support"; // 后端 API 地址
+                var values = new Dictionary<string, string>
             {
                 { "hardwareId", hardwareId },
                 { "problemType", problemType },
@@ -71,167 +91,123 @@ namespace KongHui1.Presentation
                 { "company", companyName },
                 { "contactPhone", contactPhone }
             };
-            string json = JsonConvert.SerializeObject(values);
+                string json = JsonConvert.SerializeObject(values);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            // 将数据转换为 JSON 格式
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(url, content);
+                var responseString = await response.Content.ReadAsStringAsync();
+                var code = response.StatusCode;
+                if (code.Equals(System.Net.HttpStatusCode.OK))
+                {
 
-            
-            
-            var response = await client.PostAsync(url, content);
 
-            var responseString = await response.Content.ReadAsStringAsync();
-            var code = response.StatusCode;
-            if (code.Equals(System.Net.HttpStatusCode.OK))
-            {
-                // 登录成功，导航到 MainPage.xaml
-                this.Frame.Navigate(typeof(FeedbackPage));
+                    //刷新页面
+                    this.Frame.Navigate(typeof(FeedbackPage));
+                }
+                else
+                {
+                    ShowMessage("提交失败");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                // 登录失败，显示错误信息
-                ShowMessage("账号或密码不正确");
+                Debug.WriteLine($"发生异常: {ex.Message}");
+                ShowMessage("发生了错误，请稍后再试。");
             }
         }
+
         private async Task StartGetFeedback()
         {
-
             try
             {
-                // Python 脚本路径
-                string scriptPath = @"..\..\KongHui1\Python\Tech_Support\main\get_feedback.py";
+                HttpClient client = new HttpClient();
+                string hardwareId = GetHardDiskID();
+                
+                // 设置硬盘 ID 到绑定属性
+                HardwareId = hardwareId;  // 更新 HardwareId 属性
+                //if (!string.IsNullOrEmpty(LoginPage.Token))
+                //{
+                //    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", LoginPage.Token);
+                //}
+                String Token = "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjEwLjE0LjQzLjMyQFR1ZSBKYW4gMDcgMTQ6NDU6NTUgQ1NUIDIwMjUifQ.Lzy1IdZWJuNzR2h6-jZf9994ct2Yg6ROMYv5kORVHpKs4XbCtRHrBWrMVAd7oAjYC9vAZR713eX04mSZaXRDEw";
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
 
-                var result = await Task.Run(() =>
+                string url = $"http://10.12.36.204:8080/Issues_support/Issues_support/list?hardwareId={hardwareId}";
+                var response = await client.GetAsync(url);
+                string result = await response.Content.ReadAsStringAsync();
+                var responseString = await response.Content.ReadAsStringAsync();
+                var code = response.StatusCode;
+
+                if (code.Equals(System.Net.HttpStatusCode.OK))
                 {
-                    Process process = new Process
-                    {
-                        StartInfo = new ProcessStartInfo
-                        {
-                            FileName = "python",
-                            Arguments = scriptPath,
-                            RedirectStandardOutput = true,
-                            RedirectStandardError = true,
-                            UseShellExecute = false,
-                            CreateNoWindow = true
-                        }
-                    };
-
-                    StringBuilder output = new StringBuilder();
-                    process.OutputDataReceived += (sender, e) =>
-                    {
-                        if (!string.IsNullOrWhiteSpace(e.Data))
-                        {
-                            output.AppendLine(e.Data);
-                        }
-                    };
-
-                    process.ErrorDataReceived += (sender, e) =>
-                    {
-                        if (!string.IsNullOrWhiteSpace(e.Data))
-                        {
-                            output.AppendLine($"[Error] {e.Data}");
-                        }
-                    };
-
-                    process.Start();
-                    process.BeginOutputReadLine();
-                    process.BeginErrorReadLine();
-                    process.WaitForExit();
-
-                    return new { ExitCode = process.ExitCode, Output = output.ToString() };
-                });
-
-                if (result.ExitCode == 0)
+                    UpdateFeedback(responseString);  // 更新反馈列表
+                }
+                else
                 {
-                    //UpdateHealthStatus(result.Output); // 更新显示内容
+                    ShowMessage("获取反馈失败");
                 }
             }
             catch (Exception ex)
             {
-
+                ShowMessage($"错误: {ex.Message}");
             }
         }
-        /// <summary>
-        /// 根据脚本输出的评分更新健康状态文本和评分圆圈。
-        /// </summary>
-        //private void UpdateHealthStatus(string output)
-        //{
 
-        //    try
-        //    {
-        //        // 从文本中提取平均值
-        //        double ExtractMetric(string metricName)
-        //        {
-        //            string pattern = $"{metricName}: ([\\d\\.]+)"; // 正则匹配类似 "cpu_temp: 37.5"
-        //            var match = System.Text.RegularExpressions.Regex.Match(output, pattern);
-        //            if (match.Success && double.TryParse(match.Groups[1].Value, out double value))
-        //            {
-        //                return value;
-        //            }
-        //            return 0; // 默认值
-        //        }
-
-        //        // 提取监控数据
-        //        double cpuTemp = ExtractMetric("cpu_temp");
-        //        double cpuUsage = ExtractMetric("cpu_usage");
-        //        double fanSpeed = ExtractMetric("fan_speed");
-        //        double gpuTemp = ExtractMetric("gpu_temp");
-        //        double hddTemp = ExtractMetric("hdd_temp");
-
-        //    //    // 更新问题描述
-            //    problemDescription.Text = cpuTemp < 90 ? "正常" : "异常";
-            //    problemDescription.Foreground = new SolidColorBrush(cpuTemp < 90 ? Color.FromArgb(255, 0, 255, 0) : Color.FromArgb(255, 255, 0, 0));
-
-            //    // 更新解决方案
-            //    resolutionMethod.Text = cpuUsage < 90 ? "正常" : "异常";
-            //    resolutionMethod.Foreground = new SolidColorBrush(cpuUsage < 90 ? Color.FromArgb(255, 0, 255, 0) : Color.FromArgb(255, 255, 0, 0));
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    resolutionMethod.Text = "解析失败";
-            //    resolutionMethod.Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
-            //    Console.WriteLine($"更新健康状态失败: {ex.Message}");
-            //}
-
-            
-
-       // }
-        double ExtractScore(string metricName, string output)
+        private void UpdateFeedback(string output)
         {
             try
             {
-                string pattern = $"{metricName}: (\\d+)";
-                var match = Regex.Match(output, pattern);
-                if (match.Success && int.TryParse(match.Groups[1].Value, out int value))
+                JsonResponse response = JsonConvert.DeserializeObject<JsonResponse>(output);
+
+                if (response.Rows != null && response.Rows.Count > 0)
                 {
-                    return value;
+                    Feedbacks.Clear();
+                    foreach (var issue in response.Rows)
+                    {
+                        Feedbacks.Add(issue);  // 将每个问题添加到集合中
+                    }
+                }
+                else
+                {
+                    ShowMessage("没有问题数据");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"解析 {metricName} 失败: {ex.Message}");
+                ShowMessage($"解析失败: {ex.Message}");
             }
-            return 0; // 默认值
         }
 
+        public class Row
+        {
+            public int IssueId { get; set; }
+            public string ProblemDescription { get; set; }
+            public string ResolutionMethod { get; set; }
+            public int Status { get; set; }
+        }
+
+        public class JsonResponse
+        {
+            public int Total { get; set; }
+            public List<Row> Rows { get; set; }
+            public int Code { get; set; }
+            public string Msg { get; set; }
+        }
 
         private async void ShowMessage(string message)
         {
-            // 显示消息提示
             var dialog = new ContentDialog
             {
-                Title = "登录提示",
+                Title = "提示",
                 Content = message,
                 CloseButtonText = "确定"
             };
-
             await dialog.ShowAsync();
         }
 
         private string GetSelectedProblemTypeIndex()
         {
-            foreach (var radioButton in ProblemTypeStackPanel.Children) 
+            foreach (var radioButton in ProblemTypeStackPanel.Children)
             {
                 var radio = radioButton as RadioButton;
                 if (radio != null && radio.IsChecked == true)
@@ -239,22 +215,23 @@ namespace KongHui1.Presentation
                     return radio.Tag.ToString();
                 }
             }
-            return "-1"; // 如果没有选中的RadioButton，返回-1或其他错误代码
+            return "-1";
         }
+
+        // 获取硬盘ID的方法
         static string GetHardDiskID()
         {
             foreach (ManagementObject disk in new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMedia").Get())
             {
-                // 获取硬盘的序列号（Serial Number），这是硬盘的唯一标识符
-                var serialNumber = disk["SerialNumber"]?.ToString().Trim();
+                var serialNumber = disk["SerialNumber"]?.ToString().Trim().TrimEnd('.');
                 if (!string.IsNullOrEmpty(serialNumber))
                 {
-                    return $"磁盘 ID: {{{serialNumber}}}";
+                    return serialNumber;
                 }
             }
             return "未找到硬盘ID";
         }
-        // 上传文件按钮点击事件
+
         private async void UploadButton_Click(object sender, RoutedEventArgs e)
         {
             var picker = new Windows.Storage.Pickers.FileOpenPicker
@@ -268,7 +245,6 @@ namespace KongHui1.Presentation
             Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
             if (file != null)
             {
-                // 更新TextBlock显示已选择文件
                 SelectedFileText.Text = $"已选择文件: {file.Name}";
             }
             else
@@ -295,5 +271,10 @@ namespace KongHui1.Presentation
         }
 
 
+        // INotifyPropertyChanged 实现
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

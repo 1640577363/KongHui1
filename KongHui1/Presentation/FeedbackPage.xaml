@@ -141,37 +141,36 @@
         <!-- Submit Button -->
         <Button x:Name="SubmitButton" Content="提交反馈"   HorizontalAlignment="Center" Margin="0,20,0,0" Grid.Row="2" Grid.ColumnSpan="2" Click="SubmitButton_Click"   Width="150" Height="40" FontSize="16" Background="#0078D7" Foreground="White"  CornerRadius="5"/>
       </StackPanel>
-      
-      <!-- 右侧已提交反馈区域 -->
-      <StackPanel Grid.Row="1" Grid.Column="1" Padding="10" Margin="20,0,0,0">
+
+
+      <StackPanel Grid.Row="1" Grid.Column="1" Padding="10" Margin="20,0,0,10">
         <TextBlock Text="已提交的问题反馈" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" Foreground="Black"/>
+        <!-- 添加硬盘ID标题，和硬盘ID一起显示在同一行 -->
+        <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+          <TextBlock Text="硬盘ID：" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0"/>
+          <!-- 绑定硬盘ID -->
+          <TextBlock Text="{Binding HardwareId}" FontSize="16" VerticalAlignment="Center"/>
+        </StackPanel>
 
-        <!-- 使用 StackPanel 展示每个反馈 -->
-        <StackPanel x:Name="FeedbackList" Orientation="Vertical" Spacing="15">
-          <!-- 动态内容：每个问题都作为一个独立区域 -->
-          <Border Background="White" CornerRadius="10" BorderThickness="2"  BorderBrush="LightGray"> 
-           <StackPanel Orientation="Vertical" Padding="15" Background="White" BorderBrush="Gray" >
-            <TextBlock Text="问题描述：" FontWeight="Bold" Margin="0,0,0,5" Foreground="Black"/>
-            <TextBlock Text="设备无法启动" Margin="0,0,0,10" Foreground="Black"/>
-            <!-- 示例问题描述 -->
 
-            <TextBlock Text="解决方案：" FontWeight="Bold" Margin="0,0,0,5" Foreground="Black"/>
-            <TextBlock Text="重新启动设备并检查电源连接" Margin="0,0,0,10" Foreground="Black"/>
-            <!-- 示例解决方案 -->
-           </StackPanel>
-          </Border>
-          <Border Background="White" CornerRadius="10"  BorderBrush="LightGray"  BorderThickness="2" >
-            <StackPanel Orientation="Vertical" Padding="15" Background="White" BorderBrush="Gray" >
-              <TextBlock Text="问题描述：" FontWeight="Bold" Margin="0,0,0,5" Foreground="Black"/>
-              <TextBlock Text="系统卡顿" Margin="0,0,0,10" Foreground="Black"/>
-              <!-- 示例问题描述 -->
-
-              <TextBlock Text="解决方案：" FontWeight="Bold" Margin="0,0,0,5" Foreground="Black"/>
-              <TextBlock Text="优化系统设置并清理临时文件" Margin="0,0,0,10" Foreground="Black"/>
-              <!-- 示例解决方案 -->
-            </StackPanel>
-          </Border>
-          <!-- 更多问题的动态内容将在后台添加 -->
+        <!-- 使用 StackPanel 包裹 ItemsControl 来设置方向 -->
+        <StackPanel  Grid.Row="1"  Padding="10" Margin="20, 0, 0,0">
+          <!-- 使用 ItemsControl 展示每个反馈 -->
+          <ItemsControl x:Name="FeedbackList" ItemsSource="{Binding Feedbacks}"  >
+            <!-- 数据模板 -->
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border Background="White" CornerRadius="10" BorderThickness="2" BorderBrush="LightGray">
+                  <StackPanel Orientation="Vertical" Padding="15" Margin="0,10,0,0" Background="White"  BorderBrush="Gray">
+                    <TextBlock Text="反馈问题：" FontWeight="Bold" Margin="5,0,0,5" Foreground="Black"/>
+                    <TextBlock Text="{Binding ProblemDescription}" FontWeight="Bold" Margin="5,0,0,5" Foreground="Black"/>
+                    <TextBlock Text="解决方案：" FontWeight="Bold" Margin="5,0,0,5" Foreground="Black"/>
+                    <TextBlock Text="{Binding ResolutionMethod}" Margin="0,0,0,10" Foreground="Black"/>
+                  </StackPanel>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
         </StackPanel>
       </StackPanel>
 
