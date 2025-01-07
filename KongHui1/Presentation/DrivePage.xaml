@@ -8,21 +8,14 @@
 
   <Page.Resources>
     <!-- 按钮样式 -->
-    <Style x:Key="ModernButtonStyle" TargetType="Button">
-      <Setter Property="Background" Value="DeepSkyBlue"/>
-      <Setter Property="Foreground" Value="White"/>
-      <Setter Property="CornerRadius" Value="5"/>
-      <Setter Property="Padding" Value="10,5"/>
-      <Setter Property="FontSize" Value="16"/>
-      <Setter Property="FontWeight" Value="SemiBold"/>
-      <Setter Property="BorderBrush" Value="Transparent"/>
-      <Setter Property="Height" Value="40"/>
-      <Setter Property="Width" Value="150"/>
+    <Style TargetType="Button" x:Key="CircularButtonStyle">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Width" Value="100"/>
+      <Setter Property="Height" Value="100"/>
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate TargetType="Button">
-            <Border Background="{TemplateBinding Background}"
-                CornerRadius="5">
+            <Border Background="{TemplateBinding Background}" CornerRadius="50">
               <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
           </ControlTemplate>
@@ -48,9 +41,9 @@
     <!-- 按钮容器 -->
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50,100,10">
       <!-- 一键更新按钮 -->
-      <Button Content="一键更新"  Margin="0,0,10,0"  FontWeight="Bold" Style="{StaticResource ModernButtonStyle}" PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited"/>
+      <Button Content="一键更新"  Margin="0,0,10,0"  FontWeight="Bold"  Width="150" Height="40" FontSize="16" Background="#0078D7" Foreground="White"  CornerRadius="5"/>
       <!-- 一键检测按钮 -->
-      <Button Content="一键检测"  FontWeight="Bold" Click="Detection_drive"  Style="{StaticResource ModernButtonStyle}"  PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited"/>
+      <Button Content="一键检测"  FontWeight="Bold" Click="Detection_drive"  Width="150" Height="40" FontSize="16" Background="#0078D7" Foreground="White"  CornerRadius="5"/>
     </StackPanel>
 
     <!-- 驱动信息滚动区域 -->
@@ -96,7 +89,7 @@
                                  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,20,0"/>
 
                       <!-- 更新按钮 -->
-                      <Button Grid.Column="4" Content="更新" Width="60" Height="30" FontSize="12" HorizontalAlignment="Right" Margin="0,0,10,0" Style="{StaticResource ModernButtonStyle}" PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited">
+                      <Button Grid.Column="4" Content="更新" Width="75" Height="30" FontSize="12" HorizontalAlignment="Right"  Background="#0078D7" Foreground="White"  CornerRadius="5">
                       </Button>
                     </Grid>
                   </DataTemplate>

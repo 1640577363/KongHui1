@@ -31,7 +31,7 @@
 
         <!-- 第三行：账号 -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,20">
-          <TextBlock Text="账号" FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="0,0,20,0"/>
+          <TextBlock Text="账号:" FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="0,0,20,0"/>
           <TextBox x:Name="AccountBox" Width="260" Height="44" MinHeight="44" MaxHeight="44" FontSize="16" 
            PlaceholderText="请输入账号" Padding="15,0,0,0" />
           <TextBlock x:Name="AccountError" Foreground="Red" Visibility="Collapsed" Text="账号格式不正确，必须为6-13位数字"/>
@@ -39,7 +39,7 @@
 
         <!-- 第四行：密码 -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,20">
-          <TextBlock Text="密码" FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="0,0,20,0"/>
+          <TextBlock Text="密码:" FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="0,0,20,0"/>
           <PasswordBox x:Name="PasswordBox" Width="260" Height="44" MinHeight="44" MaxHeight="44" FontSize="16" 
               PlaceholderText="请输入密码" />
           <TextBlock x:Name="PasswordError" Foreground="Red" Visibility="Collapsed" Text="密码长度不能少于6位"/>
@@ -47,7 +47,7 @@
 
         <!-- 第五行：邮箱 -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,20">
-          <TextBlock Text="邮箱" FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="0,0,20,0"/>
+          <TextBlock Text="邮箱:" FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="0,0,20,0"/>
           <TextBox x:Name="EmailBox" Width="260" Height="44" MinHeight="44" MaxHeight="44" FontSize="16" 
                    PlaceholderText="请输入邮箱" Padding="15,0,0,0" />
           <TextBlock x:Name="EmailError" Foreground="Red" Visibility="Collapsed" Text="邮箱格式不正确"/>
@@ -55,7 +55,7 @@
 
         <!-- 第六行：公司 -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,20">
-          <TextBlock Text="公司" FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="0,0,20,0"/>
+          <TextBlock Text="公司:" FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="0,0,20,0"/>
           <TextBox x:Name="CompanyBox" Width="260" Height="44" MinHeight="44" MaxHeight="44" FontSize="16" 
                    PlaceholderText="请输入公司名称" Padding="15,0,0,0" />
           <TextBlock x:Name="UserNameError" Foreground="Red" Visibility="Collapsed" Text="公司名称格式不正确，要求字母、汉字或数字，长度1-9"/>
@@ -63,14 +63,14 @@
 
         <!-- 第七行：电话 -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,30">
-          <TextBlock Text="电话" FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="0,0,20,0"/>
+          <TextBlock Text="电话:" FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="0,0,20,0"/>
           <TextBox x:Name="PhoneBox" Width="260" Height="44" MinHeight="44" MaxHeight="44" FontSize="16" 
                    PlaceholderText="请输入电话" Padding="15,0,0,0" />
           <TextBlock x:Name="PhoneError" Foreground="Red" Visibility="Collapsed" Text="手机号格式不正确"/>
         </StackPanel>
 
         <!-- 第八行：注册按钮 -->
-        <Button Width="300" Content="注册" Click="OnRegisterButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
+        <Button Width="300" Content="注册" Click="OnRegisterButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20,0,0,0" Background="#0078D7"   Foreground="White" CornerRadius="5"/>
       </StackPanel>
     </Grid>
   </Grid>

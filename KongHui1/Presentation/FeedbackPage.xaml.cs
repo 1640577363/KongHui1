@@ -143,7 +143,7 @@ namespace KongHui1.Presentation
 
                 if (result.ExitCode == 0)
                 {
-                    UpdateHealthStatus(result.Output); // 更新显示内容
+                    //UpdateHealthStatus(result.Output); // 更新显示内容
                 }
             }
             catch (Exception ex)
@@ -154,49 +154,49 @@ namespace KongHui1.Presentation
         /// <summary>
         /// 根据脚本输出的评分更新健康状态文本和评分圆圈。
         /// </summary>
-        private void UpdateHealthStatus(string output)
-        {
+        //private void UpdateHealthStatus(string output)
+        //{
 
-            try
-            {
-                // 从文本中提取平均值
-                double ExtractMetric(string metricName)
-                {
-                    string pattern = $"{metricName}: ([\\d\\.]+)"; // 正则匹配类似 "cpu_temp: 37.5"
-                    var match = System.Text.RegularExpressions.Regex.Match(output, pattern);
-                    if (match.Success && double.TryParse(match.Groups[1].Value, out double value))
-                    {
-                        return value;
-                    }
-                    return 0; // 默认值
-                }
+        //    try
+        //    {
+        //        // 从文本中提取平均值
+        //        double ExtractMetric(string metricName)
+        //        {
+        //            string pattern = $"{metricName}: ([\\d\\.]+)"; // 正则匹配类似 "cpu_temp: 37.5"
+        //            var match = System.Text.RegularExpressions.Regex.Match(output, pattern);
+        //            if (match.Success && double.TryParse(match.Groups[1].Value, out double value))
+        //            {
+        //                return value;
+        //            }
+        //            return 0; // 默认值
+        //        }
 
-                // 提取监控数据
-                double cpuTemp = ExtractMetric("cpu_temp");
-                double cpuUsage = ExtractMetric("cpu_usage");
-                double fanSpeed = ExtractMetric("fan_speed");
-                double gpuTemp = ExtractMetric("gpu_temp");
-                double hddTemp = ExtractMetric("hdd_temp");
+        //        // 提取监控数据
+        //        double cpuTemp = ExtractMetric("cpu_temp");
+        //        double cpuUsage = ExtractMetric("cpu_usage");
+        //        double fanSpeed = ExtractMetric("fan_speed");
+        //        double gpuTemp = ExtractMetric("gpu_temp");
+        //        double hddTemp = ExtractMetric("hdd_temp");
 
-                // 更新问题描述
-                problemDescription.Text = cpuTemp < 90 ? "正常" : "异常";
-                problemDescription.Foreground = new SolidColorBrush(cpuTemp < 90 ? Color.FromArgb(255, 0, 255, 0) : Color.FromArgb(255, 255, 0, 0));
+        //    //    // 更新问题描述
+            //    problemDescription.Text = cpuTemp < 90 ? "正常" : "异常";
+            //    problemDescription.Foreground = new SolidColorBrush(cpuTemp < 90 ? Color.FromArgb(255, 0, 255, 0) : Color.FromArgb(255, 255, 0, 0));
 
-                // 更新解决方案
-                resolutionMethod.Text = cpuUsage < 90 ? "正常" : "异常";
-                resolutionMethod.Foreground = new SolidColorBrush(cpuUsage < 90 ? Color.FromArgb(255, 0, 255, 0) : Color.FromArgb(255, 255, 0, 0));
+            //    // 更新解决方案
+            //    resolutionMethod.Text = cpuUsage < 90 ? "正常" : "异常";
+            //    resolutionMethod.Foreground = new SolidColorBrush(cpuUsage < 90 ? Color.FromArgb(255, 0, 255, 0) : Color.FromArgb(255, 255, 0, 0));
 
-            }
-            catch (Exception ex)
-            {
-                resolutionMethod.Text = "解析失败";
-                resolutionMethod.Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
-                Console.WriteLine($"更新健康状态失败: {ex.Message}");
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    resolutionMethod.Text = "解析失败";
+            //    resolutionMethod.Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+            //    Console.WriteLine($"更新健康状态失败: {ex.Message}");
+            //}
 
             
 
-        }
+       // }
         double ExtractScore(string metricName, string output)
         {
             try

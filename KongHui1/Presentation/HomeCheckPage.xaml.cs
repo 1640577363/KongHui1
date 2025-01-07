@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 using static IronPython.Modules._ast;
 using LibreHardwareMonitor.Hardware.Motherboard;
 using LibreHardwareMonitor.Hardware;
+using Microsoft.UI.Xaml.Input;
+
+
 
 namespace KongHui1.Presentation
 {
@@ -299,17 +302,18 @@ namespace KongHui1.Presentation
                         };
 
                         // 创建并添加每个磁盘的文本信息
-                        diskInfoPanel.Children.Add(new TextBlock { Text = $"挂载点: {diskInfo["mountpoint"]}", FontSize = 18});
-                        //diskInfoPanel.Children.Add(new Rectangle { Height = 2, Fill = new SolidColorBrush(Colors.Blue), Width = 100 });
-                        diskInfoPanel.Children.Add(new TextBlock { Text = $"设备名称: {diskInfo["model"]}", FontSize = 16 });
-                        diskInfoPanel.Children.Add(new TextBlock { Text = $"系统主盘: {diskInfo["isSystemDisk"]}", FontSize = 16 });
-                        diskInfoPanel.Children.Add(new TextBlock { Text = $"类型: {diskInfo["disk_type"]}", FontSize = 16 });
-                        diskInfoPanel.Children.Add(new TextBlock { Text = $"总容量: {diskInfo["total_size"]}", FontSize = 16 });
-                        diskInfoPanel.Children.Add(new TextBlock { Text = $"已用容量: {diskInfo["used_size"]}", FontSize = 16 });
-                        diskInfoPanel.Children.Add(new TextBlock { Text = $"剩余容量: {diskInfo["free_size"]}", FontSize = 16 });
-                        diskInfoPanel.Children.Add(new TextBlock { Text = $"利用率: {diskInfo["usage_percent"]}", FontSize = 16 });
-                        diskInfoPanel.Children.Add(new TextBlock { Text = $"读取速度: {diskInfo["read_speed"]}", FontSize = 16 });
-                        diskInfoPanel.Children.Add(new TextBlock { Text = $"写入速度: {diskInfo["write_speed"]}", FontSize = 16 });
+                        diskInfoPanel.Children.Add(new TextBlock { Text = $"挂载点: {diskInfo["mountpoint"]}", FontSize = 18 , Foreground = new SolidColorBrush(Microsoft.UI.Colors.Black) , Margin = new Thickness(0, 5, 0, 5) });
+                        //diskInfoPanel.Children.Add(new Rectangle { Height = 2, Fill = new SolidColorBrush(Colors.Blue), Width = 100 , Foreground = new SolidColorBrush(Microsoft.UI.Colors.Black)});
+                        
+                        diskInfoPanel.Children.Add(new TextBlock { Text = $"设备名称: {diskInfo["model"]}", FontSize = 16, Foreground = new SolidColorBrush(Microsoft.UI.Colors.Black), Margin = new Thickness(0, 5, 0, 5) });
+                        diskInfoPanel.Children.Add(new TextBlock { Text = $"系统主盘: {diskInfo["isSystemDisk"]}", FontSize = 16, Foreground = new SolidColorBrush(Microsoft.UI.Colors.Black), Margin = new Thickness(0, 5, 0, 5) });
+                        diskInfoPanel.Children.Add(new TextBlock { Text = $"类型: {diskInfo["disk_type"]}", FontSize = 16, Foreground = new SolidColorBrush(Microsoft.UI.Colors.Black), Margin = new Thickness(0, 5, 0, 5) });
+                        diskInfoPanel.Children.Add(new TextBlock { Text = $"总容量: {diskInfo["total_size"]}", FontSize = 16, Foreground = new SolidColorBrush(Microsoft.UI.Colors.Black), Margin = new Thickness(0, 5, 0, 5) });
+                        diskInfoPanel.Children.Add(new TextBlock { Text = $"已用容量: {diskInfo["used_size"]}", FontSize = 16, Foreground = new SolidColorBrush(Microsoft.UI.Colors.Black), Margin = new Thickness(0, 5, 0, 5) });
+                        diskInfoPanel.Children.Add(new TextBlock { Text = $"剩余容量: {diskInfo["free_size"]}", FontSize = 16, Foreground = new SolidColorBrush(Microsoft.UI.Colors.Black), Margin = new Thickness(0, 5, 0, 5) });
+                        diskInfoPanel.Children.Add(new TextBlock { Text = $"利用率: {diskInfo["usage_percent"]}", FontSize = 16, Foreground = new SolidColorBrush(Microsoft.UI.Colors.Black), Margin = new Thickness(0, 5, 0, 5) });
+                        diskInfoPanel.Children.Add(new TextBlock { Text = $"读取速度: {diskInfo["read_speed"]}", FontSize = 16, Foreground = new SolidColorBrush(Microsoft.UI.Colors.Black), Margin = new Thickness(0, 5, 0, 5) });
+                        diskInfoPanel.Children.Add(new TextBlock { Text = $"写入速度: {diskInfo["write_speed"]}", FontSize = 16, Foreground = new SolidColorBrush(Microsoft.UI.Colors.Black), Margin = new Thickness(0, 5, 0, 5) });
 
                         // 将该控件添加到主面板
                         DiskInfoPanel.Children.Add(diskInfoPanel);
@@ -600,6 +604,20 @@ namespace KongHui1.Presentation
             DiskDetailPanel.Visibility = Visibility.Visible;
         }
 
+        private void OnPointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            if (sender is Border border)
+            {
+                border.Background = new SolidColorBrush(Microsoft.UI.Colors.DeepSkyBlue); // 鼠标悬停时背景变浅灰
+            }
+        }
 
+        private void OnPointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            if (sender is Border border)
+            {
+                border.Background = new SolidColorBrush(Microsoft.UI.Colors.White); // 恢复默认背景
+            }
+        }
     }
 }

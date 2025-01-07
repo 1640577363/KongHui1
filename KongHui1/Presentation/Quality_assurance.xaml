@@ -26,26 +26,20 @@
     </Style>
 
     <!-- 按钮样式 -->
-    <Style x:Key="ModernButtonStyle" TargetType="Button">
-      <Setter Property="Background" Value="Blue" />
-      <Setter Property="Foreground" Value="White" />
-      <Setter Property="CornerRadius" Value="5" />
-      <Setter Property="Padding" Value="10,5" />
-      <Setter Property="FontSize" Value="16" />
-      <Setter Property="FontWeight" Value="SemiBold" />
-      <Setter Property="BorderBrush" Value="Transparent" />
-      <Setter Property="Height" Value="35" />
-      <Setter Property="Width" Value="100" />
+    <Style TargetType="Button" x:Key="CircularButtonStyle">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Width" Value="100"/>
+      <Setter Property="Height" Value="100"/>
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate TargetType="Button">
-            <Border Background="{TemplateBinding Background}" CornerRadius="5">
-              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Border Background="{TemplateBinding Background}" CornerRadius="50">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
           </ControlTemplate>
         </Setter.Value>
       </Setter>
-     </Style>
+    </Style>
   </Page.Resources>
   <Page.Background>
     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -55,7 +49,8 @@
   </Page.Background>
 
   <Grid Padding="20">
-    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
+    
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" >
       <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click"/>
       <TextBlock Text="质保查询" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
     </StackPanel>
@@ -65,16 +60,14 @@
       <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,20">
         <TextBlock Text="整机序列号:" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Black"/>
         <TextBox x:Name="SerialNumberTextBox" Width="250"  PlaceholderText="请输入整机序列号"   Height="Auto"  Style="{StaticResource ModernTextBoxStyle}" VerticalAlignment="Center" Margin="0,0,20,0"/>
-        <Button Content="点击查询"   Style="{StaticResource ModernButtonStyle}" PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited"/>
+        <Button Content="点击查询"  Width="150" Height="40" FontSize="16" Background="#0078D7" Foreground="White" CornerRadius="5"/>
       </StackPanel>
 
       <TextBlock Text="查询结果" Margin="0,0,0,10" FontSize="24" FontWeight="Bold" Foreground="Black"/>
 
       <Grid>
         <!-- 模拟阴影 -->
-        <Border Background="Gray"  Width="500" Height="100" CornerRadius="10" Padding="10" Margin="10,10,0,0" Opacity="0.2"  HorizontalAlignment="Left"/>
-        <!-- 实际内容 -->
-        <Border Background="White" Width="500" Height="100" CornerRadius="10" Padding="10"    HorizontalAlignment="Left">
+        <Border Background="White" CornerRadius="8" Padding="10" BorderBrush="LightGray" BorderThickness="2" Width="500"  HorizontalAlignment="Left">
           <StackPanel>
             <StackPanel Orientation="Horizontal">
               <TextBlock Text="序列号：" Width="100" Foreground="Black" />
@@ -100,5 +93,6 @@
         </Border>
       </Grid>
     </StackPanel>
+    <Image  Source="ms-appx:///Images/kh_ima.png" Width="700" Height="350" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,90"/>
   </Grid>
 </Page>
