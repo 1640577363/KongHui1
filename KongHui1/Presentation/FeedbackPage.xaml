@@ -6,7 +6,51 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+  <Page.Resources>
+    <!-- 按钮样式 -->
+    <Style x:Key="ModernButtonStyle" TargetType="Button">
+      <Setter Property="Background" Value="Blue"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="CornerRadius" Value="5"/>
+      <Setter Property="Padding" Value="10,5"/>
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="BorderBrush" Value="Transparent"/>
+      <Setter Property="Height" Value="40"/>
+      <Setter Property="Width" Value="150"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Background="{TemplateBinding Background}"
+                CornerRadius="5">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <!--输入框样式-->
+    <Style x:Key="ModernTextBoxStyle" TargetType="TextBox">
+      <!--<Setter Property="Background" Value="White"/>-->
+      <Setter Property="Foreground" Value="Black"/>
+      <Setter Property="BorderBrush" Value="#0078D7"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="CornerRadius" Value="3"/>
+      <!--<Setter Property="Padding" Value="3"/>-->
+      <Setter Property="FontSize" Value="18"/>
+    </Style>
 
+    <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="Foreground" Value="Black"/>
+      <Setter Property="Padding" Value="5,2"/>
+      <Setter Property="Margin" Value="5,0"/>
+      <Setter Property="HorizontalAlignment" Value="Left"/>
+      
+    </Style>
+  </Page.Resources>
+
+  
   <Page.Background>
     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
       <GradientStop Color="#D6ECF3" Offset="0.0"/>
@@ -27,7 +71,7 @@
       <!-- Header -->
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Row="0" Margin="0,10,0,20" Grid.ColumnSpan="2">
         <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click" HorizontalAlignment="Left"/>
-        <TextBlock Text="问题反馈" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        <TextBlock Text="问题反馈" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"  Foreground="Black"/>
       </StackPanel>
 
       <!-- 垂直分隔线右移 -->
@@ -46,18 +90,18 @@
           <Run Text="问题类型"/>
         </TextBlock>
         <StackPanel x:Name="ProblemTypeStackPanel" Orientation="Horizontal" Spacing="20"  >
-          <RadioButton Content="设备状态" GroupName="ProblemType" Tag="0" FontSize="18" Foreground="Black"/>
-          <RadioButton Content="安全服务" GroupName="ProblemType" Tag="1" FontSize="18" Foreground="Black"/>
-          <RadioButton Content="硬件问题" GroupName="ProblemType" Tag="2" FontSize="18" Foreground="Black"/>
-          <RadioButton Content="驱动问题" GroupName="ProblemType" Tag="3" FontSize="18" Foreground="Black"/>
-          <RadioButton Content="系统问题" GroupName="ProblemType" Tag="4" FontSize="18" Foreground="Black"/>
+          <RadioButton Content="设备状态" GroupName="ProblemType" Tag="0" FontSize="18" Foreground="Black" Style="{StaticResource RadioButtonStyle}"/>
+          <RadioButton Content="安全服务" GroupName="ProblemType" Tag="1" FontSize="18" Foreground="Black" Style="{StaticResource RadioButtonStyle}"/>
+          <RadioButton Content="硬件问题" GroupName="ProblemType" Tag="2" FontSize="18" Foreground="Black" Style="{StaticResource RadioButtonStyle}"/>
+          <RadioButton Content="驱动问题" GroupName="ProblemType" Tag="3" FontSize="18" Foreground="Black" Style="{StaticResource RadioButtonStyle}"/>
+          <RadioButton Content="系统问题" GroupName="ProblemType" Tag="4" FontSize="18" Foreground="Black" Style="{StaticResource RadioButtonStyle}"/>
         </StackPanel>
 
         <TextBlock FontSize="18" Foreground="Black">
-  <Run Text="* " Foreground="Red"/>
-  <Run Text="工控机型号"/>
+          <Run Text="* " Foreground="Red"/>
+          <Run Text="工控机型号"/>
         </TextBlock>
-        <TextBox  x:Name="HostCategory" PlaceholderText="请输入工控机型号" Height="60"/>
+        <TextBox  x:Name="HostCategory" PlaceholderText="请输入工控机型号" Height="40"  BorderBrush="#0078D7" BorderThickness="2"/>
 
         <!-- Problem Description -->
         <TextBlock FontSize="18" Foreground="Black">
@@ -66,7 +110,7 @@
         </TextBlock>
         <StackPanel >
           <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="150">
-            <TextBox x:Name="PDTextBox" PlaceholderText="请描述您遇到的问题，您也可以上传图片或视频" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top"/>
+            <TextBox x:Name="PDTextBox" PlaceholderText="请描述您遇到的问题，您也可以上传图片或视频" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Height="40"  BorderBrush="#0078D7" BorderThickness="2"/>
           </ScrollViewer>
         </StackPanel>
 
@@ -77,7 +121,8 @@
 
         <StackPanel Orientation="Horizontal" Spacing="10">
           <!-- 上传文件按钮 -->
-          <Button Content="上传文件" FontSize="16" Click="UploadButton_Click" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+          <Button Content="上传文件"  Click="UploadButton_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource ModernButtonStyle}" PointerEntered="Button_PointerEntered"
+PointerExited="Button_PointerExited"/>
 
           <!-- 显示已选择文件的文本 -->
           <TextBlock x:Name="SelectedFileText" FontSize="16" VerticalAlignment="Center" Foreground="Black">
@@ -92,47 +137,49 @@
           <Run Text="* " Foreground="Red"/>
           <Run Text="公司名称"/>
         </TextBlock>
-        <TextBox x:Name="CompanyNameTextBox" PlaceholderText="请输入公司名称" Height="60"/>
+        <TextBox x:Name="CompanyNameTextBox" PlaceholderText="请输入公司名称" Height="40"  BorderBrush="#0078D7" BorderThickness="2"/>
 
         <TextBlock FontSize="18" Foreground="Black">
           <Run Text="* " Foreground="Red"/>
           <Run Text="联系电话"/>
         </TextBlock>
-        <TextBox  x:Name="ContactPhoneTextBox" PlaceholderText="请输入联系电话" Height="60"/>
+        <TextBox  x:Name="ContactPhoneTextBox" PlaceholderText="请输入联系电话" Height="40"   BorderBrush="#0078D7" BorderThickness="2"/>
 
-        
+
         <!-- Submit Button -->
-        <Button x:Name="SubmitButton" Content="提交反馈" Background="Blue" Foreground="White" FontSize="16" HorizontalAlignment="Center"
-                Margin="0,20,0,0" Width="200" Grid.Row="2" Grid.ColumnSpan="2" Click="SubmitButton_Click"/>
+        <Button x:Name="SubmitButton" Content="提交反馈"   HorizontalAlignment="Center" Margin="0,20,0,0" Grid.Row="2" Grid.ColumnSpan="2" Click="SubmitButton_Click" Style="{StaticResource ModernButtonStyle}" PointerEntered="Button_PointerEntered"
+PointerExited="Button_PointerExited"/>
       </StackPanel>
       
       <!-- 右侧已提交反馈区域 -->
       <StackPanel Grid.Row="1" Grid.Column="1" Padding="10" Margin="20,0,0,0">
-        <TextBlock Text="已提交的问题反馈" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+        <TextBlock Text="已提交的问题反馈" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" Foreground="Black"/>
 
         <!-- 使用 StackPanel 展示每个反馈 -->
         <StackPanel x:Name="FeedbackList" Orientation="Vertical" Spacing="15">
           <!-- 动态内容：每个问题都作为一个独立区域 -->
-          <StackPanel Orientation="Vertical" Padding="15" Background="White" BorderBrush="Gray" BorderThickness="1">
-            <TextBlock Text="问题描述：" FontWeight="Bold" Margin="0,0,0,5"/>
-            <TextBlock Text="设备无法启动" Margin="0,0,0,10"/>
+          <Border Background="White" CornerRadius="10" BorderThickness="2"  BorderBrush="LightGray"> 
+           <StackPanel Orientation="Vertical" Padding="15" Background="White" BorderBrush="Gray" >
+            <TextBlock Text="问题描述：" FontWeight="Bold" Margin="0,0,0,5" Foreground="Black"/>
+            <TextBlock Text="设备无法启动" Margin="0,0,0,10" Foreground="Black"/>
             <!-- 示例问题描述 -->
 
-            <TextBlock Text="解决方案：" FontWeight="Bold" Margin="0,0,0,5"/>
-            <TextBlock Text="重新启动设备并检查电源连接" Margin="0,0,0,10"/>
+            <TextBlock Text="解决方案：" FontWeight="Bold" Margin="0,0,0,5" Foreground="Black"/>
+            <TextBlock Text="重新启动设备并检查电源连接" Margin="0,0,0,10" Foreground="Black"/>
             <!-- 示例解决方案 -->
-          </StackPanel>
+           </StackPanel>
+          </Border>
+          <Border Background="White" CornerRadius="10"  BorderBrush="LightGray"  BorderThickness="2">
+            <StackPanel Orientation="Vertical" Padding="15" Background="White" BorderBrush="Gray" >
+              <TextBlock Text="问题描述：" FontWeight="Bold" Margin="0,0,0,5" Foreground="Black"/>
+              <TextBlock Text="系统卡顿" Margin="0,0,0,10" Foreground="Black"/>
+              <!-- 示例问题描述 -->
 
-          <StackPanel Orientation="Vertical" Padding="15" Background="White" BorderBrush="Gray" BorderThickness="1">
-            <TextBlock Text="问题描述：" FontWeight="Bold" Margin="0,0,0,5"/>
-            <TextBlock Text="系统卡顿" Margin="0,0,0,10"/>
-            <!-- 示例问题描述 -->
-
-            <TextBlock Text="解决方案：" FontWeight="Bold" Margin="0,0,0,5"/>
-            <TextBlock Text="优化系统设置并清理临时文件" Margin="0,0,0,10"/>
-            <!-- 示例解决方案 -->
-          </StackPanel>
-
+              <TextBlock Text="解决方案：" FontWeight="Bold" Margin="0,0,0,5" Foreground="Black"/>
+              <TextBlock Text="优化系统设置并清理临时文件" Margin="0,0,0,10" Foreground="Black"/>
+              <!-- 示例解决方案 -->
+            </StackPanel>
+          </Border>
           <!-- 更多问题的动态内容将在后台添加 -->
         </StackPanel>
       </StackPanel>

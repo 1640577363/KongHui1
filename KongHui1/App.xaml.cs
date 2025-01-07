@@ -21,14 +21,14 @@ public partial class App : Application
 
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
-
+        /*
         if (!IsAdministrator())
         {
             // 如果没有管理员权限，重新启动应用程序并请求管理员权限
             RestartAsAdministrator();
             return;
         }
-
+        */
         var builder = this.CreateBuilder(args)
             // Add navigation support for toolkit controls such as TabBar and NavigationView
             .UseToolkitNavigation()

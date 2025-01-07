@@ -85,28 +85,28 @@
           </Grid.RowDefinitions>
       <!-- Left Column -->
       <StackPanel Margin="10" Grid.Column="0" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
-        <TextBox PlaceholderText="请输入关键词" Margin="0,0,40,10"  Width="350" Height="40" Style="{StaticResource ModernTextBoxStyle}" />
+        <TextBox PlaceholderText="请输入关键词" Margin="0,0,20,10"  Width="300" Height="40" Style="{StaticResource ModernTextBoxStyle}" />
         <Button Content="搜索"  Style="{StaticResource ModernButtonStyle}" PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited"/>
       </StackPanel>
 
-      <Border Width="490" Height="90" Background="Gray" CornerRadius="10" Margin="10,10,0,0" Opacity="0.2" Grid.Column="0" Grid.Row="1"/>
-      <Border Width="490" Height="90" Background="White" CornerRadius="10"   Grid.Column="0" Grid.Row="1">
+      <Border Width="400" Height="90" Background="Gray" CornerRadius="10" Margin="10,10,0,0" Opacity="0.2" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Left"/>
+      <Border Width="400" Height="90" Background="White" CornerRadius="10"   Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left">
         <StackPanel Margin="10"   Grid.Column="0" Grid.Row="1">
           <TextBlock Text="深圳总公司·控汇" FontWeight="Bold"  Foreground="Black"/>
           <TextBlock Text="电话：0755-27041051"  Foreground="Black"/>
           <TextBlock Text="地址：深圳市龙华区大浪街道新石社区丽荣路1号昌毅工业区3栋五层、六层" Margin="0,0,0,10"  Foreground="Black"/>
         </StackPanel>
       </Border>
-      <Border Width="490" Height="90" Background="Gray" CornerRadius="10" Margin="10,10,0,0" Opacity="0.2" Grid.Column="0" Grid.Row="2"/>
-      <Border Width="490" Height="90" Background="White" CornerRadius="10"   Grid.Column="0" Grid.Row="2">
+      <Border Width="400" Height="90" Background="Gray" CornerRadius="10" Margin="10,10,0,0" Opacity="0.2" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left"/>
+      <Border Width="400" Height="90" Background="White" CornerRadius="10"   Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left">
         <StackPanel Margin="10" Grid.Column="0" Grid.Row="2">
         <TextBlock Text="北京总公司·控汇" FontWeight="Bold"  Foreground="Black"/>
         <TextBlock Text="电话：18910273182"  Foreground="Black"/>
         <TextBlock Text="地址：北京市昌平区西三旗建材城东路新龙大厦B座1022室" Margin="0,0,0,10"  Foreground="Black"/>
       </StackPanel>
       </Border>
-      <Border Width="490" Height="90" Background="Gray" CornerRadius="10" Margin="10,10,0,0" Opacity="0.2" Grid.Column="0" Grid.Row="3"/>
-      <Border Width="490" Height="90" Background="White" CornerRadius="10"   Grid.Column="0" Grid.Row="3">
+      <Border Width="400" Height="90" Background="Gray" CornerRadius="10" Margin="10,10,0,0" Opacity="0.2" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left"/>
+      <Border Width="400" Height="90" Background="White" CornerRadius="10"   Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left">
         <StackPanel Margin="10" Grid.Column="0" Grid.Row="3">
         <TextBlock Text="深圳市控瑞科技有限公司·控汇子公司" FontWeight="Bold"  Foreground="Black"/>
         <TextBlock Text="电话：0755-29041051" Foreground="Black"/>
@@ -114,11 +114,11 @@
       </StackPanel>
       </Border>
       <!-- Right Column -->
-      <StackPanel Margin="30,10,10,10" Grid.Column="1" Grid.Row="0" Grid.RowSpan="5">
+      <StackPanel Margin="100,10,10,10" Grid.Column="1" Grid.Row="0" Grid.RowSpan="5">
         <TextBlock Text="深圳总公司控汇" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"   Foreground="Black"/>
         <Image Source="ms-appx:///Images/ComapnyBuilding.png" Stretch="Uniform" Margin="0,0,0,10"  />
       </StackPanel>
-      <StackPanel  Margin="30,0,0,5" Grid.Column="1" Grid.Row="5">
+      <StackPanel  Margin="100,0,0,5" Grid.Column="1" Grid.Row="5">
         <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
           <SymbolIcon Symbol="MapPin" Margin="0,0,5,0"  Foreground="Black"/>
           <TextBlock Text="深圳市龙华区大浪街道新石社区丽荣路1号昌毅工业区3栋五层、六层"  Foreground="Black"/>
