@@ -72,9 +72,9 @@
 
       <Grid>
         <!-- 模拟阴影 -->
-        <Border Background="Gray"  Width="600" CornerRadius="10" Padding="10" Margin="10,10,0,0" Opacity="0.2"  HorizontalAlignment="Left"/>
+        <Border Background="Gray"  Width="500" Height="100" CornerRadius="10" Padding="10" Margin="10,10,0,0" Opacity="0.2"  HorizontalAlignment="Left"/>
         <!-- 实际内容 -->
-        <Border Background="White" Width="600" CornerRadius="10" Padding="10"    HorizontalAlignment="Left">
+        <Border Background="White" Width="500" Height="100" CornerRadius="10" Padding="10"    HorizontalAlignment="Left">
           <StackPanel>
             <StackPanel Orientation="Horizontal">
               <TextBlock Text="序列号：" Width="100" Foreground="Black" />

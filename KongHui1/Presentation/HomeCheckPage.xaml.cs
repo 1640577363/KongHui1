@@ -112,8 +112,8 @@ namespace KongHui1.Presentation
 
         private async Task RunCpuPythonScript()
         {
-            string ScriptPath1 = @"D:\project\UNO2\KongHui1\Python\cpu_usage_plot.py";
-            string ScriptPath2 = @"D:\project\UNO2\KongHui1\Python\cpu_detail.py";
+            string ScriptPath1 = @"D:\VSKongHui\KongHui1\Python\cpu_usage_plot.py";
+            string ScriptPath2 = @"D:\VSKongHui\KongHui1\Python\cpu_detail.py";
 
             // 启动 cpu_usage_plot.py 脚本
             var startInfo1 = new ProcessStartInfo
@@ -123,7 +123,7 @@ namespace KongHui1.Presentation
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-                WorkingDirectory = @"D:\project\UNO2\KongHui1\Python" // 使用相对路径作为工作目录
+                WorkingDirectory = @"D:\VSKongHui\KongHui1\Python" // 使用相对路径作为工作目录
             };
 
             _CPUpythonProcess = Process.Start(startInfo1);
@@ -136,7 +136,7 @@ namespace KongHui1.Presentation
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-                WorkingDirectory = @"D:\project\UNO2\KongHui1\Python"
+                WorkingDirectory = @"D:\VSKongHui\KongHui1\Python"
             };
 
             _CpudetailpythonProcess = Process.Start(startInfo2);
@@ -147,7 +147,7 @@ namespace KongHui1.Presentation
 
         private async void UpdateChartImage(object sender, object e)
         {
-            var imagePath = Path.Combine(@"D:\project\UNO2\KongHui1\Python", "cpu_usage_chart.png");
+            var imagePath = Path.Combine(@"D:\VSKongHui\KongHui1\Python", "cpu_usage_chart.png");
 
             if (File.Exists(imagePath))
             {
@@ -162,7 +162,7 @@ namespace KongHui1.Presentation
         }
         private async Task UpdateCpuInfoText()
         {
-            var infoPath = Path.Combine(@"D:\project\UNO2\KongHui1\Python", "cpu_usage_info.json");
+            var infoPath = Path.Combine(@"D:\VSKongHui\KongHui1\Python", "cpu_usage_info.json");
             if (File.Exists(infoPath))
             {
                 var jsonData = await File.ReadAllTextAsync(infoPath);
@@ -206,7 +206,7 @@ namespace KongHui1.Presentation
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-                WorkingDirectory = @"D:\project\UNO2\KongHui1\Python" // 使用相对路径作为工作目录
+                WorkingDirectory = @"D:\VSKongHui\KongHui1\Python" // 使用相对路径作为工作目录
             };
 
             _diskSpacePythonProcess = Process.Start(startInfo1);
@@ -218,7 +218,7 @@ namespace KongHui1.Presentation
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-                WorkingDirectory = @"D:\project\UNO2\KongHui1\Python" // 使用相对路径作为工作目录
+                WorkingDirectory = @"D:\VSKongHui\KongHui1\Python" // 使用相对路径作为工作目录
             };
 
             _diskdetailPythonProcess = Process.Start(startInfo2);
@@ -228,7 +228,7 @@ namespace KongHui1.Presentation
 
         private async void UpdateDiskSpaceChartImage(object sender, object e)
         {
-            var imagePath = Path.Combine(@"D:\project\UNO2\KongHui1\Python", "disk_usage_chart.png");
+            var imagePath = Path.Combine(@"D:\VSKongHui\KongHui1\Python", "disk_usage_chart.png");
 
             if (File.Exists(imagePath))
             {
@@ -278,7 +278,7 @@ namespace KongHui1.Presentation
         //}
         private async Task UpdateDiskSpaceText()
         {
-            var infoPath = Path.Combine(@"D:\project\UNO2\KongHui1\Python", "disk_info.json");
+            var infoPath = Path.Combine(@"D:\VSKongHui\KongHui1\Python", "disk_info.json");
 
             if (File.Exists(infoPath))
             {
@@ -348,8 +348,8 @@ namespace KongHui1.Presentation
         private async Task RunGPUPythonScript()
         {
 
-            string ScriptPath1 = @"D:\project\UNO2\KongHui1\Python\Graphics_usage.py";
-            string ScriptPath2 = @"D:\project\UNO2\KongHui1\Python\Gpu_detail.py";
+            string ScriptPath1 = @"D:\VSKongHui\KongHui1\Python\Graphics_usage.py";
+            string ScriptPath2 = @"D:\VSKongHui\KongHui1\Python\Gpu_detail.py";
 
             var startInfo1 = new ProcessStartInfo
             {
@@ -358,7 +358,7 @@ namespace KongHui1.Presentation
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-                WorkingDirectory = @"D:\project\UNO2\KongHui1\Python" // 使用相对路径作为工作目录
+                WorkingDirectory = @"D:\VSKongHui\KongHui1\Python" // 使用相对路径作为工作目录
             };
 
             _GPUusagePythonProcess = Process.Start(startInfo1);
@@ -370,7 +370,7 @@ namespace KongHui1.Presentation
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-                WorkingDirectory = @"D:\project\UNO2\KongHui1\Python" // 使用相对路径作为工作目录
+                WorkingDirectory = @"D:\VSKongHui\KongHui1\Python" // 使用相对路径作为工作目录
             };
 
             _GpudetailpythonProcess = Process.Start(startInfo2);
@@ -380,7 +380,7 @@ namespace KongHui1.Presentation
 
         private async void UpdateGPUChartImage(object sender, object e)
         {
-            var imagePath = Path.Combine(@"D:\project\UNO2\KongHui1\Python", "gpu_usage_chart.png");
+            var imagePath = Path.Combine(@"D:\VSKongHui\KongHui1\Python", "gpu_usage_chart.png");
 
             if (File.Exists(imagePath))
             {
@@ -396,7 +396,7 @@ namespace KongHui1.Presentation
 
         private async Task UpdateGpuInfoText()
         {
-            var infoPath = Path.Combine(@"D:\project\UNO2\KongHui1\Python", "gpuinfo.json");
+            var infoPath = Path.Combine(@"D:\VSKongHui\KongHui1\Python", "gpuinfo.json");
             if (File.Exists(infoPath))
             {
                 var jsonData = await File.ReadAllTextAsync(infoPath);
@@ -430,8 +430,8 @@ namespace KongHui1.Presentation
         private async Task RunMemoryPythonScript()
         {
 
-            string ScriptPath1 = @"D:\project\UNO2\KongHui1\Python\Memory_usage_plot.py";
-            string ScriptPath2 = @"D:\project\UNO2\KongHui1\Python\Memory-detail.py";
+            string ScriptPath1 = @"D:\VSKongHui\KongHui1\Python\Memory_usage_plot.py";
+            string ScriptPath2 = @"D:\VSKongHui\KongHui1\Python\Memory-detail.py";
 
             var startInfo1 = new ProcessStartInfo
             {
@@ -440,7 +440,7 @@ namespace KongHui1.Presentation
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-                WorkingDirectory = @"D:\project\UNO2\KongHui1\Python" // 使用相对路径作为工作目录
+                WorkingDirectory = @"D:\VSKongHui\KongHui1\Python" // 使用相对路径作为工作目录
             };
 
             _memoryPythonProcess = Process.Start(startInfo1);
@@ -452,7 +452,7 @@ namespace KongHui1.Presentation
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-                WorkingDirectory = @"D:\project\UNO2\KongHui1\Python" // 使用相对路径作为工作目录
+                WorkingDirectory = @"D:\VSKongHui\KongHui1\Python" // 使用相对路径作为工作目录
             };
 
             _MemorydetailpythonProcess = Process.Start(startInfo2);
@@ -461,7 +461,7 @@ namespace KongHui1.Presentation
 
         private async void UpdateMemoryChartImage(object sender, object e)
         {
-            var imagePath = Path.Combine(@"D:\project\UNO2\KongHui1\Python", "memory_usage_chart.png");
+            var imagePath = Path.Combine(@"D:\VSKongHui\KongHui1\Python", "memory_usage_chart.png");
 
             if (File.Exists(imagePath))
             {
@@ -476,7 +476,7 @@ namespace KongHui1.Presentation
         }
         private async Task UpdateMemoryInfoText()
         {
-            var infoPath = Path.Combine(@"D:\project\UNO2\KongHui1\Python", "Memory_info.json");
+            var infoPath = Path.Combine(@"D:\VSKongHui\KongHui1\Python", "Memory_info.json");
             if (File.Exists(infoPath))
             {
                 var jsonData = await File.ReadAllTextAsync(infoPath);

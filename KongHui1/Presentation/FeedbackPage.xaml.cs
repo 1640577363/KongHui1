@@ -252,6 +252,24 @@ namespace KongHui1.Presentation
                 SelectedFileText.Text = "没有选择文件";
             }
         }
+        private void Button_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.Background = new SolidColorBrush(Microsoft.UI.Colors.LightGray); // 鼠标悬停时背景变浅灰
+                VisualStateManager.GoToState((Control)sender, "PointerOver", true);
+            }
+        }
+
+        private void Button_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.Background = new SolidColorBrush(Microsoft.UI.Colors.Blue); // 恢复默认背景
+                VisualStateManager.GoToState((Control)sender, "Normal", true);
+            }
+        }
+
 
         // INotifyPropertyChanged 实现
         private void OnPropertyChanged(string propertyName)

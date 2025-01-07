@@ -29,7 +29,6 @@ public partial class App : Application
             return;
         }
         */
-
         var builder = this.CreateBuilder(args)
             // Add navigation support for toolkit controls such as TabBar and NavigationView
             .UseToolkitNavigation()
