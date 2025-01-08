@@ -33,14 +33,14 @@
 
         <!-- 第三行：账号 -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,30,0,0">
-          <TextBlock Text="账号" FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="0,0,20,0" />
+          <TextBlock Text="账号:" FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="0,0,20,0" />
           <TextBox x:Name="AccountBox" Width="260" Height="44" MinHeight="44" MaxHeight="44" FontSize="16" 
                    PlaceholderText="请输入账号" Padding="15,0,0,0" />
         </StackPanel>
 
         <!-- 第四行：密码 -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,30,0,0">
-          <TextBlock Text="密码" FontSize="20"  VerticalAlignment="Center" Margin="0,0,20,0" />
+          <TextBlock Text="密码:" FontSize="20"  VerticalAlignment="Center" Margin="0,0,20,0"  Foreground="Black"/>
           <PasswordBox x:Name="PasswordBox" Width="260" Height="44" MinHeight="44" MaxHeight="44" FontSize="16" 
                         PlaceholderText="请输入密码" />
         </StackPanel>
@@ -49,8 +49,8 @@
         <TextBlock Text="忘记密码?" Foreground="Blue" Tapped="ForgetPasswordTapped" HorizontalAlignment="Right" Margin="0,20,0,0" />
 
         <!-- 第六行：登录按钮 -->
-        <Button Width="300" Height="40" Content="登录" Background="#9CBAFF" Foreground="White" Click="LoginButton_Click" 
-                HorizontalAlignment="Center" Margin="0,20,0,30" />
+        <Button Width="300" Height="40" Content="登录" Background="#0078D7" Foreground="White" Click="LoginButton_Click" 
+                HorizontalAlignment="Center" Margin="20,20,0,30"  CornerRadius="5"/>
 
         <!-- 第七行：注册链接 -->
         <TextBlock Text="没有账户? 点击这里注册!" Foreground="Blue" Tapped="OnRegisterTapped" HorizontalAlignment="Center" />

@@ -26,21 +26,14 @@
       </Setter>
     </Style>
     <!-- 按钮样式 -->
-    <Style x:Key="ModernButtonStyle" TargetType="Button">
-      <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
-      <Setter Property="Foreground" Value="White"/>
-      <Setter Property="CornerRadius" Value="5"/>
-      <Setter Property="Padding" Value="10,5"/>
-      <Setter Property="FontSize" Value="16"/>
-      <Setter Property="FontWeight" Value="SemiBold"/>
-      <Setter Property="BorderBrush" Value="Transparent"/>
-      <Setter Property="Height" Value="40"/>
-      <Setter Property="Width" Value="150"/>
+    <Style TargetType="Button" x:Key="CircularButtonStyle">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Width" Value="100"/>
+      <Setter Property="Height" Value="100"/>
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate TargetType="Button">
-            <Border Background="{TemplateBinding Background}"
-                    CornerRadius="5">
+            <Border Background="{TemplateBinding Background}" CornerRadius="50">
               <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
           </ControlTemplate>
@@ -90,14 +83,12 @@
           <TextBlock x:Name="MotherboardInfoTextBlock" Text="正在获取主板型号..." FontSize="20" FontWeight="Bold" Foreground="{StaticResource TextColor}" VerticalAlignment="Center" />
         </StackPanel>
         <!-- 在线客服按钮 -->
-      <Button Content="在线客服"
-          Style="{StaticResource ModernButtonStyle}"
+        <Button Content="在线客服"  CornerRadius="5" Background="#0078D7" Foreground="White" 
           HorizontalAlignment="Right" VerticalAlignment="Center"
-          FontSize="16" FontWeight="Bold"
+          FontSize="16" FontWeight="Bold" Width="150" Height="40"
           Grid.Row="0" Grid.Column="1" Padding="10,5"
-          Margin="0,0,50,0"
-          PointerEntered="Button_PointerEntered"
-          PointerExited="Button_PointerExited"  />
+          Margin="0,0,50,0"  />
+          
     </Grid>
 
     <!-- 中部：按钮组 -->

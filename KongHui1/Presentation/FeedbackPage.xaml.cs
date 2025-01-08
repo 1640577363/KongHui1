@@ -219,7 +219,7 @@ namespace KongHui1.Presentation
                 Content = message,
                 CloseButtonText = "确定"
             };
-            await dialog.ShowAsync();
+           // await dialog.ShowAsync();
         }
 
         private string GetSelectedProblemTypeIndex()

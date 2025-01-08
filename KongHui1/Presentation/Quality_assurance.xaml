@@ -33,7 +33,7 @@
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate TargetType="Button">
-            <Border Background="{TemplateBinding Background}" CornerRadius="5">
+            <Border Background="{TemplateBinding Background}" CornerRadius="50">
               <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
           </ControlTemplate>
@@ -50,7 +50,8 @@
   </Page.Background>
 
   <Grid Padding="20">
-    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
+    
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" >
       <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click"/>
       <TextBlock Text="质保查询" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
     </StackPanel>
@@ -95,5 +96,6 @@
         </ListView.ItemTemplate>
       </ListView>
     </StackPanel>
+    <Image  Source="ms-appx:///Images/kh_ima.png" Width="700" Height="350" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,90"/>
   </Grid>
 </Page>

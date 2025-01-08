@@ -8,21 +8,14 @@
     mc:Ignorable="d">
   <Page.Resources>
     <!-- 按钮样式 -->
-    <Style x:Key="ModernButtonStyle" TargetType="Button">
-      <Setter Property="Background" Value="Blue"/>
-      <Setter Property="Foreground" Value="White"/>
-      <Setter Property="CornerRadius" Value="5"/>
-      <Setter Property="Padding" Value="10,5"/>
-      <Setter Property="FontSize" Value="16"/>
-      <Setter Property="FontWeight" Value="SemiBold"/>
-      <Setter Property="BorderBrush" Value="Transparent"/>
-      <Setter Property="Height" Value="40"/>
-      <Setter Property="Width" Value="150"/>
+    <Style TargetType="Button" x:Key="CircularButtonStyle">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Width" Value="100"/>
+      <Setter Property="Height" Value="100"/>
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate TargetType="Button">
-            <Border Background="{TemplateBinding Background}"
-                CornerRadius="5">
+            <Border Background="{TemplateBinding Background}" CornerRadius="50">
               <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
           </ControlTemplate>
@@ -101,7 +94,7 @@
           <Run Text="* " Foreground="Red"/>
           <Run Text="工控机型号"/>
         </TextBlock>
-        <TextBox  x:Name="HostCategory" PlaceholderText="请输入工控机型号" Height="40"  BorderBrush="#0078D7" BorderThickness="2"/>
+        <TextBox  x:Name="HostCategory" PlaceholderText="请输入工控机型号" Height="40"  BorderBrush="#0078D7" BorderThickness="2" Foreground="Black" Padding="3"/>
 
         <!-- Problem Description -->
         <TextBlock FontSize="18" Foreground="Black">
@@ -110,7 +103,7 @@
         </TextBlock>
         <StackPanel >
           <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="150">
-            <TextBox x:Name="PDTextBox" PlaceholderText="请描述您遇到的问题，您也可以上传图片或视频" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Height="40"  BorderBrush="#0078D7" BorderThickness="2"/>
+            <TextBox x:Name="PDTextBox" PlaceholderText="请描述您遇到的问题，您也可以上传图片或视频" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Height="40"  BorderBrush="#0078D7" BorderThickness="2" Foreground="Black" Padding="3"/>
           </ScrollViewer>
         </StackPanel>
 
@@ -121,8 +114,7 @@
 
         <StackPanel Orientation="Horizontal" Spacing="10">
           <!-- 上传文件按钮 -->
-          <Button Content="上传文件"  Click="UploadButton_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource ModernButtonStyle}" PointerEntered="Button_PointerEntered"
-PointerExited="Button_PointerExited"/>
+          <Button Content="上传文件"  Click="UploadButton_Click" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="150" Height="40" FontSize="16" Background="#0078D7" Foreground="White"  CornerRadius="5"/>
 
           <!-- 显示已选择文件的文本 -->
           <TextBlock x:Name="SelectedFileText" FontSize="16" VerticalAlignment="Center" Foreground="Black">
@@ -137,18 +129,17 @@ PointerExited="Button_PointerExited"/>
           <Run Text="* " Foreground="Red"/>
           <Run Text="公司名称"/>
         </TextBlock>
-        <TextBox x:Name="CompanyNameTextBox" PlaceholderText="请输入公司名称" Height="40"  BorderBrush="#0078D7" BorderThickness="2"/>
+        <TextBox x:Name="CompanyNameTextBox" PlaceholderText="请输入公司名称" Height="40"  BorderBrush="#0078D7" BorderThickness="2" Foreground="Black" Padding="3"/>
 
         <TextBlock FontSize="18" Foreground="Black">
           <Run Text="* " Foreground="Red"/>
           <Run Text="联系电话"/>
         </TextBlock>
-        <TextBox  x:Name="ContactPhoneTextBox" PlaceholderText="请输入联系电话" Height="40"   BorderBrush="#0078D7" BorderThickness="2"/>
+        <TextBox  x:Name="ContactPhoneTextBox" PlaceholderText="请输入联系电话" Height="40"   BorderBrush="#0078D7" BorderThickness="2" Foreground="Black" Padding="3"/>
 
 
         <!-- Submit Button -->
-        <Button x:Name="SubmitButton" Content="提交反馈"   HorizontalAlignment="Center" Margin="0,20,0,0" Grid.Row="2" Grid.ColumnSpan="2" Click="SubmitButton_Click" Style="{StaticResource ModernButtonStyle}" PointerEntered="Button_PointerEntered"
-PointerExited="Button_PointerExited"/>
+        <Button x:Name="SubmitButton" Content="提交反馈"   HorizontalAlignment="Center" Margin="0,20,0,0" Grid.Row="2" Grid.ColumnSpan="2" Click="SubmitButton_Click"   Width="150" Height="40" FontSize="16" Background="#0078D7" Foreground="White"  CornerRadius="5"/>
       </StackPanel>
 
 
@@ -156,25 +147,25 @@ PointerExited="Button_PointerExited"/>
         <TextBlock Text="已提交的问题反馈" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" Foreground="Black"/>
         <!-- 添加硬盘ID标题，和硬盘ID一起显示在同一行 -->
         <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
-          <TextBlock Text="硬盘ID：" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0"/>
+          <TextBlock Text="硬盘ID：" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0"  Foreground="Black"/>
           <!-- 绑定硬盘ID -->
-          <TextBlock Text="{Binding HardwareId}" FontSize="16" VerticalAlignment="Center"/>
+          <TextBlock Text="{Binding HardwareId}" FontSize="16" VerticalAlignment="Center"  Foreground="Black"/>
         </StackPanel>
 
 
         <!-- 使用 StackPanel 包裹 ItemsControl 来设置方向 -->
-        <StackPanel  Grid.Row="1"  Padding="10" Margin="20, 0, 0,0">
+        <StackPanel  Grid.Row="1"  Padding="10" Margin="0, 0, 0,10">
           <!-- 使用 ItemsControl 展示每个反馈 -->
           <ItemsControl x:Name="FeedbackList" ItemsSource="{Binding Feedbacks}"  >
             <!-- 数据模板 -->
             <ItemsControl.ItemTemplate>
               <DataTemplate>
-                <Border Background="White" CornerRadius="10" BorderThickness="2" BorderBrush="LightGray">
-                  <StackPanel Orientation="Vertical" Padding="15" Margin="0,10,0,0" Background="White"  BorderBrush="Gray">
-                    <TextBlock Text="反馈问题：" FontWeight="Bold" Margin="5,0,0,5" Foreground="Black"/>
-                    <TextBlock Text="{Binding ProblemDescription}" FontWeight="Bold" Margin="5,0,0,5" Foreground="Black"/>
-                    <TextBlock Text="解决方案：" FontWeight="Bold" Margin="5,0,0,5" Foreground="Black"/>
-                    <TextBlock Text="{Binding ResolutionMethod}" Margin="0,0,0,10" Foreground="Black"/>
+                <Border Background="White" CornerRadius="10" BorderThickness="2" BorderBrush="LightGray"   Margin="0, 10, 0,0" > 
+                  <StackPanel Orientation="Vertical" Padding="8" Margin="0,0,0,0" Background="White"  BorderBrush="Gray">
+                    <TextBlock Text="反馈问题：" FontWeight="Bold" Margin="5,0,0,10" Foreground="Black" />
+                    <TextBlock Text="{Binding ProblemDescription}" FontWeight="Bold" Margin="30,0,0,15" Foreground="Black"/>
+                    <TextBlock Text="解决方案：" FontWeight="Bold" Margin="5,0,0,10" Foreground="Black"/>
+                    <TextBlock Text="{Binding ResolutionMethod}" Margin="0,0,0,0" Foreground="Black"/>
                   </StackPanel>
                 </Border>
               </DataTemplate>
