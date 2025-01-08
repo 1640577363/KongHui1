@@ -7,65 +7,66 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-  <Page.Background>
-    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-      <GradientStop Color="#D6ECF3" Offset="0.0"/>
-      <GradientStop Color="White" Offset="1.0"/>
-    </LinearGradientBrush>
-  </Page.Background>
-
   <Grid Padding="20">
+    <!-- 定义全局资源 -->
+    <Grid.Resources>
+      <!-- 定义查询数据模板 -->
+      <DataTemplate x:Key="QueryDataTemplate">
+        <StackPanel Padding="10" Margin="5" Background="White" BorderBrush="LightGray" BorderThickness="1" CornerRadius="5">
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="序列号：" Width="100" Foreground="Black"/>
+            <TextBlock Text="{Binding serialNumber}" Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="工控机型号：" Width="100" Foreground="Black"/>
+            <TextBlock Text="{Binding model}" Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="硬盘ID：" Width="100" Foreground="Black" />
+            <TextBlock Text="{Binding addr}" Foreground="Black" FontWeight="Bold" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="主板：" Width="100" Foreground="Black"/>
+            <TextBlock Text="{Binding mainboard}" Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="处理器：" Width="100" Foreground="Black"/>
+            <TextBlock Text="{Binding processor}" Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="内存：" Width="100" Foreground="Black"/>
+            <TextBlock Text="{Binding memory}" Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="存储：" Width="100" Foreground="Black"/>
+            <TextBlock Text="{Binding storage}" Foreground="Black"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="操作系统：" Width="100" Foreground="Black"/>
+            <TextBlock Text="{Binding operatingSystem}" Foreground="Black"/>
+          </StackPanel>
+        </StackPanel>
+      </DataTemplate>
+    </Grid.Resources>
+
+    <!-- 返回按钮和标题 -->
     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
       <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click"/>
       <TextBlock Text="整机查询" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
     </StackPanel>
 
+    <!-- 查询区域 -->
     <StackPanel Margin="0,60,0,0">
-      <!-- Added Margin to move elements down -->
       <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,20">
-        <TextBlock Text="整机序列号:" FontSize="20" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Black"/>
-        <TextBox x:Name="SerialNumberTextBox" Width="250"  PlaceholderText="请输入整机序列号" Margin="0,0,10,0" FontSize="14"  Height="Auto" />
-        <Button Content="点击查询" Background="Blue" Foreground="White" Width="150" />
+        <TextBlock Text="硬盘ID:" FontSize="20" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Black" />
+        <TextBox x:Name="SerialNumberTextBox" Width="250" PlaceholderText="请输入硬盘ID" Margin="0,0,10,0" FontSize="14" Height="Auto" />
+        <Button Content="点击查询" Background="Blue" Foreground="White" Width="150" Click="OnQueryButtonClick"/>
       </StackPanel>
 
-      <TextBlock Text="查询结果" Margin="0,0,0,10" FontSize="24" FontWeight="Bold" Foreground="Black"/>
+      <TextBlock Text="查询结果" Margin="0,20,0,10" FontSize="24" FontWeight="Bold" Foreground="Black"/>
 
-      <Border Background="White" CornerRadius="8" Padding="10" BorderBrush="LightGray" BorderThickness="1">
-        <StackPanel>
-          <StackPanel Orientation="Horizontal">
-            <TextBlock Text="序列号：" Width="100" Foreground="Black"/>
-            <TextBlock Text="67G11299-H406-4E35-BM83-95E70FR561T0"  Foreground="Black"/>
-          </StackPanel>
-          <StackPanel Orientation="Horizontal" >
-            <TextBlock Text="工控机型号：" Width="100" Foreground="Black"/>
-            <TextBlock Text=""  Foreground="Black" />
-          </StackPanel>
-          <StackPanel Orientation="Horizontal">
-            <TextBlock Text="硬盘ID" Width="100" Foreground="Black"/>
-            <TextBlock Text=""  Foreground="Black"/>
-          </StackPanel>
-          <StackPanel Orientation="Horizontal">
-            <TextBlock Text="主板型号：" Width="100" Foreground="Black"/>
-            <TextBlock Text="" Foreground="Black"/>
-          </StackPanel>
-          <StackPanel Orientation="Horizontal">
-            <TextBlock Text="处理器：" Width="100" Foreground="Black"/>
-            <TextBlock Text="" Foreground="Black"/>
-          </StackPanel>
-          <StackPanel Orientation="Horizontal">
-            <TextBlock Text="内存：" Width="100" Foreground="Black"/>
-            <TextBlock Text="" Foreground="Black"/>
-          </StackPanel>
-          <StackPanel Orientation="Horizontal">
-            <TextBlock Text="硬盘：" Width="100" Foreground="Black"/>
-            <TextBlock Text="" Foreground="Black"/>
-          </StackPanel>
-          <StackPanel Orientation="Horizontal">
-            <TextBlock Text="操作系统：" Width="100" Foreground="Black"/>
-            <TextBlock Text="" Foreground="Black"/>
-          </StackPanel>
-        </StackPanel>
-      </Border>
+      <!-- 查询结果列表 -->
+      <ListView x:Name="DataListView" ItemTemplate="{StaticResource QueryDataTemplate}" Margin="0,0,0,20"/>
     </StackPanel>
   </Grid>
 </Page>

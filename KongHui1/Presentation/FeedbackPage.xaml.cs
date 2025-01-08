@@ -100,7 +100,7 @@ namespace KongHui1.Presentation
                 if (code.Equals(System.Net.HttpStatusCode.OK))
                 {
 
-
+                    //await ShowSuccessDialog();
                     //刷新页面
                     this.Frame.Navigate(typeof(FeedbackPage));
                 }
@@ -115,6 +115,23 @@ namespace KongHui1.Presentation
                 ShowMessage("发生了错误，请稍后再试。");
             }
         }
+        // 显示提交成功提示框
+        private async Task ShowSuccessDialog()
+        {
+            // 确保在UI线程上显示
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+            {
+                var successDialog = new ContentDialog
+                {
+                    Title = "提交成功",
+                    Content = "您的问题已经成功反馈！",
+                    CloseButtonText = "确定"
+                };
+
+                // 显示成功弹窗
+                await successDialog.ShowAsync();
+            });
+        }
 
         private async Task StartGetFeedback()
         {
@@ -125,12 +142,12 @@ namespace KongHui1.Presentation
                 
                 // 设置硬盘 ID 到绑定属性
                 HardwareId = hardwareId;  // 更新 HardwareId 属性
-                //if (!string.IsNullOrEmpty(LoginPage.Token))
-                //{
-                //    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", LoginPage.Token);
-                //}
-                String Token = "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjEwLjE0LjQzLjMyQFR1ZSBKYW4gMDcgMTQ6NDU6NTUgQ1NUIDIwMjUifQ.Lzy1IdZWJuNzR2h6-jZf9994ct2Yg6ROMYv5kORVHpKs4XbCtRHrBWrMVAd7oAjYC9vAZR713eX04mSZaXRDEw";
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
+                if (!string.IsNullOrEmpty(LoginPage.Token))
+                {
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", LoginPage.Token);
+                }
+                //String Token = "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjEwLjE0LjQzLjMyQFR1ZSBKYW4gMDcgMTQ6NDU6NTUgQ1NUIDIwMjUifQ.Lzy1IdZWJuNzR2h6-jZf9994ct2Yg6ROMYv5kORVHpKs4XbCtRHrBWrMVAd7oAjYC9vAZR713eX04mSZaXRDEw";
+                //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
 
                 string url = $"http://10.12.36.204:8080/Issues_support/Issues_support/list?hardwareId={hardwareId}";
                 var response = await client.GetAsync(url);
@@ -256,7 +273,7 @@ namespace KongHui1.Presentation
         {
             if (sender is Button button)
             {
-                button.Background = new SolidColorBrush(Microsoft.UI.Colors.LightGray); // 鼠标悬停时背景变浅灰
+                button.Background = new SolidColorBrush(Microsoft.UI.Colors.DarkBlue); // 鼠标悬停时背景变浅灰
                 VisualStateManager.GoToState((Control)sender, "PointerOver", true);
             }
         }
