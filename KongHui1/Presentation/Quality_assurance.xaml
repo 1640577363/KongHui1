@@ -96,6 +96,6 @@
         </ListView.ItemTemplate>
       </ListView>
     </StackPanel>
-    <Image  Source="ms-appx:///Images/kh_ima.png" Width="700" Height="350" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,90"/>
+    <!--<Image  Source="ms-appx:///Images/kh_ima.png" Width="700" Height="350" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,90"/>-->
   </Grid>
 </Page>

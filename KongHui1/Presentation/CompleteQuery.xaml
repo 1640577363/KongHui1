@@ -68,6 +68,6 @@
       <!-- 查询结果列表 -->
       <ListView x:Name="DataListView" ItemTemplate="{StaticResource QueryDataTemplate}" Margin="0,0,0,20"/>
     </StackPanel>
-    <Image  Source="ms-appx:///Images/kh_ima.png" Width="700" Height="350" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,90"/>
+    <!--<Image  Source="ms-appx:///Images/kh_ima.png" Width="700" Height="350" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,90"/>-->
   </Grid>
 </Page>
