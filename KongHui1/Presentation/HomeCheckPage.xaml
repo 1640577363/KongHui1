@@ -216,9 +216,7 @@
 
           <!-- 动态显示磁盘信息 -->
           <ScrollViewer x:Name="DiskInfoScrollViewer" 
-            HorizontalScrollBarVisibility="Disabled"
-
-                        
+            HorizontalScrollBarVisibility="Disabled"                   
             VerticalScrollBarVisibility="Auto"
             Margin="60,0,0,0"
             Height="400">

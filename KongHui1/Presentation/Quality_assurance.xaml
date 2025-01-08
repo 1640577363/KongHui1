@@ -61,12 +61,12 @@
       <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,20">
         <TextBlock Text="整机序列号:" FontSize="20" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Black"/>
         <TextBox x:Name="SerialNumberTextBox" Width="250" PlaceholderText="请输入整机序列号" Height="Auto" Style="{StaticResource ModernTextBoxStyle}" VerticalAlignment="Center" Margin="0,0,20,0"/>
-        <Button Content="点击查询" Style="{StaticResource ModernButtonStyle}" PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited" Click="QueryButton_Click"/>
+        <Button Content="点击查询"  Click="QueryButton_Click"  CornerRadius="5" Background="#0078D7" Foreground="White"/>
       </StackPanel>
 
       <TextBlock Text="查询结果" Margin="0,0,0,10" FontSize="24" FontWeight="Bold" Foreground="Black"/>
-
-      <ListView x:Name="DataListView" ItemsSource="{Binding WarrantyDatas}">
+      <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"  Height="600">
+        <ListView x:Name="DataListView" ItemsSource="{Binding WarrantyDatas}">
         <ListView.ItemTemplate>
           <DataTemplate x:DataType="local:WarrantyData">
             <StackPanel Padding="10" Margin="5" Background="White" BorderBrush="LightGray" BorderThickness="1" CornerRadius="5">
@@ -95,7 +95,7 @@
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>
+      </ScrollViewer>
     </StackPanel>
-    <Image  Source="ms-appx:///Images/kh_ima.png" Width="700" Height="350" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,90"/>
   </Grid>
 </Page>
