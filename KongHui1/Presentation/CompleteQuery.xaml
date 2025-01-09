@@ -7,10 +7,31 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+  <Page.Resources>
+    <!-- 输入框样式 -->
+    <Style x:Key="ModernTextBoxStyle" TargetType="TextBox">
+      <Setter Property="Background" Value="White"/>
+      <Setter Property="BorderBrush" Value="#0078D7"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="CornerRadius" Value="3"/>
+      <Setter Property="Padding" Value="3"/>
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="Foreground" Value="Black"/>
+    </Style>
+  </Page.Resources>
+
+  <Page.Background>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+      <GradientStop Color="#D6ECF3" Offset="0.0"/>
+      <GradientStop Color="White" Offset="1.0"/>
+    </LinearGradientBrush>
+  </Page.Background>
+  
   <Grid Padding="20">
     <!-- 定义全局资源 -->
     <Grid.Resources>
       <!-- 定义查询数据模板 -->
+
       <DataTemplate x:Key="QueryDataTemplate">
         <StackPanel Padding="10" Margin="5" Background="White" BorderBrush="LightGray" BorderThickness="1" CornerRadius="5">
           <StackPanel Orientation="Horizontal">
@@ -46,28 +67,34 @@
             <TextBlock Text="{Binding operatingSystem}" Foreground="Black"/>
           </StackPanel>
         </StackPanel>
+
       </DataTemplate>
     </Grid.Resources>
-
+    <!-- 使用 ScrollViewer 包裹 ItemsControl 或 ListBox -->
+    
     <!-- 返回按钮和标题 -->
     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
       <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click"/>
-      <TextBlock Text="整机查询" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
+      <TextBlock Text="整机查询" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
     </StackPanel>
 
     <!-- 查询区域 -->
     <StackPanel Margin="0,60,0,0">
       <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,20">
         <TextBlock Text="硬盘ID:" FontSize="20" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Black" />
-        <TextBox x:Name="SerialNumberTextBox" Width="250" PlaceholderText="请输入硬盘ID" Margin="0,0,10,0" FontSize="14" Height="Auto" />
-        <Button Content="点击查询" Background="Blue" Foreground="White" Width="150" Click="OnQueryButtonClick"/>
+        <TextBox x:Name="SerialNumberTextBox" Width="250" PlaceholderText="请输入硬盘ID" Margin="0,0,10,0" FontSize="14" Height="Auto"   Style="{StaticResource ModernTextBoxStyle}"/>
+        <Button Content="点击查询"   Width="150" Click="OnQueryButtonClick" CornerRadius="5" Background="#0078D7" Foreground="White"/>
       </StackPanel>
 
       <TextBlock Text="查询结果" Margin="0,20,0,10" FontSize="24" FontWeight="Bold" Foreground="Black"/>
 
       <!-- 查询结果列表 -->
-      <ListView x:Name="DataListView" ItemTemplate="{StaticResource QueryDataTemplate}" Margin="0,0,0,20"/>
+
+      <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"  
+ Height="600">
+        <ListView x:Name="DataListView" ItemTemplate="{StaticResource QueryDataTemplate}" Margin="0,0,0,20"/>
+      </ScrollViewer>
     </StackPanel>
-    <!--<Image  Source="ms-appx:///Images/kh_ima.png" Width="700" Height="350" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,90"/>-->
+    
   </Grid>
 </Page>

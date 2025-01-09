@@ -155,6 +155,7 @@
 
         <!-- 使用 StackPanel 包裹 ItemsControl 来设置方向 -->
         <StackPanel  Grid.Row="1"  Padding="10" Margin="0, 0, 0,10">
+          <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"  Height="500">
           <!-- 使用 ItemsControl 展示每个反馈 -->
           <ItemsControl x:Name="FeedbackList" ItemsSource="{Binding Feedbacks}"  >
             <!-- 数据模板 -->
@@ -165,12 +166,13 @@
                     <TextBlock Text="反馈问题：" FontWeight="Bold" Margin="5,0,0,10" Foreground="Black" />
                     <TextBlock Text="{Binding ProblemDescription}" FontWeight="Bold" Margin="30,0,0,15" Foreground="Black"/>
                     <TextBlock Text="解决方案：" FontWeight="Bold" Margin="5,0,0,10" Foreground="Black"/>
-                    <TextBlock Text="{Binding ResolutionMethod}" Margin="0,0,0,0" Foreground="Black"/>
+                    <TextBlock Text="{Binding ResolutionMethod}"  FontWeight="Bold" Margin="30,0,0,0" Foreground="Black"/>
                   </StackPanel>
                 </Border>
               </DataTemplate>
             </ItemsControl.ItemTemplate>
           </ItemsControl>
+          </ScrollViewer>
         </StackPanel>
       </StackPanel>
 

@@ -26,20 +26,7 @@
       </Setter>
     </Style>
     <!-- 按钮样式 -->
-    <Style TargetType="Button" x:Key="CircularButtonStyle">
-      <Setter Property="Background" Value="Transparent"/>
-      <Setter Property="Width" Value="100"/>
-      <Setter Property="Height" Value="100"/>
-      <Setter Property="Template">
-        <Setter.Value>
-          <ControlTemplate TargetType="Button">
-            <Border Background="{TemplateBinding Background}" CornerRadius="50">
-              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-          </ControlTemplate>
-        </Setter.Value>
-      </Setter>
-    </Style>
+   
     <!-- 定义无鼠标悬停效果的按钮样式 -->
     <Style TargetType="Button" x:Key="NoHoverButtonStyle">
       <Setter Property="Background" Value="Transparent"/> 
