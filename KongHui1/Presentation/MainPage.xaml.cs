@@ -43,7 +43,7 @@ namespace KongHui1.Presentation
 
         private void HelpPageButton_Click(object sender, RoutedEventArgs e)
         {
-            //旧版本
+            ////旧版本
             //UpdateButtonSelection((Button)sender);
             //MainFrame.Navigate(typeof(HelpPage));
 

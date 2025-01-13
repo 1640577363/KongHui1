@@ -13,27 +13,27 @@ using Windows.UI.Popups;
 using System.Management;
 
 
-public class QueryData
-{
-    public string serialNumber { get; set; }
-    public string model { get; set; }
-    public string addr { get; set; }
-    public string mainboard { get; set; }
-    public string processor { get; set; }
-    public string memory { get; set; }
-    public string storage { get; set; }
-    public string operatingSystem { get; set; }
-    public string recordDate { get; set; }
-    public string manufacturer { get; set; }
-
-
-}
 
 namespace KongHui1.Presentation
 {
-    public sealed partial class CompleteQuery : Page
+    public class QueryData
     {
-        public CompleteQuery()
+        public string serialNumber { get; set; }
+        public string model { get; set; }
+        public string addr { get; set; }
+        public string mainboard { get; set; }
+        public string processor { get; set; }
+        public string memory { get; set; }
+        public string storage { get; set; }
+        public string operatingSystem { get; set; }
+        public string recordDate { get; set; }
+        public string manufacturer { get; set; }
+
+
+    }
+    public sealed partial class CompleteQueryByCompany : Page
+    {
+        public CompleteQueryByCompany()
         {
             this.InitializeComponent();
             QueryDatas = new ObservableCollection<QueryData>();
@@ -42,7 +42,8 @@ namespace KongHui1.Presentation
         }
 
         // 用于存储从后端获取的数据
-        
+     
+
         // ObservableCollection 用于自动更新 ListView
         public ObservableCollection<QueryData> QueryDatas { get; set; }
         static string GetHardDiskID()
@@ -62,7 +63,7 @@ namespace KongHui1.Presentation
         {
             try
             {
-                string hardwareId = GetHardDiskID();
+                string company = "henu";
                 // 1. 创建 HttpClient 对象
                 HttpClient client = new HttpClient();
                 if (!string.IsNullOrEmpty(LoginPage.Token))
@@ -71,10 +72,10 @@ namespace KongHui1.Presentation
                 }
                 //string Token = "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjEwLjE0LjQwLjE5NkBXZWQgSmFuIDA4IDA5OjM1OjM0IENTVCAyMDI1In0.xv7A2yPHkuD27OrXEz4PzudRvWI6PKW5wVOuZbJgAQkacYxVRzO_9luzPSYKyMhDiTptYJZddpBygiERrxITAA"; // 请用实际的 Token 替换
                 //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
-                
-                 string   url = $"http://10.12.36.204:8080/pcs_info/pcs_info/list?addr={hardwareId}"; // 根据序列号查询数据
-                
-                
+
+                string url = $"http://10.12.36.204:8080/pcs_info/pcs_info/list?manufacturer={company}"; // 根据序列号查询数据
+
+
 
                 // 2. 发送 GET 请求
                 HttpResponseMessage response = await client.GetAsync(url);
@@ -89,7 +90,7 @@ namespace KongHui1.Presentation
                 else
                 {
                     // 请求失败时的处理
-                     ShowMessage("无法获取数据，请稍后再试。");
+                    ShowMessage("无法获取数据，请稍后再试。");
                 }
             }
             catch (Exception ex)
@@ -104,7 +105,7 @@ namespace KongHui1.Presentation
         {
             try
             {
-                JsonResponse response = JsonConvert.DeserializeObject<JsonResponse>(output);
+                JsonResponse2 response = JsonConvert.DeserializeObject<JsonResponse2>(output);
 
                 if (response.Rows != null && response.Rows.Count > 0)
                 {
@@ -138,16 +139,15 @@ namespace KongHui1.Presentation
             await dialog.ShowAsync();
         }
 
-        // 查询按钮点击事件
-        private async void OnQueryButtonClick(object sender, RoutedEventArgs e)
-        {
-            //获取当前公司名称
-
-            // 跳转到新页面
-            this.Frame.Navigate(typeof(CompleteQueryByCompany));
+        //// 查询按钮点击事件
+        //private async void OnQueryButtonClick(object sender, RoutedEventArgs e)
+        //{
+        //    //获取当前公司名称
 
 
-        }
+
+
+        //}
 
         // 返回按钮事件
         private void BackButton_Click(object sender, PointerRoutedEventArgs e)
@@ -160,7 +160,7 @@ namespace KongHui1.Presentation
     }
 
     // API 返回数据模型
-    public class JsonResponse
+    public class JsonResponse2
     {
         public int Total { get; set; }
         public List<QueryData> Rows { get; set; }

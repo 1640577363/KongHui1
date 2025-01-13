@@ -16,6 +16,7 @@ using System.Collections.ObjectModel;
 using static KongHui1.Presentation.Quality_assurance;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using System.Management;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -44,12 +45,24 @@ namespace KongHui1.Presentation
         }
         public ObservableCollection<WarrantyData> WarrantyDatas { get; set; }
         // 用于存储从后端获取的数据
-       
 
-        private async Task GetWarrantyQueryAsync(string hardwareId = null)
+        static string GetHardDiskID()
+        {
+            foreach (ManagementObject disk in new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMedia").Get())
+            {
+                var serialNumber = disk["SerialNumber"]?.ToString().Trim().TrimEnd('.');
+                if (!string.IsNullOrEmpty(serialNumber))
+                {
+                    return serialNumber;
+                }
+            }
+            return "未找到硬盘ID";
+        }
+        private async Task GetWarrantyQueryAsync( )
         {
             try
             {
+                string hardwareId = GetHardDiskID();
                 // 1. 创建 HttpClient 对象
                 HttpClient client = new HttpClient();
                 if (!string.IsNullOrEmpty(LoginPage.Token))
@@ -58,11 +71,9 @@ namespace KongHui1.Presentation
                 }
                 //string Token = "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjEwLjE0LjQwLjE5NkBXZWQgSmFuIDA4IDA5OjM1OjM0IENTVCAyMDI1In0.xv7A2yPHkuD27OrXEz4PzudRvWI6PKW5wVOuZbJgAQkacYxVRzO_9luzPSYKyMhDiTptYJZddpBygiERrxITAA"; // 请用实际的 Token 替换
                 //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
-                string url = $"http://10.12.36.204:8080/warranty/warranty/list";
-                if (hardwareId != null)
-                {
-                    url = $"http://10.12.36.204:8080/warranty/warranty/list?hardwareId={hardwareId}"; // 根据序列号查询数据
-                }
+                
+                string    url = $"http://10.12.36.204:8080/warranty/warranty/list?hardwareId={hardwareId}"; // 根据序列号查询数据
+                
 
 
                 // 2. 发送 GET 请求
@@ -112,20 +123,20 @@ namespace KongHui1.Presentation
                 ShowMessage($"解析失败: {ex.Message}");
             }
         }
-        private async void QueryButton_Click(object sender, RoutedEventArgs e)
-        {
-            string hardwareId = SerialNumberTextBox.Text;
-            if (!string.IsNullOrEmpty(hardwareId))
-            {
-                GetWarrantyQueryAsync(hardwareId); // 使用用户输入的序列号进行查询
-            }
-            else
-            {
-                // 调用后端接口查询数据
-                GetWarrantyQueryAsync();
-                return;
-            }
-        }
+        //private async void QueryButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    string hardwareId = SerialNumberTextBox.Text;
+        //    if (!string.IsNullOrEmpty(hardwareId))
+        //    {
+        //        GetWarrantyQueryAsync(hardwareId); // 使用用户输入的序列号进行查询
+        //    }
+        //    else
+        //    {
+        //        // 调用后端接口查询数据
+        //        GetWarrantyQueryAsync(hardwareId);
+        //        return;
+        //    }
+        //}
 
 
         // 显示消息的辅助方法
