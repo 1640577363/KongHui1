@@ -19,7 +19,7 @@ def start_open_hardware_monitor():
     current_file_path = os.path.abspath(__file__)
     current_dir = os.path.dirname(current_file_path)
     os.chdir(current_dir)
-    
+    print(f"当前目录: {current_dir}")
     open_hw_monitor_path = os.path.join('OpenHardwareMonitor', 'OpenHardwareMonitor.exe')
     print (f"当前目录: {open_hw_monitor_path}")
     process_name = "OpenHardwareMonitor.exe"

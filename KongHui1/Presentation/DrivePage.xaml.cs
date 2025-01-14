@@ -13,9 +13,6 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Globalization;
 
-
-
-
 namespace KongHui1.Presentation
 {
     /// <summary>
@@ -52,7 +49,7 @@ namespace KongHui1.Presentation
             try
             {
                 // 读取JSON文件
-                string filePath = @"C:\yoloSet\yolov11\drivers_to_update.json";
+                string filePath = Path.Combine(scriptPath, "drivers_to_update.json"); 
                 if (File.Exists(filePath))
                 {
                     // 读取文件内容

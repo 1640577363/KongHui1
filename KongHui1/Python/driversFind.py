@@ -1,4 +1,5 @@
 import json
+import os
 import pymysql
 import wmi
 from collections import defaultdict
@@ -146,8 +147,11 @@ execute_batch_query(connection, insert_query, same_version_data)
 
 # 保存需要更新的驱动到文件
 try:
+    current_file_path = os.path.abspath(__file__)
+    current_dir = os.path.dirname(current_file_path)
+    os.chdir(current_dir)
     drivers_to_update = [{"name": d["name"], "newversion": d["newversion"]} for d in different_version_drivers]
-    with open(r'C:\yoloSet\yolov11\drivers_to_update.json', 'w', encoding='utf-8') as f:
+    with open(os.path.join(current_dir, 'drivers_to_update.json'), 'w', encoding='utf-8') as f:
         json.dump(drivers_to_update, f, ensure_ascii=False, indent=4)
     print("需要更新的驱动程序信息已保存为 drivers_to_update.json")
 except Exception as e:
