@@ -6,7 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
+
+
   <Page.Resources>
+    <local:DateTimeToStringConverter x:Key="DateTimeToStringConverter"/>
     <!-- 按钮样式 -->
     <Style TargetType="Button" x:Key="CircularButtonStyle">
       <Setter Property="Background" Value="Transparent"/>
@@ -39,11 +43,11 @@
       <Setter Property="Padding" Value="5,2"/>
       <Setter Property="Margin" Value="5,0"/>
       <Setter Property="HorizontalAlignment" Value="Left"/>
-      
+
     </Style>
   </Page.Resources>
 
-  
+
   <Page.Background>
     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
       <GradientStop Color="#D6ECF3" Offset="0.0"/>
@@ -156,22 +160,33 @@
         <!-- 使用 StackPanel 包裹 ItemsControl 来设置方向 -->
         <StackPanel  Grid.Row="1"  Padding="10" Margin="0, 0, 0,10">
           <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"  Height="500">
-          <!-- 使用 ItemsControl 展示每个反馈 -->
-          <ItemsControl x:Name="FeedbackList" ItemsSource="{Binding Feedbacks}"  >
-            <!-- 数据模板 -->
-            <ItemsControl.ItemTemplate>
-              <DataTemplate>
-                <Border Background="White" CornerRadius="10" BorderThickness="2" BorderBrush="LightGray"   Margin="0, 10, 0,0" > 
-                  <StackPanel Orientation="Vertical" Padding="8" Margin="0,0,0,0" Background="White"  BorderBrush="Gray">
-                    <TextBlock Text="反馈问题：" FontWeight="Bold" Margin="5,0,0,10" Foreground="Black" />
-                    <TextBlock Text="{Binding ProblemDescription}" FontWeight="Bold" Margin="30,0,0,15" Foreground="Black"/>
-                    <TextBlock Text="解决方案：" FontWeight="Bold" Margin="5,0,0,10" Foreground="Black"/>
-                    <TextBlock Text="{Binding ResolutionMethod}"  FontWeight="Bold" Margin="30,0,0,0" Foreground="Black"/>
-                  </StackPanel>
-                </Border>
-              </DataTemplate>
-            </ItemsControl.ItemTemplate>
-          </ItemsControl>
+            <!-- 使用 ItemsControl 展示每个反馈 -->
+            <ItemsControl x:Name="FeedbackList" ItemsSource="{Binding Feedbacks}"  >
+              <!-- 数据模板 -->
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Border Background="White" CornerRadius="10" BorderThickness="2" BorderBrush="LightGray"   Margin="0, 10, 0,0" >
+
+                    <StackPanel Orientation="Vertical" Padding="8" Margin="0,0,0,0" Background="White" BorderBrush="Gray">
+                      <TextBlock Text="提交时间：" FontWeight="Bold" Margin="5,0,0,10" Foreground="Black"/>
+                      <!--<TextBlock Text="{Binding submissionTime}" FontWeight="Bold" Margin="30,0,0,0" Foreground="Black"/>-->
+                      <!--<TextBlock Text="{Binding SubmissionTime, StringFormat='{}{0:dd/MM/yyyy HH:mm:ss}'}" FontWeight="Bold" Margin="30,0,0,0" Foreground="Black"/>-->
+                      <!--<TextBlock Text="{Binding FormattedSubmissionTime}" FontWeight="Bold" Margin="30,0,0,0" Foreground="Black"/>-->
+                      <TextBlock Text="{Binding SubmissionTime, Converter={StaticResource DateTimeToStringConverter}}" FontWeight="Bold" Margin="30,0,0,0" Foreground="Black"/>
+
+                      <TextBlock Text="反馈问题：" FontWeight="Bold" Margin="5,0,0,10" Foreground="Black" />
+                      <TextBlock Text="{Binding ProblemDescription}" FontWeight="Bold" Margin="30,0,0,15" Foreground="Black"/>
+
+                      <TextBlock Text="解决方案：" FontWeight="Bold" Margin="5,0,0,10" Foreground="Black"/>
+                      <TextBlock Text="{Binding ResolutionMethod}" FontWeight="Bold" Margin="30,0,0,0" Foreground="Black"/>
+
+
+                    </StackPanel>
+
+                  </Border>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
           </ScrollViewer>
         </StackPanel>
       </StackPanel>

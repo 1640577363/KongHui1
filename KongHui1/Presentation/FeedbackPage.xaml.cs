@@ -23,6 +23,23 @@ using System.Text;
 
 namespace KongHui1.Presentation
 {
+    public class DateTimeToStringConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value is DateTime dateTime)
+            {
+                // 格式化 DateTime
+                return dateTime.ToString("yyyy-MM-dd HH:mm:ss");
+            }
+            return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
     public sealed partial class FeedbackPage : Page, INotifyPropertyChanged
     {
         private string _hardwareId;  // 硬盘ID字段
@@ -76,12 +93,12 @@ namespace KongHui1.Presentation
 
                 HttpClient client = new HttpClient();
 
-                //if (!string.IsNullOrEmpty(LoginPage.Token))
-                //{
-                //    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", LoginPage.Token);
-                //}
-                String Token = "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjEwLjE0LjQzLjMyQFR1ZSBKYW4gMDcgMTQ6NDU6NTUgQ1NUIDIwMjUifQ.Lzy1IdZWJuNzR2h6-jZf9994ct2Yg6ROMYv5kORVHpKs4XbCtRHrBWrMVAd7oAjYC9vAZR713eX04mSZaXRDEw";
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
+                if (!string.IsNullOrEmpty(LoginPage.Token))
+                {
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", LoginPage.Token);
+                }
+                //String Token = "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjEwLjE0LjQzLjMyQFR1ZSBKYW4gMDcgMTQ6NDU6NTUgQ1NUIDIwMjUifQ.Lzy1IdZWJuNzR2h6-jZf9994ct2Yg6ROMYv5kORVHpKs4XbCtRHrBWrMVAd7oAjYC9vAZR713eX04mSZaXRDEw";
+                //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
                 string url = "http://10.12.36.204:8080/Issues_support/Issues_support"; // 后端 API 地址
                 var values = new Dictionary<string, string>
             {
@@ -194,12 +211,27 @@ namespace KongHui1.Presentation
                 ShowMessage($"解析失败: {ex.Message}");
             }
         }
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value is DateTime dateTime)
+            {
+                // 格式化 DateTime
+                return dateTime.ToString("yyyy-MM-dd HH:mm:ss");
+            }
+            return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
 
         public class Row
         {
             public int IssueId { get; set; }
             public string ProblemDescription { get; set; }
             public string ResolutionMethod { get; set; }
+            public DateTime SubmissionTime { get; set; }
             public int Status { get; set; }
         }
 

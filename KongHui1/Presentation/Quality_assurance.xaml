@@ -58,13 +58,21 @@
 
     <StackPanel Margin="0,60,0,0">
       <!-- 输入框部分 -->
-      <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,20">
+      <!--<StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,20">
         <TextBlock Text="整机序列号:" FontSize="20" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Black"/>
         <TextBox x:Name="SerialNumberTextBox" Width="250" PlaceholderText="请输入整机序列号" Height="Auto" Style="{StaticResource ModernTextBoxStyle}" VerticalAlignment="Center" Margin="0,0,20,0"/>
         <Button Content="点击查询"  Click="QueryButton_Click"  CornerRadius="5" Background="#0078D7" Foreground="White"/>
+      </StackPanel>-->
+
+      <!--<TextBlock Text="查询结果" Margin="0,0,0,10" FontSize="24" FontWeight="Bold" Foreground="Black"/>-->
+
+      <!-- 查询结果标题，放置在左侧 -->
+      <!-- 查询结果标题和描述，放置在左侧 -->
+      <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+        <TextBlock Text="查询结果" Margin="0,20,0,10" FontSize="24" FontWeight="Bold" Foreground="Black"/>
+        <TextBlock Text="  以下为当前工控机的保修记录" Margin="15,25,0,10" FontSize="16" Foreground="#555"/>
       </StackPanel>
 
-      <TextBlock Text="查询结果" Margin="0,0,0,10" FontSize="24" FontWeight="Bold" Foreground="Black"/>
       <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"  Height="600">
         <ListView x:Name="DataListView" ItemsSource="{Binding WarrantyDatas}">
         <ListView.ItemTemplate>
@@ -72,7 +80,7 @@
             <StackPanel Padding="10" Margin="5" Background="White" BorderBrush="LightGray" BorderThickness="1" CornerRadius="5">
               <!-- 显示查询结果的内容 -->
               <StackPanel Orientation="Horizontal">
-                <TextBlock Text="序列号：" Width="100" Foreground="Black"/>
+                <TextBlock Text="本机硬盘ID：" Width="100" Foreground="Black"/>
                 <TextBlock Text="{Binding hardwareId}" Foreground="Black"/>
               </StackPanel>
               <StackPanel Orientation="Horizontal">

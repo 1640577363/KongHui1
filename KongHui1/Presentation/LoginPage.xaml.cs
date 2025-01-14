@@ -61,6 +61,7 @@ public sealed partial class LoginPage : Page
                 IsLogin = true;  
                 this.Frame.Navigate(typeof(MainPage));
             }
+
         }
         else
         {

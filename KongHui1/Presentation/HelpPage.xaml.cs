@@ -71,7 +71,7 @@ public sealed partial class HelpPage : Page
 
     private void OnAddressQueryTapped(object sender, TappedRoutedEventArgs e)
     {
-        Frame.Navigate(typeof(Address_inquiry));
+        Frame.Navigate(typeof(address_query));
     }
     private void OnPointerEntered(object sender, PointerRoutedEventArgs e)
     {

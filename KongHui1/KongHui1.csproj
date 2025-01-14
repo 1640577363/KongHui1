@@ -49,6 +49,12 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Python\Tech_Support\**" />
+    <EmbeddedResource Remove="Python\Tech_Support\**" />
+    <None Remove="Python\Tech_Support\**" />
+    <Page Remove="Python\Tech_Support\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Images\address_query.png" />
     <None Remove="Images\add_que.png" />
     <None Remove="Images\add_que1.png" />
@@ -110,9 +116,10 @@
     <None Remove="Images\war_que.png" />
     <None Remove="Images\war_que1.png" />
     <None Remove="Images\war_que2.png" />
-    <None Remove="Presentation\Address_inquiry.xaml" />
+    <None Remove="Presentation\address_query.xaml" />
     <None Remove="Presentation\BIOS_upgrade.xaml" />
     <None Remove="Presentation\CompleteQuery.xaml" />
+    <None Remove="Presentation\CompleteQueryByCompany.xaml" />
     <None Remove="Presentation\cpu_detail.xaml" />
     <None Remove="Presentation\disk_detail.xaml" />
     <None Remove="Presentation\DrivePage.xaml" />
@@ -400,12 +407,6 @@
     <AdditionalFiles Remove="Presentation\Quality_assurance.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <UpToDateCheckInput Remove="Presentation\Address_inquiry.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AdditionalFiles Remove="Presentation\Address_inquiry.xaml" />
-  </ItemGroup>
-  <ItemGroup>
     <UpToDateCheckInput Remove="Presentation\Mirroring_download.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -454,6 +455,22 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Presentation\User_infromation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Python\Tech_Support\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Python\Tech_Support\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Presentation\CompleteQueryByCompany.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Presentation\address_query.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
