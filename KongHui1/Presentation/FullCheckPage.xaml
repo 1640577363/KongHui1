@@ -52,7 +52,7 @@
           </Ellipse>
 
           <!-- 居中显示分数文本 -->
-          <TextBlock x:Name="ScoreText" Text="N/A" FontSize="24"
+          <TextBlock x:Name="ScoreText" Text="0分" FontSize="24"
                VerticalAlignment="Center" HorizontalAlignment="Center"
                Foreground="White" FontWeight="Bold" TextAlignment="Center"  Margin="-70,0,0,0"/>
 
@@ -65,19 +65,27 @@
                            Margin="200,0,0,0"/>
 
           <!-- 取消检测按钮 -->
-          <StackPanel x:Name="cancelButtonPanel" Grid.Column="1" Margin="10,0,0,0" Visibility="Visible">
-            <Button x:Name="cancelButton" 
-                          Content="取消检测" 
-                          HorizontalAlignment="Right" 
-                          VerticalAlignment="Center" 
-                          Width="150" 
-                          Margin="800,0,0,0" 
-                          Grid.Column="1"
-                          Click="CancelButton_Click"/>
-          </StackPanel>
-          <StackPanel x:Name="fixButton" Visibility="Collapsed" Grid.Column="2" Margin="20,30,0,0">
-                <Button Content="一键修复" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Click="FixButton_Click"/>
-          </StackPanel>
+          <Grid Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="700,0,0,0">
+            <!-- 取消检测按钮 -->
+            <Button x:Name="cancelButtonPanel" 
+                        Content="取消体检" 
+                        Width="150" 
+                        Visibility="Visible"
+                        Click="CancelButton_Click"/>
+
+            <!-- 一键修复按钮 -->
+            <Button x:Name="fixButton" 
+                        Content="一键修复" 
+                        Width="150" 
+                        Visibility="Collapsed"
+                        Click="FixButton_Click"/>
+
+            <Button x:Name="ReScanButton"
+                        Content="重新体检"
+                        Width="150" 
+                        Visibility="Collapsed"
+                        Click="ReScanButton_Click"/>
+          </Grid>
         </Grid>
 
         <!-- 第二行文本：正在扫描病毒和安全防护 -->
@@ -125,49 +133,84 @@
               </Grid>
             </Expander.Header>
             <StackPanel>
-              <Grid>
+              <Grid Width="1500">
                 <!-- 定义三列 -->
                 <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="400"/>
                   <!-- 第一列 -->
-                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="500"/>
                   <!-- 第二列 -->
-                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="500"/>
                   <!-- 第三列 -->
                 </Grid.ColumnDefinitions>
 
                 <!-- 第一列：项名 -->
-                <StackPanel Grid.Column="0" Margin="0,0,0,0">
-                  <TextBlock Text="CPU温度" Margin="10,0,0,0"/>
-                  <TextBlock Text="CPU使用率" Margin="10,20,0,0"/>
-                  <TextBlock Text="CPU风扇转速" Margin="10,20,0,0"/>
-                  <TextBlock Text="显卡温度" Margin="10,20,0,0"/>
-                  <TextBlock Text="显卡使用率" Margin="10,20,0,0"/>
-                  <TextBlock Text="内存使用率" Margin="10,20,0,0"/>
-                  <TextBlock Text="硬盘使用率" Margin="10,20,0,0"/>
+                <StackPanel Grid.Column="0" Margin="250,0,0,0">
+                  <TextBlock x:Name="CpuTemerature" Text="CPU温度" Margin="10,0,0,0"/>
+                  <TextBlock x:Name="Cpuusage" Text="CPU使用率" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="Cpufan" Text="CPU风扇转速" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="GraphicTemperature" Text="显卡温度" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="GraphicUsage" Text="显卡使用率" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="MemoryUsage" Text="内存使用率" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="DiskUsage" Text="硬盘使用率" Margin="10,20,0,0"/>
                 </StackPanel>
 
                 <!-- 第二列：状态 -->
-                <StackPanel Grid.Column="1" Margin="150,0,0,0">
-                  <TextBlock Text="检查CPU温度是否持续低于90°" Margin="10,0,0,0"/>
-                  <TextBlock Text="检查CPU使用率是否持续低于90%" Margin="10,20,0,0"/>
-                  <TextBlock Text="检查CPU风扇是否持续转动" Margin="10,20,0,0"/>
-                  <TextBlock Text="检查显卡温度是否持续低于90°" Margin="10,20,0,0"/>
-                  <TextBlock Text="检查显卡使用率是否持续低于90%" Margin="10,20,0,0"/>
-                  <TextBlock Text="检查内存使用率是否持续低于90%" Margin="10,20,0,0"/>
-                  <TextBlock Text="检查硬盘使用率是否持续低于90%" Margin="10,20,0,0"/>
+                <StackPanel Grid.Column="1" Margin="130,0,0,0">
+                  <TextBlock Text="CPU温度是否高于90°" Margin="10,0,0,0"/>
+                  <TextBlock Text="CPU使用率是否高于90%" Margin="10,20,0,0"/>
+                  <TextBlock Text="CPU风扇是否持续转动" Margin="10,20,0,0"/>
+                  <TextBlock Text="显卡温度是否高于90°" Margin="10,20,0,0"/>
+                  <TextBlock Text="显卡使用率是否高于90%" Margin="10,20,0,0"/>
+                  <TextBlock Text="内存使用率是否高于90%" Margin="10,20,0,0"/>
+                  <TextBlock Text="硬盘使用率是否高于90%" Margin="10,20,0,0"/>
                 </StackPanel>
 
                 <!-- 第三列：结果 -->
-                <StackPanel Grid.Column="2" Margin="400,0,10,0">
-                  <TextBlock x:Name="CpuTemeratureTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,0,0,0"/>
-                  <TextBlock x:Name="CpuusageTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
-                  <TextBlock x:Name="CpufanTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
-                  <TextBlock x:Name="GraphicTemperatureTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
-                  <TextBlock x:Name="GraphicUsageTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
-                  <TextBlock x:Name="MemoryUsageTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
-                  <TextBlock x:Name="DiskUsageTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
+                <StackPanel Grid.Column="2" Margin="240,0,10,0">
+                  <!-- CPU温度 -->
+                  <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                    <TextBlock x:Name="CpuTemeratureTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,0,0,0"/>
+                    <ProgressRing x:Name="CpuTempProgressRing" IsActive="False" Margin="10,0,0,0" Height="20" Width="20"/>
+                  </StackPanel>
+
+                  <!-- CPU使用率 -->
+                  <StackPanel Orientation="Horizontal" Margin="10,20,0,0">
+                    <TextBlock x:Name="CpuusageTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,0,0,0"/>
+                    <ProgressRing x:Name="CpuUsageProgressRing" IsActive="False" Margin="10,0,0,0" Height="20" Width="20"/>
+                  </StackPanel>
+
+                  <!-- CPU风扇转速 -->
+                  <StackPanel Orientation="Horizontal" Margin="10,20,0,0">
+                    <TextBlock x:Name="CpufanTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,0,0,0"/>
+                    <ProgressRing x:Name="CpuFanProgressRing" IsActive="False" Margin="10,0,0,0" Height="20" Width="20"/>
+                  </StackPanel>
+
+                  <!-- 显卡温度 -->
+                  <StackPanel Orientation="Horizontal" Margin="10,20,0,0">
+                    <TextBlock x:Name="GraphicTemperatureTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,0,0,0"/>
+                    <ProgressRing x:Name="GraphicTempProgressRing" IsActive="False" Margin="10,0,0,0" Height="20" Width="20"/>
+                  </StackPanel>
+
+                  <!-- 显卡使用率 -->
+                  <StackPanel Orientation="Horizontal" Margin="10,20,0,0">
+                    <TextBlock x:Name="GraphicUsageTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,0,0,0"/>
+                    <ProgressRing x:Name="GraphicUsageProgressRing" IsActive="False" Margin="10,0,0,0" Height="20" Width="20"/>
+                  </StackPanel>
+
+                  <!-- 内存使用率 -->
+                  <StackPanel Orientation="Horizontal" Margin="10,20,0,0">
+                    <TextBlock x:Name="MemoryUsageTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,0,0,0"/>
+                    <ProgressRing x:Name="MemoryUsageProgressRing" IsActive="False" Margin="10,0,0,0" Height="20" Width="20"/>
+                  </StackPanel>
+
+                  <!-- 硬盘使用率 -->
+                  <StackPanel Orientation="Horizontal" Margin="10,20,0,0">
+                    <TextBlock x:Name="DiskUsageTextBlock" Text="待检测" Foreground="#00AF11" Margin="10,0,0,0"/>
+                    <ProgressRing x:Name="DiskUsageProgressRing" IsActive="False" Margin="10,0,0,0" Height="20" Width="20"/>
+                  </StackPanel>
                 </StackPanel>
+
               </Grid>
             </StackPanel>
           </Expander>
@@ -229,7 +272,7 @@
                 </StackPanel>
 
                 <!-- 第三列：结果 -->
-                <StackPanel Grid.Column="2" Margin="400,0,30,0">
+                <StackPanel Grid.Column="2" Margin="400,0,10,00">
                   <TextBlock x:Name="CPUDriveText" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
                   <TextBlock x:Name="GraphicDriveText" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
                   <TextBlock x:Name="NetworkAdapterText" Text="待检测" Foreground="#00AF11" Margin="10,20,0,0"/>
@@ -283,7 +326,7 @@
 
                 <!-- 第二列：状态 -->
                 <StackPanel Grid.Column="1" Margin="150,0,0,0">
-                  <TextBlock Text="检查病毒和威胁防护是否已开启°" Margin="10,0,0,0"/>
+                  <TextBlock Text="检查病毒和威胁防护是否已开启" Margin="10,0,0,0"/>
                   <TextBlock Text="检查防火墙和网络保护是否已开启" Margin="10,20,0,0"/>
                 </StackPanel>
 

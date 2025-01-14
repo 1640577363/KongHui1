@@ -1,10 +1,10 @@
 {
-    "name": "NVIDIA GeForce GTX 1650",
-    "utilization_ratio": "0.00%",
-    "memoryTotal": "4096.0 MB",
-    "Used": "81.0 MB",
-    "Free": "3855.0 MB",
-    "driver_version": "32.0.15.6081",
-    "driver_date": "20240730000000",
+    "name": "NVIDIA GeForce RTX 4060",
+    "utilization_ratio": "2.00%",
+    "memoryTotal": "8188.0 MB",
+    "Used": "1318.0 MB",
+    "Free": "6640.0 MB",
+    "driver_version": "32.0.15.6614",
+    "driver_date": "20241106000000",
     "DirectX_version": "DirectX 9.0"
 }

@@ -12,6 +12,7 @@
     <PackageVersion Include="IronPython" Version="3.4.1" />
     <PackageVersion Include="LibreHardwareMonitorLib" Version="0.9.3" />
     <PackageVersion Include="LiveCharts" Version="0.9.7" />
+    <PackageVersion Include="MySql.Data" Version="9.1.0" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="OpenHardwareMonitor" Version="0.9.6" />
     <PackageVersion Include="OxyPlot.Core" Version="2.2.0" />

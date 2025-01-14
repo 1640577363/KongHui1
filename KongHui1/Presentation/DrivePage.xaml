@@ -7,22 +7,33 @@
       mc:Ignorable="d">
 
   <Page.Resources>
+
     <!-- 按钮样式 -->
-    <Style TargetType="Button" x:Key="CircularButtonStyle">
-      <Setter Property="Background" Value="Transparent"/>
-      <Setter Property="Width" Value="100"/>
-      <Setter Property="Height" Value="100"/>
+    <Style x:Key="ModernButtonStyle" TargetType="Button">
+      <Setter Property="Background" Value="DeepSkyBlue"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="CornerRadius" Value="5"/>
+      <Setter Property="Padding" Value="10,5"/>
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="BorderBrush" Value="Transparent"/>
+      <Setter Property="Height" Value="40"/>
+      <Setter Property="Width" Value="150"/>
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate TargetType="Button">
-            <Border Background="{TemplateBinding Background}" CornerRadius="50">
+            <Border Background="{TemplateBinding Background}"
+                CornerRadius="5">
               <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
           </ControlTemplate>
         </Setter.Value>
       </Setter>
+
     </Style>
+    <local:StringToColorConverter x:Key="StringToColorConverter"/>
   </Page.Resources>
+
   <Page.Background>
     <SolidColorBrush Color="#F4F9FF"/>
   </Page.Background>
@@ -34,69 +45,106 @@
     </Grid.RowDefinitions>
 
     <!-- 驱动数量显示（加粗） -->
-    <TextBlock x:Name="DriversCountTextBlock" FontSize="30" FontWeight="Bold" Foreground="Black"
+    <TextBlock x:Name="DriversCountTextBlock" FontSize="25" FontWeight="Bold" Foreground="Black"
                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,10"
                Text="本地共发现0个驱动"/>
 
     <!-- 按钮容器 -->
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50,100,10">
       <!-- 一键更新按钮 -->
-      <Button Content="一键更新"  Margin="0,0,10,0"  FontWeight="Bold"  Width="150" Height="40" FontSize="16" Background="#0078D7" Foreground="White"  CornerRadius="5"/>
+      <Button Content="一键更新"  Margin="0,0,10,0"  Click="OnUpdateButtonClick" FontWeight="Bold" Style="{StaticResource ModernButtonStyle}" PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited"/>
       <!-- 一键检测按钮 -->
-      <Button Content="一键检测"  FontWeight="Bold" Click="Detection_drive"  Width="150" Height="40" FontSize="16" Background="#0078D7" Foreground="White"  CornerRadius="5"/>
+      <Button Content="一键检测"  FontWeight="Bold" Click="OnDetectButtonClick"  Style="{StaticResource ModernButtonStyle}"  PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited"/>
     </StackPanel>
 
     <!-- 驱动信息滚动区域 -->
     <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" >
-      <ItemsControl x:Name="DriversListBox">
+      <ItemsControl x:Name="DriverInfoListView" >
         <ItemsControl.ItemTemplate>
           <DataTemplate>
             <!-- 分组显示设备类别 -->
-            <Expander Header="{Binding Key}" IsExpanded="False" Width="1100" HorizontalAlignment="Center"  Foreground="Black">
-              <ItemsControl ItemsSource="{Binding Items}"  Foreground="Black">
-                <ItemsControl.ItemTemplate>
-                  <DataTemplate>
-                    <!-- 使用 Grid 来布局 -->
-                    <Grid Margin="10" HorizontalAlignment="Stretch">
-                      <Grid.ColumnDefinitions>
-                        <!-- 第1列：多选框 -->
-                        <ColumnDefinition Width="50"/>
-                        <!-- 第2列：设备类和设备名称 -->
-                        <ColumnDefinition Width="450"/>
-                        <!-- 第3列：版本号 -->
-                        <ColumnDefinition Width="150"/>
-                        <!-- 第4列：最新版本 -->
-                        <ColumnDefinition Width="150"/>
-                        <!-- 第5列：更新按钮 -->
-                        <ColumnDefinition Width="100"/>
-                      </Grid.ColumnDefinitions>
+            <Expander Header="{Binding Key}" IsExpanded="False" Width="1100" HorizontalAlignment="Center" Foreground="Black">
+              <StackPanel>
+                <!-- 表头行 -->
+                <Grid Margin="10" HorizontalAlignment="Stretch">
+                  <Grid.ColumnDefinitions>
+                    <!-- 第1列：多选框
+                    <ColumnDefinition Width="50"/> -->
+                    <!-- 第2列：设备类和设备名称 -->
+                    <ColumnDefinition Width="555"/>
+                    <!-- 第3列：版本号 -->
+                    <ColumnDefinition Width="145"/>
+                    <!-- 第4列：最新版本 -->
+                    <ColumnDefinition Width="140"/>
+                    <!-- 第5列：更新按钮 -->
+                    <ColumnDefinition Width="80"/>
+                  </Grid.ColumnDefinitions>
 
-                      <!-- 多选框 -->
-                      <CheckBox Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" />
+                  <!-- 表头：多选框
+                  <TextBlock Grid.Column="0" Text="多选框" FontSize="12" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+                  <!-- 表头：设备类和设备名称 -->
+                  <TextBlock Grid.Column="0" Text="设备信息" FontSize="12" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                  <!-- 表头：版本号 -->
+                  <TextBlock Grid.Column="1" Text="版本号" FontSize="12" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                  <!-- 表头：最新版本 -->
+                  <TextBlock Grid.Column="2" Text="最新版本" FontSize="12" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                  <!-- 表头：更新按钮 -->
+                  <TextBlock Grid.Column="3" Text="操作" FontSize="12" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
 
-                      <!-- 设备类和设备名称 -->
-                      <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10,0,0,0" >
-                        <TextBlock Text="{Binding DeviceClassChinese}" FontSize="16" Foreground="Black" HorizontalAlignment="Left"/>
-                        <TextBlock Text="{Binding DeviceName}" FontSize="14" Foreground="Black" HorizontalAlignment="Left"/>
-                      </StackPanel>
+                <!-- 数据行 -->
+                <ItemsControl ItemsSource="{Binding Items}" Foreground="Black">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <!-- 使用 Grid 来布局 -->
+                      <Grid Margin="10" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                          <!-- 第1列：多选框
+                          <ColumnDefinition Width="50"/> -->
+                          <!-- 第2列：设备类和设备名称 -->
+                          <ColumnDefinition Width="510"/>
+                          <!-- 第3列：版本号 -->
+                          <ColumnDefinition Width="150"/>
+                          <!-- 第4列：最新版本 -->
+                          <ColumnDefinition Width="150"/>
+                          <!-- 第5列：更新按钮 -->
+                          <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
 
-                      <!-- 版本号 -->
-                      <TextBlock Grid.Column="2" Text="{Binding DriverVersion}" FontSize="12" Foreground="Gray"
-                                 VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,20,0"/>
+                        <!-- 多选框 
+                        <CheckBox Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" />-->
 
-                      <!-- 最新版本 -->
-                      <TextBlock Grid.Column="3" Text="{Binding LatestDriverVersion}" FontSize="12" Foreground="Gray"
-                                 VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,20,0"/>
+                        <!-- 设备类和设备名称 -->
+                        <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="0,0,0,0">
+                          <TextBlock Text="{Binding Name}" FontSize="16" Foreground="Black" HorizontalAlignment="Left"/>
+                          <!--  <TextBlock Text="{Binding Category}" FontSize="14" Foreground="Black" HorizontalAlignment="Left"/>-->
+                        </StackPanel>
 
-                      <!-- 更新按钮 -->
-                      <Button Grid.Column="4" Content="更新" Width="75" Height="30" FontSize="12" HorizontalAlignment="Right"  Background="#0078D7" Foreground="White"  CornerRadius="5">
-                      </Button>
-                    </Grid>
-                  </DataTemplate>
-                </ItemsControl.ItemTemplate>
-              </ItemsControl>
+                        <!-- 版本号 -->
+                        <TextBlock Grid.Column="1" Text="{Binding Version}" FontSize="12" Foreground="Gray"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,20,0"/>
+
+                        <!-- 最新版本 -->
+                        <TextBlock Grid.Column="2" Text="{Binding NewVersion}" FontSize="12" Foreground="Gray"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,20,0"/>
+
+                        <!-- 更新按钮 -->
+                        <Button x:Name="UpdateButton" Grid.Column="3" Content="更新" Width="60" Height="30" FontSize="12" HorizontalAlignment="Center" 
+                                Margin="0,0,10,0" Style="{StaticResource ModernButtonStyle}" 
+                                
+                                Click="UpdateButton_Click" Tag="{Binding Name}"
+                                Background="{Binding IsButton, Converter={StaticResource StringToColorConverter}}"/>
+                      </Grid>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+              </StackPanel>
             </Expander>
-          </DataTemplate> 
+
+
+
+
+          </DataTemplate>
         </ItemsControl.ItemTemplate>
       </ItemsControl>
     </ScrollViewer>
