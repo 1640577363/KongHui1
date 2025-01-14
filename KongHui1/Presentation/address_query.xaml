@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+   >
 
   <Page.Resources>
     <!-- Modern TextBox 样式 -->
@@ -40,6 +40,12 @@
       <Setter Property="BorderThickness" Value="0"/>
     </Style>
   </Page.Resources>
+  <Page.Background>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+      <GradientStop Color="#D6ECF3" Offset="0.0"/>
+      <GradientStop Color="White" Offset="1.0"/>
+    </LinearGradientBrush>
+  </Page.Background>
 
   <Grid Margin="10">
     <!-- 页面头部 -->
@@ -51,8 +57,8 @@
     <!-- 搜索区域 -->
     <Grid VerticalAlignment="Top" Margin="0, 60, 10, 10">
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="3*" />
         <ColumnDefinition Width="2*" />
+        <ColumnDefinition Width="3*" />
       </Grid.ColumnDefinitions>
 
       <Grid.RowDefinitions>
@@ -62,16 +68,17 @@
 
       <!-- 左侧：搜索区域 -->
       <StackPanel Margin="10" Grid.Column="0" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
-        <TextBox x:Name="SearchTextBox" PlaceholderText="请输入关键词" Style="{StaticResource ModernTextBoxStyle}" Width="300" Height="40" Margin="0,0,20,10" />
-        <Button Content="搜索" Style="{StaticResource ModernButtonStyle}" Click="SearchButton_Click"/>
+        <!--<TextBox x:Name="SearchTextBox" PlaceholderText="请输入关键词" Style="{StaticResource ModernTextBoxStyle}" Width="300" Height="40" Margin="0,0,20,10" />-->
+        <TextBox  x:Name="SearchTextBox" PlaceholderText="请输入关键词"   Width="300" BorderBrush="#0078D7" BorderThickness="2" Foreground="Black" Padding="3"  Margin="0,0,20,10" />
+        <Button Content="搜索" Style="{StaticResource ModernButtonStyle}" Click="SearchButton_Click" Margin="0,0,10,0"/>
         <Button Content="重置" Style="{StaticResource ModernButtonStyle}" Click="SearchButton_Click2"/>
       </StackPanel>
 
       <!-- 地址展示区域 -->
-      <ListView x:Name="DataListView" Grid.Column="0" Grid.Row="1" Margin="10,10,0,0" Style="{StaticResource ModernListViewItemStyle}">
+      <ListView x:Name="DataListView" Grid.Column="0" Grid.Row="1" Margin="10,10,0,0" Style="{StaticResource ModernListViewItemStyle}"  HorizontalAlignment="Left">
         <ListView.ItemTemplate>
           <DataTemplate x:DataType="local:AddressData">
-            <Border Width="500" Height="120" Background="White" CornerRadius="12" BorderBrush="#ddd" BorderThickness="1">
+            <Border Width="500" Height="120" Background="White" CornerRadius="12" BorderBrush="#ddd" BorderThickness="1" Margin="0,0,10,10">
               <StackPanel Margin="10">
                 <!-- 站点名称 -->
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
@@ -95,6 +102,22 @@
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>
+      <StackPanel  Grid.Column="1"  Grid.RowSpan="2">
+        <TextBlock Text="深圳总公司控汇" FontWeight="Bold" HorizontalAlignment="Center"   Foreground="#333" />
+        <Image Source="ms-appx:///Images/ComapnyBuilding.png" Stretch="Uniform" Margin="0,0,0,10"  Height="400" Width="600"/>
+        <StackPanel Orientation="Horizontal" Margin="90,0,0,5">
+          <SymbolIcon Symbol="Mail" Margin="0,0,5,0" Foreground="#333"/>
+          <TextBlock Text="深圳市龙华区大浪街道新石社区丽荣路1号昌毅工业区3栋五层、六层"  Foreground="#333"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="90,0,0,5">
+          <SymbolIcon Symbol="Phone" Margin="0,0,5,0" Foreground="#333"/>
+          <TextBlock Text="0755-27041051"  Foreground="#333"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="90,0,0,5">
+          <SymbolIcon Symbol="Clock" Margin="0,0,5,0" Foreground="#333"/>
+          <TextBlock Text="周一至周五 9:00-18:00"  Foreground="#333"/>
+        </StackPanel>
+      </StackPanel>
     </Grid>
   </Grid>
 </Page>
