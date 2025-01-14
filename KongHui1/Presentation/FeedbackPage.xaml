@@ -167,20 +167,24 @@
                 <DataTemplate>
                   <Border Background="White" CornerRadius="10" BorderThickness="2" BorderBrush="LightGray"   Margin="0, 10, 0,0" >
 
-                    <StackPanel Orientation="Vertical" Padding="8" Margin="0,0,0,0" Background="White" BorderBrush="Gray">
-                      <TextBlock Text="提交时间：" FontWeight="Bold" Margin="5,0,0,10" Foreground="Black"/>
-                      <!--<TextBlock Text="{Binding submissionTime}" FontWeight="Bold" Margin="30,0,0,0" Foreground="Black"/>-->
-                      <!--<TextBlock Text="{Binding SubmissionTime, StringFormat='{}{0:dd/MM/yyyy HH:mm:ss}'}" FontWeight="Bold" Margin="30,0,0,0" Foreground="Black"/>-->
-                      <!--<TextBlock Text="{Binding FormattedSubmissionTime}" FontWeight="Bold" Margin="30,0,0,0" Foreground="Black"/>-->
-                      <TextBlock Text="{Binding SubmissionTime, Converter={StaticResource DateTimeToStringConverter}}" FontWeight="Bold" Margin="30,0,0,0" Foreground="Black"/>
+                    <StackPanel Orientation="Vertical" Padding="8" Margin="0,0,0,0">
+                      <!-- 提交时间 -->
+                      <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="提交时间：" Margin="5,0,0,0" Foreground="Black" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding SubmissionTime, Converter={StaticResource DateTimeToStringConverter}}" Margin="10,0,0,0" Foreground="Black" VerticalAlignment="Center"/>
+                      </StackPanel>
 
-                      <TextBlock Text="反馈问题：" FontWeight="Bold" Margin="5,0,0,10" Foreground="Black" />
-                      <TextBlock Text="{Binding ProblemDescription}" FontWeight="Bold" Margin="30,0,0,15" Foreground="Black"/>
+                      <!-- 反馈问题 -->
+                      <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="反馈问题：" Margin="5,0,0,0" Foreground="Black" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding ProblemDescription}" Margin="10,0,0,0" Foreground="Black" VerticalAlignment="Center"/>
+                      </StackPanel>
 
-                      <TextBlock Text="解决方案：" FontWeight="Bold" Margin="5,0,0,10" Foreground="Black"/>
-                      <TextBlock Text="{Binding ResolutionMethod}" FontWeight="Bold" Margin="30,0,0,0" Foreground="Black"/>
-
-
+                      <!-- 解决方案 -->
+                      <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="解决方案：" Margin="5,0,0,0" Foreground="Black" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding ResolutionMethod}" Margin="10,0,0,0" Foreground="Black" VerticalAlignment="Center"/>
+                      </StackPanel>
                     </StackPanel>
 
                   </Border>
