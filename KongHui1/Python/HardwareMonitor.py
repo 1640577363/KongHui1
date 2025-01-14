@@ -7,24 +7,21 @@ import psutil
 import asyncio
 import websockets
 
-
 def is_process_running(process_name):
-    """
-    检测指定名称的进程是否已运行。
-    :param process_name: 进程名称 (如 "OpenHardwareMonitor.exe")
-    :return: 如果进程已运行返回 True，否则返回 False
-    """
+
     for proc in psutil.process_iter(['name']):
         if proc.info['name'] == process_name:
             return True
     return False
 
-
 def start_open_hardware_monitor():
-    """
-    启动 OpenHardwareMonitor，如果尚未运行。
-    """
-    open_hw_monitor_path = r"D:\Project\UNO2\KongHui1\Python\OpenHardwareMonitor\OpenHardwareMonitor.exe"
+
+    current_file_path = os.path.abspath(__file__)
+    current_dir = os.path.dirname(current_file_path)
+    os.chdir(current_dir)
+    
+    open_hw_monitor_path = os.path.join('OpenHardwareMonitor', 'OpenHardwareMonitor.exe')
+    print (f"当前目录: {open_hw_monitor_path}")
     process_name = "OpenHardwareMonitor.exe"
 
     if is_process_running(process_name):
@@ -36,12 +33,8 @@ def start_open_hardware_monitor():
         except Exception as e:
             print(f"启动 {process_name} 失败: {e}")
 
-
 def fetch_ohm_data():
-    """
-    从 OpenHardwareMonitor 获取 JSON 数据。
-    :return: JSON 数据字典
-    """
+
     url = "http://localhost:8085/data.json"  # OpenHardwareMonitor 默认地址
     try:
         response = requests.get(url)
@@ -51,20 +44,34 @@ def fetch_ohm_data():
         print(f"无法连接 OpenHardwareMonitor: {e}")
         return None
 
-
 def extract_metrics(json_data):
-    
-    metrics = {"cpu_temp": None, "cpu_usage": None, "gpu_temp": None, "hdd_temp": None, "fan_speed": None}
+    metrics = {
+        "cpu_temp": None,
+        "cpu_usage": None,
+        "gpu_temp": None,
+        "hdd_temp": None,
+        "fan_speed": None,
+        "gpu_usage": None,
+        "memory_usage": None,
+        "hdd_usage": None
+    }
 
     def recursive_search(data, target_keys):
-        
         if isinstance(data, dict):
             # Match specific metrics based on 'Text' key
             text = data.get("Text", "").lower()
             value = data.get("Value", None)
 
+            # Skip invalid values
+            if value == "-":
+                return  # Skip invalid value
+            
+            # Handle valid numeric values
             if text in target_keys and value is not None:
-                metrics[target_keys[text]] = float(value.split(" ")[0])  # Convert to float, strip units if present
+                try:
+                    metrics[target_keys[text]] = float(value.split(" ")[0])  # Convert to float, strip units if present
+                except ValueError:
+                    print(f"无法将值 '{value}' 转换为数字，跳过此项")  # 如果值无法转换为数字，输出错误并跳过
 
             # Recurse into children if available
             for child in data.get("Children", []):
@@ -80,57 +87,17 @@ def extract_metrics(json_data):
         "gpu core": "gpu_temp",
         "fan #2": "fan_speed",
         "temperature #2": "hdd_temp",
+        "gpu memory": "gpu_usage",      # GPU 使用率
+        "memory": "memory_usage",      # 内存使用率
+        "used space": "hdd_usage"      # 硬盘使用率
     }
 
-    # Start recursive search
     recursive_search(json_data, target_keys)
-    
     return metrics
 
-
-async def send_progress(websocket, total_duration):
-    """
-    发送任务的进度到 WebSocket 客户端。
-    :param websocket: WebSocket 连接
-    :param total_duration: 任务的总时长 (秒)
-    """
-    sampling_interval = 1  # 每次采样间隔 (秒)
-    metrics_samples = []
-
-    for elapsed_time in range(0, total_duration, sampling_interval):
-        # 模拟采集数据
-        progress = elapsed_time / total_duration * 100
-        print(f"任务进度: {progress:.2f}%")
-        await websocket.send(json.dumps({"progress": progress}))
-
-        # 假装采集数据 (实际逻辑可以调用 fetch_ohm_data 和 extract_metrics)
-        metrics_samples.append({"cpu_temp": 60, "cpu_usage": 50})  # 示例数据
-        time.sleep(sampling_interval)
-
-    # 完成任务，发送完成信号
-    print("任务完成")
-    await websocket.send(json.dumps({"progress": 100, "status": "complete"}))
-
-
-async def websocket_server():
-    try:
-        async def handler(websocket, path):
-            print("WebSocket 客户端已连接")
-            await send_progress(websocket, total_duration=10)
-
-        async with websockets.serve(handler, "localhost", 8765):
-            print("WebSocket 服务器已启动")
-            await asyncio.Future()  # 阻止退出
-    except Exception as ex:
-        print(f"WebSocket 服务器启动失败: {ex}")
-
-
+     
 def calculate_average(metrics_list):
-    """
-    计算多个采样点的平均值，保留一位小数。
-    :param metrics_list: 采样点列表 (每个点是一个字典)
-    :return: 平均值字典
-    """
+
     avg_metrics = {key: 0 for key in metrics_list[0].keys()}
 
     for metrics in metrics_list:
@@ -145,47 +112,10 @@ def calculate_average(metrics_list):
     print("平均值计算结果:", avg_metrics)
     return avg_metrics
 
-
-
-def score_metrics(avg_metrics):
-    """
-    根据平均监控指标进行评分。
-    :param avg_metrics: 平均监控指标字典
-    :return: 评分详情和总分
-    """
-    scores = {"CPU": 0, "GPU": 0, "HDD": 0, "Fan": 0}
-    total_score = 0
-
-    # CPU 分数
-    if avg_metrics["cpu_temp"] is not None:
-        scores["CPU"] += max(0, 40 - max(0, (avg_metrics["cpu_temp"] - 90) * 2))
-    if avg_metrics["cpu_usage"] is not None:
-        scores["CPU"] += max(0, 40 - max(0, (avg_metrics["cpu_usage"] - 90)))
-    scores["CPU"] = min(40, scores["CPU"])
-
-    # GPU 分数
-    if avg_metrics["gpu_temp"] is not None:
-        scores["GPU"] = max(0, 30 - max(0, (avg_metrics["gpu_temp"] - 90) * 2))
-
-    # HDD 分数
-    if avg_metrics["hdd_temp"] is not None:
-        scores["HDD"] = max(0, 20 - max(0, (avg_metrics["hdd_temp"] - 60) * 2))
-
-    # Fan 分数
-    if avg_metrics["fan_speed"] is not None and avg_metrics["fan_speed"] > 0:
-        scores["Fan"] = 10
-
-    # 总分 
-    total_score = scores["CPU"] + scores["GPU"] + scores["HDD"] + scores["Fan"]
-
-    return scores, total_score
-
-
 if __name__ == "__main__":
     start_open_hardware_monitor()
-    time.sleep(3)  # 等待 OpenHardwareMonitor 启动
+    time.sleep(2)  # 等待 OpenHardwareMonitor 启动
 
-    # 采样5秒内的数据
     sampling_duration = 5
     sampling_interval = 1
     metrics_samples = []
@@ -197,14 +127,7 @@ if __name__ == "__main__":
             metrics_samples.append(metrics)
         time.sleep(sampling_interval)
 
-    # 计算平均值
     avg_metrics = calculate_average(metrics_samples)
 
-    # 根据平均值评分
-    scores, total_score = score_metrics(avg_metrics)
 
-    # 输出结果
-    print("硬件评分详情:")
-    for component, score in scores.items():
-        print(f"{component}: {score} 分")
-    print(f"总分: {total_score} 分")
+

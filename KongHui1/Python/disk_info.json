@@ -1,30 +1,30 @@
 [
     {
         "mountpoint": "C:\\",
-        "total_size": "140.00 GB",
-        "used_size": "122.40 GB",
-        "free_size": "17.60 GB",
-        "usage_percent": "87.40 %",
-        "read_speed": "57520.50 KB/s",
-        "write_speed": "3104.00 KB/s",
-        "model": "PC SN520 NVMe WDC 512GB",
+        "total_size": "300.00 GB",
+        "used_size": "124.28 GB",
+        "free_size": "175.72 GB",
+        "usage_percent": "41.40 %",
+        "read_speed": "0.00 KB/s",
+        "write_speed": "476.00 KB/s",
+        "model": "WD Blue SN580 1TB",
         "disk_type": "硬盘 (HDD)",
         "isSystemDisk": "是",
-        "total_read": "133.19 GB",
-        "total_write": "50.40 GB"
+        "total_read": "22.96 GB",
+        "total_write": "3.54 GB"
     },
     {
         "mountpoint": "D:\\",
-        "total_size": "317.48 GB",
-        "used_size": "44.37 GB",
-        "free_size": "273.11 GB",
-        "usage_percent": "14.00 %",
-        "read_speed": "57520.50 KB/s",
-        "write_speed": "3104.00 KB/s",
-        "model": "PC SN520 NVMe WDC 512GB",
+        "total_size": "630.80 GB",
+        "used_size": "433.97 GB",
+        "free_size": "196.84 GB",
+        "usage_percent": "68.80 %",
+        "read_speed": "0.00 KB/s",
+        "write_speed": "476.00 KB/s",
+        "model": "WD Blue SN580 1TB",
         "disk_type": "硬盘 (HDD)",
         "isSystemDisk": "否",
-        "total_read": "133.19 GB",
-        "total_write": "50.40 GB"
+        "total_read": "22.96 GB",
+        "total_write": "3.54 GB"
     }
 ]
