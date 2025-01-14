@@ -102,7 +102,12 @@
         <TextBlock Text="查询结果" Margin="0,20,0,10" FontSize="24" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center"/>
 
         <!-- 查询本公司所有工控机信息按钮，放置在最右侧 -->
-        <Button Content="查询本公司所有工控机信息" Width="250" Grid.Column="1" Click="OnQueryButtonClick" CornerRadius="5" Background="#0078D7" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,20" Grid.Column="1">
+          <Button Content="查询" Width="100"  Click="OnQueryButtonClick" CornerRadius="5" Background="#0078D7" Foreground="White" VerticalAlignment="Center"  Margin="0,0,0,0"></Button>
+                  
+          <TextBlock Text="*仅显示本工控机所在公司工控机信息" Margin="5,0,0,0" FontSize="10"  Foreground="Black" VerticalAlignment="Center"/>
+        </StackPanel>
+        
       </Grid>
 
       <!-- 查询结果列表 -->
