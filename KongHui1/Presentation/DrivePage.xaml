@@ -140,10 +140,6 @@
                 </ItemsControl>
               </StackPanel>
             </Expander>
-
-
-
-
           </DataTemplate>
         </ItemsControl.ItemTemplate>
       </ItemsControl>

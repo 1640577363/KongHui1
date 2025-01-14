@@ -26,9 +26,18 @@ namespace KongHui1.Presentation
         // MySQL 数据库连接字符串
         private string _connectionString = "Server=localhost;Database=qd;User ID=root;Password=123456;";
         List<DriverInfo> driverInfoList = new List<DriverInfo>();
+        private string baseDir;
+        private string scriptPath;
+
         public DrivePage()
         {
             this.InitializeComponent();
+            baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            for (int i = 0; i < 5; i++)
+            {
+                baseDir = Directory.GetParent(baseDir)?.FullName;
+            }
+            scriptPath = Path.Combine(baseDir, "Python");
             this.Loaded += DrivePage_Loaded; // 在页面加载完成后再调用
         }
 
@@ -58,7 +67,7 @@ namespace KongHui1.Presentation
                         DriversCountTextBlock.Text = $"正在更新驱动：{driver.Name}";
                         //await RunUpdateDriverPythonScript(driver.Name);
                         // 绝对路径 - 确保替换为你自己的路径
-                        string pythonScriptPath = @"D:\Project\UNO2\KongHui1\Python\driverChange.py";  // Python 脚本路径
+                        string pythonScriptPath = Path.Combine(scriptPath, "driverChange.py"); // Python 脚本路径
 
                         // 使用环境变量中的 Python 可执行文件
                         string pythonExecutable = "python"; // Python 可执行文件名，已经添加到环境变量中
@@ -172,7 +181,8 @@ namespace KongHui1.Presentation
                 System.Diagnostics.Debug.WriteLine($"更新的驱动名称: {driverName}");
 
                 // 读取 drivers_to_update.json 文件中的数据
-                string filePath = @"D:\Project\UNO2\KongHui1\Python\drivers_to_update.json";
+                
+                string filePath = Path.Combine(scriptPath, "drivers_to_update.json");
 
                 if (File.Exists(filePath))
                 {
@@ -215,7 +225,8 @@ namespace KongHui1.Presentation
         private async Task RunUpdateDriverPythonScript(string driverName)
         {
             // 绝对路径 - 确保替换为你自己的路径
-            string pythonScriptPath = @"C:\Users\LANY\Desktop\python脚本\driverChange.py";  // Python 脚本路径
+            
+            string pythonScriptPath = Path.Combine(scriptPath, "driverChange.py"); // Python 脚本路径
 
             // 使用环境变量中的 Python 可执行文件
             string pythonExecutable = "python"; // Python 可执行文件名，已经添加到环境变量中
@@ -321,7 +332,7 @@ namespace KongHui1.Presentation
             DriversCountTextBlock.Text = "正在检测驱动中，请稍候...";
             // 执行 Python 脚本查找驱动
             // 绝对路径 - 确保替换为你自己的路径
-            string pythonScriptPath = @"D:\Project\UNO2\KongHui1\Python\driversFind.py"; // 绝对路径指向 Python 脚本
+            string pythonScriptPath = Path.Combine(scriptPath, "driversFind.py"); // 绝对路径指向 Python 脚本
 
             // 使用环境变量中的 Python 可执行文件
             string pythonExecutable = "python"; // Python 可执行文件名，已经添加到环境变量中
