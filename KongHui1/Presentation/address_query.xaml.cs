@@ -40,12 +40,12 @@ public sealed partial class address_query : Page
         try
         {
             HttpClient client = new HttpClient();
-            //if (!string.IsNullOrEmpty(LoginPage.Token))
-            //{
-            //    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", LoginPage.Token);
-            //}
-            string Token = "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjEwLjE0LjMwLjU5QFN1biBKYW4gMTIgMjA6MzU6MzggQ1NUIDIwMjUifQ.VFLs4-gFaFkxy3prNwYUyx8SluaNFdjt0sgw0a8bMKB8XB_9hGCgWlhXLN1mHxr1qLTXXNRxklUZ0OV5nYee6g"; // 请用实际的 Token 替换
-            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
+            if (!string.IsNullOrEmpty(LoginPage.Token))
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", LoginPage.Token);
+            }
+            //string Token = "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjEwLjE0LjMwLjU5QFN1biBKYW4gMTIgMjA6MzU6MzggQ1NUIDIwMjUifQ.VFLs4-gFaFkxy3prNwYUyx8SluaNFdjt0sgw0a8bMKB8XB_9hGCgWlhXLN1mHxr1qLTXXNRxklUZ0OV5nYee6g"; // 请用实际的 Token 替换
+            //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
 
             // 根据关键词修改 URL
             string url = "http://10.12.36.204:8080/address/address/list";
