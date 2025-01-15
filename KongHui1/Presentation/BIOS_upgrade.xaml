@@ -8,20 +8,22 @@
     mc:Ignorable="d">
 
   <Page.Background>
-    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-      <GradientStop Color="#D6ECF3" Offset="0.0"/>
-      <GradientStop Color="White" Offset="1.0"/>
-    </LinearGradientBrush>
+    <SolidColorBrush Color="#F4F9FF"/>
   </Page.Background>
+
 
   <Grid>
     <!-- Header with Back Button and Title -->
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0">
-      <Image Source="ms-appx:///Images/BackIcon.png" Width="20" Height="20" PointerPressed="BackButton_Click" HorizontalAlignment="Left"/>
-      <TextBlock Text="BIOS升级" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10">
+      <Image Source="ms-appx:///Images/BackIcon.png" Width="25" Height="25" PointerPressed="BackButton_Click"/>
+      <TextBlock Text="BIOS升级" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,10,0,0" Foreground="#333"/>
     </StackPanel>
 
+
     <!-- Instructional Text -->
+    <Viewbox
+   StretchDirection="Both" 
+   VerticalAlignment="Top">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,80,30,30">
       <TextBlock Text="1. 目前我们是用U盘存放执行程序和文件，在uefishell下刷新，有Windows程序但是需要手动操作，需要验证。" 
                  FontSize="20" TextAlignment="Left" Margin="0,10"/>
@@ -32,5 +34,6 @@
       <TextBlock Text="4. 屏蔽Win10驱动签名、屏蔽自动更新，设置电源性能模式、设置网卡巨型帧大缓存节能以太网，这些要预留增加新功能的方法。" 
                  FontSize="20" TextAlignment="Left" Margin="0,10"/>
     </StackPanel>
+    </Viewbox>
   </Grid>
 </Page>
