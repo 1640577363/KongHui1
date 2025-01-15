@@ -46,62 +46,69 @@ public sealed partial class RegisterPage : Page
     private async void OnRegisterButton_Click(object sender, RoutedEventArgs e)
     {
         bool isValid = true;
-
-        // 账号校验
         string account = AccountBox.Text;
-        if (string.IsNullOrEmpty(account) || !Regex.IsMatch(account, @"^\d{6,13}$"))
-        {
-            AccountError.Visibility = Visibility.Visible;
-            isValid = false;
-        }
-        else
-        {
-            AccountError.Visibility = Visibility.Collapsed;
-        }
-
-        // 用户名校验
-        string userName = CompanyBox.Text;
-        if (string.IsNullOrEmpty(userName) || !Regex.IsMatch(userName, @"^[\u4e00-\u9fa5a-zA-Z0-9]{1,9}$"))
-        {
-            UserNameError.Visibility = Visibility.Visible;
-            isValid = false;
-        }
-        else
-        {
-            UserNameError.Visibility = Visibility.Collapsed;
-        }
-
-        // 邮箱校验
+        string password = PasswordBox.Password;
+        string repeat_password = RepeatPasswordBox.Password;
         string email = EmailBox.Text;
-        string emailPattern = @"^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
-        if (!Regex.IsMatch(email, emailPattern))
-        {
-            EmailError.Visibility = Visibility.Visible;
-            isValid = false;
-        }
-        else
-        {
-            EmailError.Visibility = Visibility.Collapsed;
-        }
+        string company = CompanyBox.Text;
 
-        // 手机号校验
         string phone = PhoneBox.Text;
-        string phonePattern = @"^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$";
-        if (!Regex.IsMatch(phone, phonePattern))
-        {
-            PhoneError.Visibility = Visibility.Visible;
-            isValid = false;
-        }
-        else
-        {
-            PhoneError.Visibility = Visibility.Collapsed;
-        }
+
+
+        //// 账号校验
+        //if (string.IsNullOrEmpty(account) || !Regex.IsMatch(account, @"^\d{6,13}$"))
+        //{
+        //    AccountError.Visibility = Visibility.Visible;
+        //    isValid = false;
+        //}
+        //else
+        //{
+        //    AccountError.Visibility = Visibility.Collapsed;
+        //}
+
+        //// 用户名校验
+        //if (string.IsNullOrEmpty(company) || !Regex.IsMatch(company, @"^[\u4e00-\u9fa5a-zA-Z0-9]{1,9}$"))
+        //{
+        //    UserNameError.Visibility = Visibility.Visible;
+        //    isValid = false;
+        //}
+        //else
+        //{
+        //    UserNameError.Visibility = Visibility.Collapsed;
+        //}
+
+        //// 邮箱校验
+        //string emailPattern = @"^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
+        //if (!Regex.IsMatch(email, emailPattern))
+        //{
+        //    EmailError.Visibility = Visibility.Visible;
+        //    isValid = false;
+        //}
+        //else
+        //{
+        //    EmailError.Visibility = Visibility.Collapsed;
+        //}
+
+        //// 手机号校验
+        //string phonePattern = @"^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$";
+        //if (!Regex.IsMatch(phone, phonePattern))
+        //{
+        //    PhoneError.Visibility = Visibility.Visible;
+        //    isValid = false;
+        //}
+        //else
+        //{
+        //    PhoneError.Visibility = Visibility.Collapsed;
+        //}
 
         // 密码校验
-        string password = PasswordBox.Password;
+
         if (password.Length < 6)
         {
             PasswordError.Visibility = Visibility.Visible;
+            isValid = false;
+        }else if(password!=repeat_password){
+            PhoneError.Visibility = Visibility.Visible;
             isValid = false;
         }
         else
@@ -112,38 +119,39 @@ public sealed partial class RegisterPage : Page
         // 若所有信息均有效，则执行注册逻辑
         if (isValid)
         {
-            // 将用户信息打包成对象
-            var registerData = new
-            {
-                Account = account,
-                UserName = userName,
-                Email = email,
-                Phone = phone,
-                Password = password
-            };
+            //将用户信息打包成对象
+           var registerData = new
+           {
+               Account = account,
+               Company = company,
+               Email = email,
+               Phone = phone,
+               Password = password
+           };
 
             // 发送数据到后端
-            await SendRegisterDataToServer(account, userName, email, phone, password);
+            await SendRegisterDataToServer(account, company, email, phone, password);
         }
     }
 
 
     // 发送注册信息到后端
-    private async Task SendRegisterDataToServer(string account, string username, string email, string phoneNumber, string password)
+    private async Task SendRegisterDataToServer(string account, string company, string email, string phoneNumber, string password)
     {
         // 准备注册信息的 JSON 数据
         var registrationData = new Dictionary<string, string>
         {
-            { "account", account },
-            { "username", username },
+            { "userName", account },
+            { "company", company },
             { "email", email },
-            { "phoneNumber", phoneNumber },
-            { "password", password }
+            { "phonenumber", phoneNumber },
+            { "password", password },
+            { "roleId", "3" }
         };
 
         // 将数据序列化为 JSON 格式
         var jsonData = JsonConvert.SerializeObject(registrationData);
-        string url2 = "http://10.14.52.222:8080/register";
+        string url2 = "http://localhost:8080/register/client";
         // 使用 HttpClient 发送 POST 请求到后端
         HttpClient client = new HttpClient();
 
@@ -151,11 +159,13 @@ public sealed partial class RegisterPage : Page
 
         var response = await client.PostAsync(url2, content);
         var responseString = await response.Content.ReadAsStringAsync();
+        var jsonDoc = JsonDocument.Parse(responseString);
+        var msg = jsonDoc.RootElement.GetProperty("msg").GetString();
 
-        var code = response.StatusCode;
+        var code = jsonDoc.RootElement.GetProperty("code").GetInt32();
 
         // 检查请求是否成功
-        if (code.Equals(System.Net.HttpStatusCode.OK))
+        if (code==(int)System.Net.HttpStatusCode.OK)
         {
             // 请求成功，显示成功提示对话框
             var dialog = new ContentDialog
@@ -165,7 +175,15 @@ public sealed partial class RegisterPage : Page
                 CloseButtonText = "确定"
             };
             dialog.XamlRoot = this.XamlRoot; // 设置 XamlRoot
+
+            // 显示对话框并等待关闭
             await dialog.ShowAsync();
+
+            // 对话框关闭后跳转到主页
+            this.Frame.Navigate(typeof(MainPage));  // 假设 HomePage 是你想跳转到的主页
+
+
+
         }
         else
         {
@@ -173,7 +191,7 @@ public sealed partial class RegisterPage : Page
             var dialog = new ContentDialog
             {
                 Title = "注册失败",
-                Content = "服务器未能处理您的请求，请稍后重试。",
+                Content =msg,
                 CloseButtonText = "确定"
             };
             dialog.XamlRoot = this.XamlRoot; // 设置 XamlRoot

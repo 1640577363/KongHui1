@@ -12,10 +12,10 @@ drivers = w.Win32_PnPSignedDriver()
 
 # 数据库连接配置
 DB_CONFIG = {
-    'host': 'localhost',
+    'host': '10.12.36.204',
     'user': 'root',
-    'password': '123456',
-    'database': 'qd',
+    'password': 'konghui@iuhgnok',
+    'database': 'ry-vue',
     'port': 3306
 }
 
@@ -87,8 +87,8 @@ except Exception as e:
 latest_driver_dict = {}
 try:
     with connection.cursor() as cursor:
-        cursor.execute("SELECT name, version, qdwhere FROM newdrivers")
-        latest_driver_dict = {row[0]: {"version": row[1], "qdwhere": row[2]} for row in cursor.fetchall()}
+        cursor.execute("SELECT file_name, version, file_path FROM file")
+        latest_driver_dict = {row[0]: {"version": row[1], "file_path": row[2]} for row in cursor.fetchall()}
     print("最新驱动信息已加载。")
 except Exception as e:
     print(f"查询最新驱动表时出现错误: {e}")

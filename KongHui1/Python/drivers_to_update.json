@@ -1,9 +1,5 @@
 [
     {
-        "name": "Audio Endpoint",
-        "newversion": "6.0.9611.1"
-    },
-    {
         "name": "Realtek High Definition Audio",
         "newversion": "6.0.9611.1"
     }

@@ -21,7 +21,7 @@ namespace KongHui1.Presentation
     public sealed partial class DrivePage : Page
     {
         // MySQL 数据库连接字符串
-        private string _connectionString = "Server=localhost;Database=qd;User ID=root;Password=123456;";
+        private string _connectionString = "Server=10.12.36.204;Database=ry-vue;User ID=root;Password=konghui@iuhgnok;";
         List<DriverInfo> driverInfoList = new List<DriverInfo>();
         private string baseDir;
         private string scriptPath;

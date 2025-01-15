@@ -81,7 +81,7 @@ public sealed partial class LoginPage : Page
             CloseButtonText = "确定"
         };
 
-        await dialog.ShowAsync();
+         dialog.ShowAsync();
     }
 
     private void BackButton_Click(object sender, PointerRoutedEventArgs e)
