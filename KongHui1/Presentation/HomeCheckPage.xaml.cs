@@ -56,6 +56,13 @@ namespace KongHui1.Presentation
             InitializeLastCheckTimer();
         }
 
+
+        private void StressTestButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Stress_Check_Page));
+        }
+
+
         private void InitializeLastCheckTimer()
         {
             _timer = new DispatcherTimer

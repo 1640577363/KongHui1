@@ -135,6 +135,7 @@
     <None Remove="Presentation\Quality_assurance.xaml" />
     <None Remove="Presentation\RegisterPage.xaml" />
     <None Remove="Presentation\Retrieve_Password.xaml" />
+    <None Remove="Presentation\Stress_Check_Page.xaml" />
     <None Remove="Presentation\SystemPage.xaml" />
     <None Remove="Presentation\system_backup.xaml" />
     <None Remove="Presentation\User_infromation.xaml" />
@@ -463,6 +464,11 @@
   </ItemGroup>
   <ItemGroup>
     <PRIResource Remove="Python\Tech_Support\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Presentation\Stress_Check_Page.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Presentation\CompleteQueryByCompany.xaml">
