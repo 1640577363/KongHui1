@@ -13,7 +13,7 @@
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate TargetType="Button">
-            <Grid Width="190" Height="50">
+            <Grid Width="190" Height="500">
               <!-- 按钮宽度设置为190 -->
               <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
                 <Grid>
