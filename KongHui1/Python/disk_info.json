@@ -2,29 +2,29 @@
     {
         "mountpoint": "C:\\",
         "total_size": "300.00 GB",
-        "used_size": "124.28 GB",
-        "free_size": "175.72 GB",
-        "usage_percent": "41.40 %",
-        "read_speed": "0.00 KB/s",
-        "write_speed": "476.00 KB/s",
+        "used_size": "126.46 GB",
+        "free_size": "173.54 GB",
+        "usage_percent": "42.20 %",
+        "read_speed": "33622.50 KB/s",
+        "write_speed": "976.00 KB/s",
         "model": "WD Blue SN580 1TB",
         "disk_type": "硬盘 (HDD)",
         "isSystemDisk": "是",
-        "total_read": "22.96 GB",
-        "total_write": "3.54 GB"
+        "total_read": "352.10 GB",
+        "total_write": "164.43 GB"
     },
     {
         "mountpoint": "D:\\",
         "total_size": "630.80 GB",
-        "used_size": "433.97 GB",
-        "free_size": "196.84 GB",
-        "usage_percent": "68.80 %",
-        "read_speed": "0.00 KB/s",
-        "write_speed": "476.00 KB/s",
+        "used_size": "426.92 GB",
+        "free_size": "203.88 GB",
+        "usage_percent": "67.70 %",
+        "read_speed": "33622.50 KB/s",
+        "write_speed": "976.00 KB/s",
         "model": "WD Blue SN580 1TB",
         "disk_type": "硬盘 (HDD)",
         "isSystemDisk": "否",
-        "total_read": "22.96 GB",
-        "total_write": "3.54 GB"
+        "total_read": "352.10 GB",
+        "total_write": "164.43 GB"
     }
 ]

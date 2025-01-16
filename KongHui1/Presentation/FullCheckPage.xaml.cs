@@ -30,10 +30,18 @@ namespace KongHui1.Presentation
         double totalScore = 100;
         int abnormalCount = 0;
         int[] status = new int[16];
+        private string baseDir;
+        private string scriptPath;
 
         public FullCheckPage()
         {
             this.InitializeComponent();
+            baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            for (int i = 0; i < 5; i++)
+            {
+                baseDir = Directory.GetParent(baseDir)?.FullName;
+            }
+            scriptPath = Path.Combine(baseDir, "Python");
             InitializeProgressBar();
             StartHardwareMonitoring();
         }
@@ -120,7 +128,7 @@ namespace KongHui1.Presentation
             try
             {
                 // Python 脚本路径
-                string scriptPath = @"D:\\Project\\UNO2\\KongHui1\\Python\\Drive_detection.py";
+                string scriptPath1 = Path.Combine(scriptPath, "Drive_detection.py"); 
 
                 var result = await Task.Run(() =>
                 {
@@ -129,7 +137,7 @@ namespace KongHui1.Presentation
                         StartInfo = new ProcessStartInfo
                         {
                             FileName = "python",
-                            Arguments = scriptPath,
+                            Arguments = scriptPath1,
                             RedirectStandardOutput = true,
                             RedirectStandardError = true,
                             UseShellExecute = false,
@@ -191,7 +199,7 @@ namespace KongHui1.Presentation
             try
             {
                 // Python 脚本路径
-                string scriptPath = @"D:\Project\UNO2\KongHui1\Python\HardwareMonitorOneSecond.py";
+                string scriptPath1 = Path.Combine(scriptPath, "HardwareMonitorOneSecond.py"); 
 
                 var result = await Task.Run(() =>
                 {
@@ -200,7 +208,7 @@ namespace KongHui1.Presentation
                         StartInfo = new ProcessStartInfo
                         {
                             FileName = "python",
-                            Arguments = scriptPath,
+                            Arguments = scriptPath1,
                             RedirectStandardOutput = true,
                             RedirectStandardError = true,
                             UseShellExecute = false,
@@ -302,7 +310,7 @@ namespace KongHui1.Presentation
             try
             {
                 // Python 脚本路径
-                string scriptPath = @"D:\Project\UNO2\KongHui1\Python\HardwareMonitor.py";
+                string scriptPath1 = Path.Combine(scriptPath, "HardwareMonitor.py"); 
 
                 var result = await Task.Run(() =>
                 {
@@ -311,7 +319,7 @@ namespace KongHui1.Presentation
                         StartInfo = new ProcessStartInfo
                         {
                             FileName = "python",
-                            Arguments = scriptPath,
+                            Arguments = scriptPath1,
                             RedirectStandardOutput = true,
                             RedirectStandardError = true,
                             UseShellExecute = false,

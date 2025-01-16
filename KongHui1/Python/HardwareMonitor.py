@@ -56,6 +56,17 @@ def extract_metrics(json_data):
         "hdd_usage": None
     }
 
+    target_keys = {
+        "cpu total": "cpu_usage",
+        "temperature #1": "cpu_temp",
+        "gpu core": "gpu_temp",
+        "fan #2": "fan_speed",
+        "temperature #2": "hdd_temp",
+        "gpu memory": "gpu_usage",
+        "memory": "memory_usage",
+        "used space": "hdd_usage"
+    }
+
     def recursive_search(data, target_keys):
         if isinstance(data, dict):
             # Match specific metrics based on 'Text' key
@@ -80,17 +91,7 @@ def extract_metrics(json_data):
             for item in data:
                 recursive_search(item, target_keys)
 
-    # Define mapping of text keys to metrics
-    target_keys = {
-        "cpu total": "cpu_usage",
-        "temperature #1": "cpu_temp",
-        "gpu core": "gpu_temp",
-        "fan #2": "fan_speed",
-        "temperature #2": "hdd_temp",
-        "gpu memory": "gpu_usage",      # GPU 使用率
-        "memory": "memory_usage",      # 内存使用率
-        "used space": "hdd_usage"      # 硬盘使用率
-    }
+    
 
     recursive_search(json_data, target_keys)
     return metrics
@@ -105,7 +106,6 @@ def calculate_average(metrics_list):
             if value is not None:
                 avg_metrics[key] += value
 
-    # 平均值计算，保留一位小数
     for key in avg_metrics:
         avg_metrics[key] = round(avg_metrics[key] / len(metrics_list), 1)
 
