@@ -45,90 +45,94 @@
   <Page.Background>
     <SolidColorBrush Color="#F4F9FF"/>
   </Page.Background>
- <Border>
-  
-  <Grid>
-    <!-- 定义三行，占比为1/4、1/4 和 1/2 -->
-    <Grid.RowDefinitions>
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="2*" />
-    </Grid.RowDefinitions>
 
-    <!-- 上部：显示主机型号和在线客服按钮 -->
-    <Grid Grid.Row="0" Margin="20">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <!-- 左侧占用剩余空间 -->
-        <ColumnDefinition Width="Auto" />
-        <!-- 按钮根据内容自动调整大小 -->
-      </Grid.ColumnDefinitions>
 
-      <!-- 主机型号 -->
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="50,0,0,0">
-          <TextBlock Text="主板型号：" FontSize="20" FontWeight="Bold" Foreground="{StaticResource TextColor}" VerticalAlignment="Center" Margin="0,0,10,0"  Grid.Row="0" Grid.Column="0"/>
-          <TextBlock x:Name="MotherboardInfoTextBlock" Text="正在获取主板型号..." FontSize="20" FontWeight="Bold" Foreground="{StaticResource TextColor}" VerticalAlignment="Center" />
-        </StackPanel>
+  <Viewbox
+   StretchDirection="Both" 
+   VerticalAlignment="Top">
+    <Grid>
+      <!-- 定义三行，占比为1/4、1/4 和 1/2 -->
+      <Grid.RowDefinitions>
+        <RowDefinition Height="1*" />
+        <!-- 第一行 -->
+        <RowDefinition Height="2*" />
+        <!-- 第二行 -->
+        <RowDefinition Height="3*" />
+        <!-- 第三行 -->
+      </Grid.RowDefinitions>
+
+      <!-- 上部：显示主机型号和在线客服按钮 -->
+
+      <StackPanel Grid.Row="0" Margin="50,80,50,80" Orientation="Horizontal" VerticalAlignment="Center">
+        <TextBlock Text="主板型号：" FontSize="30" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Margin="0,0,10,0" />
+        <TextBlock x:Name="MotherboardInfoTextBlock" Text="正在获取主板型号..." FontSize="30" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" />
+
         <!-- 在线客服按钮 -->
-        <Button Content="在线客服"  CornerRadius="5" Background="#0078D7" Foreground="White" 
-          HorizontalAlignment="Right" VerticalAlignment="Center"
-          FontSize="16" FontWeight="Bold" Width="150" Height="40"
-          Grid.Row="0" Grid.Column="1" Padding="10,5"
-          Margin="0,0,50,0"  />
-          
-    </Grid>
+        <Button Content="在线客服" CornerRadius="5" Background="#0078D7" Foreground="White"
+            HorizontalAlignment="Right" VerticalAlignment="Center"
+            FontSize="16" FontWeight="Bold" Width="150" Height="40"
+            Padding="10,5" Margin="600,0,0,0" />
+      </StackPanel>
 
-    <!-- 中部：按钮组 -->
-    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20">
+
+
+
+      <!-- 中部：按钮组 -->
+      <StackPanel Grid.Row="1" Margin="50,0,50,80" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Spacing="30">
 
         <Border Style="{StaticResource CardStyle}" x:Name="Card1" PointerEntered="OnPointerEntered" PointerExited="OnPointerExited">
           <Button Tapped="OnProblemResolutionTapped" Style="{StaticResource NoHoverButtonStyle}">
-          <StackPanel>
-            <Image Source="ms-appx:///Images/pro_eli1.png" Width="100" Height="100"/>
-          </StackPanel>
-        </Button>
-      </Border>
+            <StackPanel>
+              <Image Source="ms-appx:///Images/pro_eli1.png" Width="100" Height="100"/>
+            </StackPanel>
+          </Button>
+        </Border>
 
         <Border Style="{StaticResource CardStyle}" x:Name="Card2" PointerEntered="OnPointerEntered"  PointerExited="OnPointerExited">
-      <Button Tapped="OnFeedbackTapped" Style="{StaticResource NoHoverButtonStyle}">
-        <StackPanel>
-          <Image Source="ms-appx:///Images/pro_fee1.png" Width="100" Height="100"/>
-        </StackPanel>
-      </Button>
-      </Border>
+          <Button Tapped="OnFeedbackTapped" Style="{StaticResource NoHoverButtonStyle}">
+            <StackPanel>
+              <Image Source="ms-appx:///Images/pro_fee1.png" Width="100" Height="100"/>
+            </StackPanel>
+          </Button>
+        </Border>
         <Border Style="{StaticResource CardStyle}" x:Name="Card3" PointerEntered="OnPointerEntered"  PointerExited="OnPointerExited">
-      <Button Tapped="OnRepairPlatformTapped" Style="{StaticResource NoHoverButtonStyle}">
-        <StackPanel>
-          <Image Source="ms-appx:///Images/main_pla1.png" Width="100" Height="100"/>
-        </StackPanel>
-      </Button>
-      </Border>
+          <Button Tapped="OnRepairPlatformTapped" Style="{StaticResource NoHoverButtonStyle}">
+            <StackPanel>
+              <Image Source="ms-appx:///Images/main_pla1.png" Width="100" Height="100"/>
+            </StackPanel>
+          </Button>
+        </Border>
         <Border Style="{StaticResource CardStyle}" x:Name="Card4" PointerEntered="OnPointerEntered"  PointerExited="OnPointerExited">
-        <Button Tapped="OnCompleteQueryTapped" Style="{StaticResource NoHoverButtonStyle}">
-        <StackPanel>
-          <Image Source="ms-appx:///Images/mac_que1.png" Width="100" Height="100"/>
-        </StackPanel>
-      </Button>
-      </Border>
+          <Button Tapped="OnCompleteQueryTapped" Style="{StaticResource NoHoverButtonStyle}">
+            <StackPanel>
+              <Image Source="ms-appx:///Images/mac_que1.png" Width="100" Height="100"/>
+            </StackPanel>
+          </Button>
+        </Border>
         <Border Style="{StaticResource CardStyle}" x:Name="Card5" PointerEntered="OnPointerEntered"  PointerExited="OnPointerExited">
-      
-      <Button Tapped="OnWarrantyQueryTapped" Style="{StaticResource NoHoverButtonStyle}">
-        <StackPanel>
-          <Image Source="ms-appx:///Images/war_que1.png" Width="100" Height="100"/>
-        </StackPanel>
-      </Button>
-      </Border>
-        <Border Style="{StaticResource CardStyle}" x:Name="Card6" PointerEntered="OnPointerEntered"  PointerExited="OnPointerExited">
-      <Button Tapped="OnAddressQueryTapped" Style="{StaticResource NoHoverButtonStyle}">
-        <StackPanel>
-          <Image Source="ms-appx:///Images/add_que1.png" Width="100" Height="100"/>
-        </StackPanel>
-      </Button>
-      </Border>
-    </StackPanel>
 
-    <!-- 下部：显示图片 -->
-    <Image Grid.Row="2" Source="ms-appx:///Images/kh_ima.png" Width="700" Height="350" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-  </Grid>
-</Border>
+          <Button Tapped="OnWarrantyQueryTapped" Style="{StaticResource NoHoverButtonStyle}">
+            <StackPanel>
+              <Image Source="ms-appx:///Images/war_que1.png" Width="100" Height="100"/>
+            </StackPanel>
+          </Button>
+        </Border>
+        <Border Style="{StaticResource CardStyle}" x:Name="Card6" PointerEntered="OnPointerEntered"  PointerExited="OnPointerExited">
+          <Button Tapped="OnAddressQueryTapped" Style="{StaticResource NoHoverButtonStyle}">
+            <StackPanel>
+              <Image Source="ms-appx:///Images/add_que1.png" Width="100" Height="100"/>
+            </StackPanel>
+          </Button>
+        </Border>
+      </StackPanel>
+
+
+      <!-- 第三行：显示图片，取消外边框，图片填充StackPanel -->
+      <Border Grid.Row="2" Margin="50,10,50,50" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" BorderBrush="Transparent">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+          <Image Source="ms-appx:///Images/kh_ima.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        </StackPanel>
+      </Border>
+    </Grid>
+  </Viewbox>
 </Page>

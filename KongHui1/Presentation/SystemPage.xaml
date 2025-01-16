@@ -41,6 +41,9 @@
     <SolidColorBrush Color="#F4F9FF"/>
   </Page.Background>
 
+  <Viewbox
+   StretchDirection="Both" 
+   VerticalAlignment="Top">
   <Grid>
     <!-- 定义三行，占比为1/4、1/4 和 1/2 -->
     <Grid.RowDefinitions>
@@ -53,14 +56,13 @@
     </Grid.RowDefinitions>
 
     <!-- 第一行 -->
-    <StackPanel Grid.Row="0" Margin="80,10" Orientation="Horizontal" VerticalAlignment="Center">
+    <StackPanel Grid.Row="0" Margin="50,80,50,80" Orientation="Horizontal" VerticalAlignment="Center">
       <TextBlock Text="主板型号：" FontSize="30" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Margin="0,0,10,0" />
       <TextBlock x:Name="MotherboardInfoTextBlock" Text="正在获取主板型号..." FontSize="30" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" />
     </StackPanel>
 
     <!-- 第二行：按钮组 -->
-    
-    <StackPanel Grid.Row="1" Margin="80,10" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Spacing="40">
+    <StackPanel Grid.Row="1" Margin="50,0,50,80" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Spacing="80">
       <Border Style="{StaticResource CardStyle}" x:Name="Card1" PointerEntered="OnPointerEntered"  PointerExited="OnPointerExited">
         <Button Tapped="OnSystemDownloadTapped" Background="Transparent" Style="{StaticResource NoHoverButtonStyle}">
           <StackPanel>
@@ -87,12 +89,14 @@
       </Border>
     </StackPanel>
 
+
     <!-- 第三行：显示图片，取消外边框，图片填充StackPanel -->
-    <Border Grid.Row="2" Margin="80,10,80,50" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" BorderBrush="Transparent">
+    <Border Grid.Row="2" Margin="50,10,50,50" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" BorderBrush="Transparent">
       <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <Image Source="ms-appx:///Images/kh_ima.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
       </StackPanel>
     </Border>
 
   </Grid>
+  </Viewbox>
 </Page>
