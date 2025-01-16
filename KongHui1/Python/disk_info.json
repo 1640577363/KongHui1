@@ -1,6 +1,13 @@
 [
     {
         "mountpoint": "C:\\",
+        "total_size": "300.00 GB",
+        "used_size": "126.46 GB",
+        "free_size": "173.54 GB",
+        "usage_percent": "42.20 %",
+        "read_speed": "33622.50 KB/s",
+        "write_speed": "976.00 KB/s",
+        "model": "WD Blue SN580 1TB",
         "total_size": "275.00 GB",
         "used_size": "155.92 GB",
         "free_size": "119.08 GB",

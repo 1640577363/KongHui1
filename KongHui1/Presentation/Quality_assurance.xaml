@@ -43,10 +43,7 @@
   </Page.Resources>
 
   <Page.Background>
-    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-      <GradientStop Color="#D6ECF3" Offset="0.0"/>
-      <GradientStop Color="White" Offset="1.0"/>
-    </LinearGradientBrush>
+    <SolidColorBrush Color="#F4F9FF"/>
   </Page.Background>
 
   <Grid Padding="20">
@@ -69,7 +66,7 @@
       <!-- 查询结果标题，放置在左侧 -->
       <!-- 查询结果标题和描述，放置在左侧 -->
       <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-        <TextBlock Text="查询结果" Margin="0,20,0,10" FontSize="24" FontWeight="Bold" Foreground="Black"/>
+        <TextBlock Text="查询结果" Margin="10,20,0,10" FontSize="24" FontWeight="Bold" Foreground="Black"/>
         <TextBlock Text="  以下为当前工控机的保修记录" Margin="15,25,0,10" FontSize="16" Foreground="#555"/>
       </StackPanel>
 

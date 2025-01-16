@@ -29,8 +29,8 @@
       <Setter Property="FontSize" Value="16"/>
       <Setter Property="FontWeight" Value="SemiBold"/>
       <Setter Property="BorderBrush" Value="Transparent"/>
-      <Setter Property="Height" Value="40"/>
-      <Setter Property="Width" Value="50"/>
+      <Setter Property="Height" Value="30"/>
+      <Setter Property="Width" Value="60"/>
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate TargetType="Button">
@@ -43,11 +43,9 @@
       </Setter>
     </Style>
   </Page.Resources>
+  
   <Page.Background>
-    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-      <GradientStop Color="#D6ECF3" Offset="0.0"/>
-      <GradientStop Color="White" Offset="1.0"/>
-    </LinearGradientBrush>
+    <SolidColorBrush Color="#F4F9FF"/>
   </Page.Background>
 
 
@@ -57,6 +55,7 @@
       <TextBlock Text="问题排除" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"  Foreground="Black"/>
     </StackPanel>
 
+    
     <Border CornerRadius="10" Padding="10" Margin="10,5" BorderBrush="Gray" BorderThickness="1">
       <Grid >
       <Grid.RowDefinitions>
@@ -82,7 +81,7 @@
 
         <!-- 单元格 -->
         <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
-          <StackPanel Margin="0,20,0,0">
+          <StackPanel Margin="0,5,0,5">
             <StackPanel Orientation="Horizontal">
               <TextBlock x:Name="MainTextBlock" Text="1.工控机在出现不开机现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
               <ToggleButton x:Name="ToggleArrow" Content="▼" Click="ToggleArrow_Click" Tag="1" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
@@ -112,7 +111,7 @@
 
         <!-- 单元格 -->
         <Border Grid.Row="2" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
-          <StackPanel Margin="0,10,0,0" >
+          <StackPanel Margin="0,5,0,5" >
             <StackPanel Orientation="Horizontal">
               <TextBlock x:Name="MainTextBlock2" Text="2.工控机在出现开机不显示现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
               <ToggleButton x:Name="ToggleArrow2" Content="▼" Click="ToggleArrow_Click" Tag="2" Width="30" Height="30" VerticalAlignment="Center"  Foreground="Black"/>
@@ -136,7 +135,7 @@
 
         <!-- 单元格 -->
         <Border Grid.Row="3" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
-          <StackPanel Margin="0,10,0,0" >
+          <StackPanel Margin="0,5,0,5" >
             <StackPanel Orientation="Horizontal">
               <TextBlock x:Name="MainTextBlock3" Text="3.工控机在出现开机不进系统现象时，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
               <ToggleButton x:Name="ToggleArrow3" Content="▼" Click="ToggleArrow_Click" Tag="3" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
@@ -162,7 +161,7 @@
 
         <!-- 单元格 -->
         <Border Grid.Row="4" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
-          <StackPanel Margin="0,10,0,0" >
+          <StackPanel Margin="0,5,0,5" >
             <StackPanel Orientation="Horizontal">
               <TextBlock x:Name="MainTextBlock4" Text="4.工控机在出现蓝屏死机（BSOD），可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
               <ToggleButton x:Name="ToggleArrow4" Content="▼" Click="ToggleArrow_Click" Tag="4" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
@@ -186,7 +185,7 @@
 
         <!-- 单元格 -->
         <Border Grid.Row="5" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
-          <StackPanel Margin="0,10,0,0" >
+          <StackPanel Margin="0,5,0,5" >
             <StackPanel Orientation="Horizontal">
               <TextBlock x:Name="MainTextBlock5" Text="5.工控机无法连接到互联网，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
               <ToggleButton x:Name="ToggleArrow5" Content="▼" Click="ToggleArrow_Click" Tag="5" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
@@ -210,7 +209,7 @@
 
         <!-- 单元格 -->
         <Border Grid.Row="6" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="#F3F3F3">
-          <StackPanel Margin="0,10,0,0" >
+          <StackPanel Margin="0,5,0,5" >
             <StackPanel Orientation="Horizontal">
               <TextBlock x:Name="MainTextBlock6" Text="6.工控机磁盘空间不足时，可以用以下方法来排查及解决。" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Black"/>
               <ToggleButton x:Name="ToggleArrow6" Content="▼" Click="ToggleArrow_Click" Tag="6" Width="30" Height="30" VerticalAlignment="Center" Foreground="Black"/>
