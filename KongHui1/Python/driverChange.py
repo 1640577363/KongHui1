@@ -336,10 +336,10 @@ import pymysql  # 用于连接 MySQL 数据库
 
 # 数据库连接配置
 DB_CONFIG = {
-    'host': 'localhost',  # 数据库地址
+    'host': '10.12.36.204',  # 数据库地址
     'user': 'root',  # 数据库用户名
-    'password': '123456',  # 数据库密码
-    'database': 'qd',  # 数据库名称
+    'password': 'konghui@iuhgnok',  # 数据库密码
+    'database': 'ry-vue',  # 数据库名称
     'port': 3306  # MySQL 默认端口
 }
 
@@ -351,7 +351,7 @@ def get_driver_path(driver_name):
         cursor = connection.cursor()
 
         # 查询SQL，根据驱动名称查找安装路径
-        query = "SELECT qdwhere FROM newdrivers WHERE name = %s"
+        query = "SELECT file_path FROM file WHERE name = %s"
         cursor.execute(query, (driver_name,))
 
         result = cursor.fetchone()

@@ -1,10 +1,10 @@
 {
-    "speed": "2400 MHz",
-    "capacity": "16.00 GB",
-    "part_number": "VGM4UX32C18AG-DTACWN",
-    "form_factor": "DIMM",
-    "memory_total": "32581.42 MB",
-    "manufacturer": "Gloway International Co Ltd",
+    "speed": "3200 MHz",
+    "capacity": "8.00 GB",
+    "part_number": "M471A1K43EB1-CWE",
+    "form_factor": "SODIMM",
+    "memory_total": "16236.06 MB",
+    "manufacturer": "Samsung",
     "memory_type": "未知",
-    "memory_percent": "27.30%"
+    "memory_percent": "90.30%"
 }

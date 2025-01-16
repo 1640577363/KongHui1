@@ -44,6 +44,13 @@
               PlaceholderText="请输入密码" />
           <TextBlock x:Name="PasswordError" Foreground="Red" Visibility="Collapsed" Text="密码长度不能少于6位"/>
         </StackPanel>
+        <!-- 第四行：重复密码 -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,20">
+          <TextBlock Text="确认密码:" FontSize="20" Foreground="Black" VerticalAlignment="Center" Margin="0,0,20,0"/>
+          <PasswordBox x:Name="RepeatPasswordBox" Width="260" Height="44" MinHeight="44" MaxHeight="44" FontSize="16" 
+           PlaceholderText="请再次输入密码"  />
+          <TextBlock x:Name="PasswordError2" Foreground="Red" Visibility="Collapsed" Text="密码长度不能少于6位"/>
+        </StackPanel>
 
         <!-- 第五行：邮箱 -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,20">
