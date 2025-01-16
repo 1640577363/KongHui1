@@ -151,7 +151,7 @@ public sealed partial class RegisterPage : Page
 
         // 将数据序列化为 JSON 格式
         var jsonData = JsonConvert.SerializeObject(registrationData);
-        string url2 = "http://localhost:8080/register/client";
+        string url2 = "http://10.12.36.204:8080/register/client";
         // 使用 HttpClient 发送 POST 请求到后端
         HttpClient client = new HttpClient();
 
