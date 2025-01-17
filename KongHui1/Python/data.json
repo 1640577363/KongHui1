@@ -1,0 +1,8 @@
+{
+    "hardwareId": "\"No second hard drive ID found\"",
+    "company": "\"LANY\"",
+    "temperature": "{\"cpu\": [47.5, 44.2], \"gpu\": [], \"disk\": []}",
+    "usageRate": "{\"cpu\": [92.6, 85.9], \"gpu\": [], \"disk\": [96.8, 99.6]}",
+    "fanSpeed": "[0.0, 0.0]",
+    "power": "[]"
+}

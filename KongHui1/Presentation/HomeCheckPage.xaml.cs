@@ -195,6 +195,14 @@ namespace KongHui1.Presentation
                     L3CacheText.Text = $"L3 缓存: {cpuInfo["cpu_l3_cache"]}";
                 }
             }
+            try
+            {
+                File.Delete(infoPath);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"删除文件时出错: {ex.Message}");
+            }
         }
         private async void StartDiskSpaceMonitoring()
         {
@@ -534,6 +542,14 @@ namespace KongHui1.Presentation
                     memory_total.Text = $"总内存: {MemoryInfo["memory_total"]}";
 
                 }
+            }
+            try
+            {
+                File.Delete(infoPath);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"删除文件时出错: {ex.Message}");
             }
         }
 

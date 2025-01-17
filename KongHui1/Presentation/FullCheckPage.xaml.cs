@@ -473,7 +473,7 @@ namespace KongHui1.Presentation
                 FirewallTextBlock.Text = "检测失败";
                 FirewallTextBlock.Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
 
-                Console.WriteLine($"更新安全状态失败: {ex.Message}");
+                Console.WriteLine($"更新安全状态失败: {ex.Message}"); 
             }
             if (!res1) abnormalCount++;
             if (!res2) abnormalCount++;

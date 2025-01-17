@@ -101,13 +101,13 @@ namespace KongHui1.Presentation
                 //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
                 string url = "http://10.12.36.204:8080/Issues_support/Issues_support"; // 后端 API 地址
                 var values = new Dictionary<string, string>
-            {
-                { "hardwareId", hardwareId },
-                { "problemType", problemType },
-                { "problemDescription", problemDescription },
-                { "company", companyName },
-                { "contactPhone", contactPhone }
-            };
+                {
+                    { "hardwareId", hardwareId },
+                    { "problemType", problemType },
+                    { "problemDescription", problemDescription },
+                    { "company", companyName },
+                    { "contactPhone", contactPhone }
+                };
                 string json = JsonConvert.SerializeObject(values);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 

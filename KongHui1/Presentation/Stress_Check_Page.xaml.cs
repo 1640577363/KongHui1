@@ -18,6 +18,9 @@ using System.Security.Principal;
 using Newtonsoft.Json;
 using static Community.CsharpSqlite.Sqlite3;
 using Windows.UI.Popups;
+using System.Globalization;
+using LibreHardwareMonitor.Hardware;
+using static IronPython.Runtime.Profiler;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -46,14 +49,14 @@ public sealed partial class Stress_Check_Page : Page
         InitializeProgressBar();
         SetRing();
         StartHardwareMonitoring();
+        SendToServer();
     }
     private async Task StartHardwareMonitoring()
     {
-        scanText.Text = "正在进行CPU压力测试...";
         try
         {
             // Python 脚本路径
-            string scriptPath1 = Path.Combine(scriptPath, "Hardware_stress_test.py");
+            string scriptPath1 = Path.Combine(scriptPath, "NewStressTest.py");
 
             var result = await Task.Run(() =>
             {
@@ -113,84 +116,48 @@ public sealed partial class Stress_Check_Page : Page
 
     private void UpdateHealthStatus(string output)
     {
-
-        string ExtractPerformanceValue(string text)
+        try
         {
-            string pattern = @"(\w+)\s+Performance:\s*(\w+)";
-            var match = System.Text.RegularExpressions.Regex.Match(text, pattern);
-            return match.Success ? match.Groups[2].Value : string.Empty;
+            var cpuTempMatch = Regex.Match(output, @"cpu_temp: \s*([\d.]+)");
+            var fanSpeedMatch = Regex.Match(output, @"fan_speed: \s*([\d.]+)");
+            var memoryUsageMatch = Regex.Match(output, @"memory_usage:\s*([\d.]+)");
+            var cpuUsageMatch = Regex.Match(output, @"cpu_usage:\s*([\d.]+)");
+
+            var cpuTemp = cpuTempMatch.Success ? double.Parse(cpuTempMatch.Groups[1].Value, CultureInfo.InvariantCulture) : 0;
+            var fanSpeed = fanSpeedMatch.Success ? double.Parse(fanSpeedMatch.Groups[1].Value, CultureInfo.InvariantCulture) : 0;
+            var memoryUsage = memoryUsageMatch.Success ? double.Parse(memoryUsageMatch.Groups[1].Value, CultureInfo.InvariantCulture) : 0;
+            var cpuUsage = cpuUsageMatch.Success ? double.Parse(cpuUsageMatch.Groups[1].Value, CultureInfo.InvariantCulture) : 0;
+
+            CpuTemerature.Text = $"CPU 温度: {cpuTemp} °C";
+            Cpuusage.Text = $"CPU 使用率: {cpuUsage}%";
+            Funspeed.Text = $"风扇速度: {fanSpeed} RPM";
+            MemoryUsage.Text = $"内存使用率: {memoryUsage}%";
+
+            UpdateStatus(CpuTempText, cpuTemp < 90, "正常");
+            UpdateStatus(CpuUsageText, cpuUsage >= 80, "正常");
+            UpdateStatus(FunspeedText, fanSpeed > 200, "正常");
+            UpdateStatus(MemoryUsageText, memoryUsage >= 80, "正常");
+
         }
-
-        string cpuTempPerformance = ExtractPerformanceValue(output);
-        string cpuUsagePerformance = ExtractPerformanceValue(output);
-        string memoryPerformance = ExtractPerformanceValue(output);
-        string gpuTempPerformance = ExtractPerformanceValue(output);
-        string gpuUsagePerformance = ExtractPerformanceValue(output);
-
-        string GetPerformanceText(string performance)
+        catch (Exception ex)
         {
-            switch (performance)
-            {
-                case "Excellent":
-                    return "优秀";
-                case "Fair":
-                    return "合格";
-                case "Poor":
-                    return "欠佳";
-                default:
-                    return "待检测";
-            }
+            Debug.WriteLine($"解析输出时发生错误: {ex.Message}");
         }
-
-        CpuTempText.Text = GetPerformanceText(cpuTempPerformance);
-        CpuUsageText.Text = GetPerformanceText(cpuUsagePerformance);
-        MemoryUsageText.Text = GetPerformanceText(memoryPerformance);
-        GpuTempText.Text = GetPerformanceText(gpuTempPerformance);
-        GpuUsageText.Text = GetPerformanceText(gpuUsagePerformance);
-
-        int GetScore(string performance)
-        {
-            switch (performance)
-            {
-                case "Excellent":
-                    return 20;
-                case "Fair":
-                    return 10;
-                case "Poor":
-                    return 5;
-                default:
-                    return 0;
-            }
-        }
-
-        totalScore = GetScore(cpuTempPerformance) +
-                         GetScore(cpuUsagePerformance) +
-                         GetScore(memoryPerformance) +
-                         GetScore(gpuTempPerformance) +
-                         GetScore(gpuUsagePerformance);
-        ScoreText.Text = totalScore.ToString("F0");
-
-        Color fillColor = totalScore >= 90 ? Color.FromArgb(255, 0, 100, 0) :
-                            totalScore >= 80 ? Color.FromArgb(220, 159, 70, 0) :
-                                                Color.FromArgb(158, 61, 61, 1);
-        ScoreCircle.Fill = new SolidColorBrush(fillColor);
-        scanText.Text = totalScore == 100 ? "电脑非常健康" :
-                        totalScore >= 90 ? "电脑存在问题，请及时修复" :
-                        totalScore >= 80 ? "电脑问题较多，请立即修复" :
-                                            "电脑存在严重问题，需要立即修复";
-
-
 
         CpuTempRing.IsActive = false;
         CpuUsageRing.IsActive = false;
+        FunspeedRing.IsActive = false;
         MemoryUsageRing.IsActive = false;
-        GpuTempRing.IsActive = false;
-        GpuUsageRing.IsActive = false;
 
         Endprogressbar();
-
+        SendToServer();
     }
 
+    private void UpdateStatus(TextBlock textBlock, bool isNormal, string text)
+    {
+        textBlock.Text = isNormal ? text : $"异常";
+        textBlock.Foreground = isNormal ? new SolidColorBrush(Color.FromArgb(255, 0, 255, 0)) : new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+    }
 
     private void BackButton_Click(object sender, RoutedEventArgs e)
     {
@@ -204,9 +171,8 @@ public sealed partial class Stress_Check_Page : Page
     {
         CpuTempRing.IsActive = true;
         CpuUsageRing.IsActive = true;
+        FunspeedRing.IsActive = true;
         MemoryUsageRing.IsActive = true;
-        GpuTempRing.IsActive = true;
-        GpuUsageRing.IsActive = true;
     }
 
     private void ReScanButton_Click(object sender, RoutedEventArgs e)
@@ -277,9 +243,51 @@ public sealed partial class Stress_Check_Page : Page
         _progressTimer.Stop(); // 停止进度条更新的计时器
         progressBar.IsIndeterminate = false; // 停止进度条的无确定状态
         progressBar.Value = 100;  // 设置进度条为 100%
-        scanstatusText.Text = "全面体检完毕";
+        scanstatusText.Text = "压力测试完毕";
         cancelButtonPanel.Visibility = Visibility.Collapsed; // 隐藏取消按钮
     }
 
-    
+    public async void SendToServer()
+    {
+        if (LoginPage.IsLogin)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                if (!string.IsNullOrEmpty(LoginPage.Token))
+                {
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", LoginPage.Token);
+                }
+                string url = "http://10.12.36.204:8080/problem_analysis/analysis";
+                string filePath = Path.Combine(scriptPath, "data.json");
+                string json = File.ReadAllText(filePath);
+                var values = JsonConvert.DeserializeObject(json);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync(url, content);
+                var responseString = await response.Content.ReadAsStringAsync();
+                var code = response.StatusCode;
+                if (code.Equals(System.Net.HttpStatusCode.OK))
+                {
+
+                }
+                else
+                {
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"发生异常: {ex.Message}");
+            }
+        }
+        else
+        {
+            
+
+        }
+    }
+
+
+
 }
