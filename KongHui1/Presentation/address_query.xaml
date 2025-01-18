@@ -70,62 +70,69 @@
 
         <!-- 第一行：搜索区域（使用 Viewbox 进行缩放） -->
 
-        <StackPanel Padding="10" Margin="5" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Spacing="20">
-          <TextBox x:Name="SearchTextBox" PlaceholderText="请输入关键词" Height="50"  Width="300" BorderBrush="#0078D7" BorderThickness="2" Foreground="Black" Padding="10" />
-            <Button Content="搜索" Style="{StaticResource ModernButtonStyle}" Click="SearchButton_Click" />
-            <Button Content="重置" Style="{StaticResource ModernButtonStyle}" Click="SearchButton_Click2"/>
-          </StackPanel>
+        <StackPanel  Margin="15" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Spacing="20">
+          <!--<TextBox x:Name="SearchTextBox" PlaceholderText="请输入关键词" Height="50"  Width="300" BorderBrush="#0078D7" BorderThickness="2" Foreground="Black"  />-->
+          <TextBox x:Name="SearchTextBox" PlaceholderText="请输入关键词" Height="40" Width="300" BorderBrush="#0078D7" BorderThickness="2" Foreground="Black" Padding="3"/>
+          <Button  Content="搜索" HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="2" Click="SearchButton_Click" Width="80" Height="50" FontSize="16" Background="#0078D7" Foreground="White" CornerRadius="5"/>
+          <Button  Content="重置" HorizontalAlignment="Center"  Grid.Row="2" Grid.ColumnSpan="2" Click="SearchButton_Click2" Width="80" Height="50" FontSize="16" Background="#0078D7" Foreground="White" CornerRadius="5"/>
+        </StackPanel>
 
 
         <!-- 第二行：地址展示区域 -->
-        <ListView x:Name="DataListView" Margin="10,10,0,0" Grid.Row="1" Style="{StaticResource ModernListViewItemStyle}" HorizontalAlignment="Left">
+        <ListView x:Name="DataListView" Margin="10,10,0,0" Grid.Row="1" Style="{StaticResource ModernListViewItemStyle}" HorizontalAlignment="Right">
           <ListView.ItemTemplate>
             <DataTemplate x:DataType="local:AddressData">
-              <StackPanel Padding="10" Margin="5,5,20,5" Background="White" BorderBrush="LightGray" BorderThickness="1" CornerRadius="5"  >
-                <StackPanel Margin="10">
+              <Button Padding="10" Margin="5,5,20,5" Background="White" BorderBrush="LightGray" BorderThickness="1" CornerRadius="5" Click="OnItemClick" Height="150" Width="600"  HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+                <StackPanel Margin="10" HorizontalAlignment="Right">
+
                   <!-- 站点名称 -->
-                  <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                    <TextBlock Text="站点名称: " FontWeight="Bold" Foreground="#333" FontSize="18" Width="100"/>
-                    <TextBlock Text="{Binding siteName}" Foreground="#555" FontSize="16"/>
+                  <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Left">
+                    <TextBlock Text="站点名称: " FontWeight="Bold" Foreground="#333" FontSize="18" Width="100" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding siteName}" Foreground="#555" FontSize="16" HorizontalAlignment="Left"/>
                   </StackPanel>
 
                   <!-- 联系电话 -->
-                  <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                    <TextBlock Text="联系电话: " FontWeight="Bold" Foreground="#333" FontSize="18" Width="100"/>
-                    <TextBlock Text="{Binding phoneNumber}" Foreground="#555" FontSize="16"/>
+                  <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Left">
+                    <TextBlock Text="联系电话: " FontWeight="Bold" Foreground="#333" FontSize="18" Width="100" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding phoneNumber}" Foreground="#555" FontSize="16" HorizontalAlignment="Left"/>
                   </StackPanel>
 
                   <!-- 地址 -->
-                  <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                    <TextBlock Text="地址: " FontWeight="Bold" Foreground="#333" FontSize="18" Width="100"/>
-                    <TextBlock Text="{Binding address}" Foreground="#777" FontSize="16"/>
+                  <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Left">
+                    <TextBlock Text="地址: " FontWeight="Bold" Foreground="#333" FontSize="18" Width="100" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding address}" Foreground="#777" FontSize="16" HorizontalAlignment="Left"/>
                   </StackPanel>
+
                 </StackPanel>
-              </StackPanel>
+              </Button>
             </DataTemplate>
           </ListView.ItemTemplate>
         </ListView>
+
+
       </Grid>
 
-      <!-- 第二列：公司信息和联系方式 -->
       <Viewbox Grid.Column="1" StretchDirection="Both" VerticalAlignment="Top">
         <StackPanel Margin="10">
-          <TextBlock Text="深圳总公司控汇" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#333"/>
+          <TextBlock x:Name="CompanyNameTextBlock" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#333"/>
           <Image Source="ms-appx:///Images/ComapnyBuilding.png" Stretch="Uniform" Margin="0,0,0,10" Height="300" Width="500"/>
+
           <StackPanel Orientation="Horizontal" Margin="10,0,0,5">
             <SymbolIcon Symbol="Mail" Margin="0,0,5,0" Foreground="#333"/>
-            <TextBlock Text="深圳市龙华区大浪街道新石社区丽荣路1号昌毅工业区3栋五层、六层" FontSize="16" Foreground="#333"/>
+            <TextBlock x:Name="CompanyAddressTextBlock" FontSize="16" Foreground="#333" TextWrapping="Wrap" MaxWidth="480"/>
           </StackPanel>
           <StackPanel Orientation="Horizontal" Margin="10,0,0,5">
             <SymbolIcon Symbol="Phone" Margin="0,0,5,0" Foreground="#333"/>
-            <TextBlock Text="0755-27041051" FontSize="16" Foreground="#333"/>
+            <TextBlock x:Name="CompanyPhoneTextBlock" FontSize="16" Foreground="#333"/>
           </StackPanel>
           <StackPanel Orientation="Horizontal" Margin="10,0,0,5">
             <SymbolIcon Symbol="Clock" Margin="0,0,5,0" Foreground="#333"/>
-            <TextBlock Text="周一至周五 9:00-18:00" FontSize="16" Foreground="#333"/>
+            <TextBlock x:Name="CompanyWorkingHoursTextBlock" FontSize="16" Foreground="#333"/>
           </StackPanel>
         </StackPanel>
       </Viewbox>
+
+
     </Grid>
   </Grid>
 </Page>
