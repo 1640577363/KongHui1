@@ -6,7 +6,7 @@ import wmi
 import json
 import os
 
-# 磁盘类型映射表
+
 DISK_TYPE_MAPPING = {
     "Fixed hard disk media": "硬盘 (HDD)",
     "Removable media": "可移动媒体",

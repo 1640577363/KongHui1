@@ -1,1 +1,1 @@
-{"cpu_percent": "21.9%", "cpu_speed": "2.4960 GHz", "total_processes": 312, "total_threads": 5549, "total_handles": 157750, "uptime": "1:23:48:54", "cpu_l1_cache": "\u672a\u77e5", "cpu_l2_cache": "7.50 MB", "cpu_l3_cache": "18.00 MB"}
+{"cpu_percent": "12.3%", "cpu_speed": "2.4000 GHz", "total_processes": 256, "total_threads": 3509, "total_handles": 117021, "uptime": "1:11:39:11", "cpu_l1_cache": "\u672a\u77e5", "cpu_l2_cache": "1.00 MB", "cpu_l3_cache": "8.00 MB"}

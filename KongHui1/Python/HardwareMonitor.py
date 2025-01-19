@@ -58,7 +58,7 @@ def extract_metrics(json_data):
 
     target_keys = {
         "cpu total": "cpu_usage",
-        "temperature #1": "cpu_temp",
+        "CPU Core #2": "cpu_temp",
         "gpu core": "gpu_temp",
         "fan #2": "fan_speed",
         "temperature #2": "hdd_temp",

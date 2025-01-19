@@ -1,0 +1,1163 @@
+[
+    {
+        "name": "Intel(R) Management Engine Interface #1",
+        "version": "2120.100.0.1085",
+        "device_ids": "PCI\\VEN_8086&DEV_A360&SUBSYS_09491028&REV_10\\3&11583659&0&B0",
+        "newversion": "2145.1.42.0",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 1
+    },
+    {
+        "name": "Qualcomm QCA9377 802.11ac Wireless Adapter",
+        "version": "12.0.0.953",
+        "device_ids": "PCI\\VEN_168C&DEV_0042&SUBSYS_18101028&REV_31\\4&1DBF6EDC&0&00EE",
+        "newversion": "12.0.0.1118",
+        "category": "蓝牙驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 1
+    },
+    {
+        "name": "WAN Miniport (Network Monitor)",
+        "version": "10.0.19041.1",
+        "device_ids": "SWD\\MSRRAS\\MS_NDISWANBH",
+        "newversion": "10.0.19041.1",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "NDIS Virtual Network Adapter Enumerator",
+        "version": "10.0.19041.1",
+        "device_ids": "ROOT\\NDISVIRTUALBUS\\0000",
+        "newversion": "10.0.19041.1",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Dynamic Platform and Thermal Framework Manager",
+        "version": "8.5.10103.7263",
+        "device_ids": "ACPI\\INT3400\\2&DABA3FF&0",
+        "newversion": "8.5.10103.7263",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) HID Event Filter",
+        "version": "2.2.1.377",
+        "device_ids": "ACPI\\INT33D5\\2&DABA3FF&0",
+        "newversion": "2.2.1.377",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Power Engine Plug-in",
+        "version": "10.0.19041.4355",
+        "device_ids": "ACPI\\INT33A1\\1",
+        "newversion": "10.0.19041.4355",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel Processor",
+        "version": "10.0.19041.4355",
+        "device_ids": "ACPI\\GENUINEINTEL_-_INTEL64_FAMILY_6_MODEL_158_-_INTEL(R)_CORE(TM)_I5-9300H_CPU_@_2.40GHZ\\_8,ACPI\\GENUINEINTEL_-_INTEL64_FAMILY_6_MODEL_158_-_INTEL(R)_CORE(TM)_I5-9300H_CPU_@_2.40GHZ\\_7,ACPI\\GENUINEINTEL_-_INTEL64_FAMILY_6_MODEL_158_-_INTEL(R)_CORE(TM)_I5-9300H_CPU_@_2.40GHZ\\_6,ACPI\\GENUINEINTEL_-_INTEL64_FAMILY_6_MODEL_158_-_INTEL(R)_CORE(TM)_I5-9300H_CPU_@_2.40GHZ\\_5,ACPI\\GENUINEINTEL_-_INTEL64_FAMILY_6_MODEL_158_-_INTEL(R)_CORE(TM)_I5-9300H_CPU_@_2.40GHZ\\_4,ACPI\\GENUINEINTEL_-_INTEL64_FAMILY_6_MODEL_158_-_INTEL(R)_CORE(TM)_I5-9300H_CPU_@_2.40GHZ\\_3,ACPI\\GENUINEINTEL_-_INTEL64_FAMILY_6_MODEL_158_-_INTEL(R)_CORE(TM)_I5-9300H_CPU_@_2.40GHZ\\_2,ACPI\\GENUINEINTEL_-_INTEL64_FAMILY_6_MODEL_158_-_INTEL(R)_CORE(TM)_I5-9300H_CPU_@_2.40GHZ\\_1",
+        "newversion": "10.0.19041.4355",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Dynamic Platform and Thermal Framework Memory Participant",
+        "version": "8.5.10103.7263",
+        "device_ids": "ACPI\\INT3402\\TMEM",
+        "newversion": "8.5.10103.7263",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Serial IO GPIO Host Controller - INT3450",
+        "version": "30.100.2020.7",
+        "device_ids": "ACPI\\INT3450\\3&11583659&0",
+        "newversion": "30.100.2020.7",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) SPI (flash) Controller - A324",
+        "version": "10.1.16.6",
+        "device_ids": "PCI\\VEN_8086&DEV_A324&SUBSYS_09491028&REV_10\\3&11583659&0&FD",
+        "newversion": "10.1.16.6",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) SMBus - A323",
+        "version": "10.1.16.6",
+        "device_ids": "PCI\\VEN_8086&DEV_A323&SUBSYS_09491028&REV_10\\3&11583659&0&FC",
+        "newversion": "10.1.16.6",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Dynamic Platform and Thermal Framework Generic Participant",
+        "version": "8.5.10103.7263",
+        "device_ids": "ACPI\\INT3403\\NGFF,ACPI\\INT3403\\SKIN",
+        "newversion": "8.5.10103.7263",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Watchdog Timer Driver (Intel(R) WDT)",
+        "version": "11.7.0.1000",
+        "device_ids": "ACPI\\INT3F0D\\4&21C71C73&0",
+        "newversion": "11.7.0.1000",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) 300 Series Chipset Family LPC Controller (HM370) - A30D",
+        "version": "10.1.16.6",
+        "device_ids": "PCI\\VEN_8086&DEV_A30D&SUBSYS_09491028&REV_10\\3&11583659&0&F8",
+        "newversion": "10.1.16.6",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft Wi-Fi Direct Virtual Adapter",
+        "version": "10.0.19041.1",
+        "device_ids": "{5D624F94-8850-40C3-A3FA-A4FD2080BAF3}\\VWIFIMP_WFD\\5&372525A5&4&20,{5D624F94-8850-40C3-A3FA-A4FD2080BAF3}\\VWIFIMP_WFD\\5&372525A5&4&19",
+        "newversion": "10.0.19041.1",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) PCI Express Root Port #15 - A336",
+        "version": "10.1.16.6",
+        "device_ids": "PCI\\VEN_8086&DEV_A336&SUBSYS_09491028&REV_F0\\3&11583659&0&EE",
+        "newversion": "10.1.16.6",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) PCI Express Root Port #14 - A335",
+        "version": "10.1.16.6",
+        "device_ids": "PCI\\VEN_8086&DEV_A335&SUBSYS_09491028&REV_F0\\3&11583659&0&E8",
+        "newversion": "10.1.16.6",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Optane(TM) Memory and Storage Management Component",
+        "version": "17.11.3.1010",
+        "device_ids": "SWD\\DRIVERENUM\\{8541B81C-193B-4F91-A86B-53DF20C1974B}#RSTHSA&4&27DF2813&0",
+        "newversion": "17.11.3.1010",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Optane(TM) Pinning Shell Extensions",
+        "version": "17.11.3.1010",
+        "device_ids": "SWD\\DRIVERENUM\\PINNINGSHELLEXTENSION&4&27DF2813&0",
+        "newversion": "17.11.3.1010",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Chipset SATA/PCIe RST Premium Controller",
+        "version": "17.11.3.1010",
+        "device_ids": "PCI\\VEN_8086&DEV_282A&SUBSYS_09491028&REV_10\\3&11583659&0&B8",
+        "newversion": "17.11.3.1010",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Management and Security Application Local Management",
+        "version": "2130.1.16.6",
+        "device_ids": "SWD\\DRIVERENUM\\{BABE2782-EB1B-46A7-871A-F043D3200542}#OEM_LMS_COMPONENT&4&7CBED6E&1,SWD\\DRIVERENUM\\OEM_LMS_COMPONENT&4&7CBED6E&1",
+        "newversion": "2130.1.16.6",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) iCLS Client",
+        "version": "1.63.1155.1",
+        "device_ids": "SWD\\DRIVERENUM\\{BABE2782-EB1B-46A7-871A-F043D3200542}#OEM_ICLS_COMPONENT&4&7CBED6E&1,SWD\\DRIVERENUM\\OEM_ICLS_COMPONENT&4&7CBED6E&1",
+        "newversion": "1.63.1155.1",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Dynamic Application Loader Host Interface",
+        "version": "1.41.2021.121",
+        "device_ids": "SWD\\DRIVERENUM\\{BABE2782-EB1B-46A7-871A-F043D3200542}#OEM_DAL_COMPONENT&4&7CBED6E&1,SWD\\DRIVERENUM\\OEM_DAL_COMPONENT&4&7CBED6E&1",
+        "newversion": "1.41.2021.121",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Management Engine WMI Provider",
+        "version": "2130.1.15.0",
+        "device_ids": "SWD\\DRIVERENUM\\OEM_WMI_COMPONENT&4&7CBED6E&1",
+        "newversion": "2130.1.15.0",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Serial IO I2C Host Controller - A369",
+        "version": "30.100.2020.7",
+        "device_ids": "PCI\\VEN_8086&DEV_A369&SUBSYS_09491028&REV_10\\3&11583659&0&A9",
+        "newversion": "30.100.2020.7",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Serial IO I2C Host Controller - A368",
+        "version": "30.100.2020.7",
+        "device_ids": "PCI\\VEN_8086&DEV_A368&SUBSYS_09491028&REV_10\\3&11583659&0&A8",
+        "newversion": "30.100.2020.7",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Bluetooth Device (Personal Area Network)",
+        "version": "10.0.19041.3636",
+        "device_ids": "BTH\\MS_BTHPAN\\6&25DCD541&4&2",
+        "newversion": "10.0.19041.3636",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Thermal Subsystem - A379",
+        "version": "10.1.16.6",
+        "device_ids": "PCI\\VEN_8086&DEV_A379&SUBSYS_09491028&REV_10\\3&11583659&0&90",
+        "newversion": "10.1.16.6",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Gaussian Mixture Model - 1911",
+        "version": "10.1.7.3",
+        "device_ids": "PCI\\VEN_8086&DEV_1911&SUBSYS_09491028&REV_00\\3&11583659&0&40",
+        "newversion": "10.1.7.3",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Dynamic Platform and Thermal Framework Processor Participant",
+        "version": "8.5.10103.7263",
+        "device_ids": "PCI\\VEN_8086&DEV_1903&SUBSYS_09491028&REV_07\\3&11583659&0&20",
+        "newversion": "8.5.10103.7263",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Graphics Command Center",
+        "version": "26.20.100.8141",
+        "device_ids": "SWD\\DRIVERENUM\\IGCC&4&1AB2C996&0",
+        "newversion": "26.20.100.8141",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Graphics Control Panel",
+        "version": "26.20.100.8141",
+        "device_ids": "SWD\\DRIVERENUM\\CUI&4&1AB2C996&0",
+        "newversion": "26.20.100.8141",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) UHD Graphics 630",
+        "version": "26.20.100.8141",
+        "device_ids": "PCI\\VEN_8086&DEV_3E9B&SUBSYS_09491028&REV_00\\3&11583659&0&10",
+        "newversion": "26.20.100.8141",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) PCIe Controller (x16) - 1901",
+        "version": "10.1.7.3",
+        "device_ids": "PCI\\VEN_8086&DEV_1901&SUBSYS_09491028&REV_07\\3&11583659&0&08",
+        "newversion": "10.1.7.3",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Intel(R) Host Bridge/DRAM Registers - 3E10",
+        "version": "10.1.14.7",
+        "device_ids": "PCI\\VEN_8086&DEV_3E10&SUBSYS_09491028&REV_07\\3&11583659&0&00",
+        "newversion": "10.1.14.7",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft Kernel Debug Network Adapter",
+        "version": "10.0.19041.1",
+        "device_ids": "ROOT\\KDNIC\\0000",
+        "newversion": "10.0.19041.1",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Oray Virtual Game Controller",
+        "version": "1.0.0.0",
+        "device_ids": "ROOT\\SYSTEM\\0002",
+        "newversion": "1.0.0.0",
+        "category": "USB驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "OrayUSBVHCI",
+        "version": "1.0.0.0",
+        "device_ids": "ROOT\\ORAYUSBVHCI\\0000",
+        "newversion": "1.0.0.0",
+        "category": "USB驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft ACPI-Compliant Embedded Controller",
+        "version": "10.0.19041.3636",
+        "device_ids": "ACPI\\PNP0C09\\0",
+        "newversion": "10.0.19041.3636",
+        "category": "USB驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "PCI standard RAM Controller",
+        "version": "10.0.19041.3636",
+        "device_ids": "PCI\\VEN_8086&DEV_A36F&SUBSYS_09491028&REV_10\\3&11583659&0&A2",
+        "newversion": "10.0.19041.3636",
+        "category": "USB驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "USB Video Device",
+        "version": "10.0.19041.5129",
+        "device_ids": "USB\\VID_0BDA&PID_5521&MI_00\\6&B813745&0&0000",
+        "newversion": "10.0.19041.5129",
+        "category": "USB驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "USB Composite Device",
+        "version": "10.0.19041.4474",
+        "device_ids": "USB\\VID_0BDA&PID_5521\\200901010001,USB\\VID_3151&PID_3020\\B120300001",
+        "newversion": "10.0.19041.4474",
+        "category": "USB驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "USB Input Device",
+        "version": "10.0.19041.3636",
+        "device_ids": "USB\\VID_3151&PID_3020&MI_01\\6&3416C6F3&0&0001,USB\\VID_3151&PID_3020&MI_00\\6&3416C6F3&0&0000",
+        "newversion": "10.0.19041.3636",
+        "category": "USB驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "USB Root Hub (USB 3.0)",
+        "version": "10.0.19041.4355",
+        "device_ids": "USB\\ROOT_HUB30\\4&DCB83F&0&0",
+        "newversion": "10.0.19041.4355",
+        "category": "USB驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "USB xHCI Compliant Host Controller",
+        "version": "10.0.19041.4355",
+        "device_ids": "PCI\\VEN_8086&DEV_A36D&SUBSYS_09491028&REV_10\\3&11583659&0&A0",
+        "newversion": "10.0.19041.4355",
+        "category": "USB驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft System Management BIOS Driver",
+        "version": "10.0.19041.1",
+        "device_ids": "ROOT\\MSSMBIOS\\0000",
+        "newversion": "10.0.19041.1",
+        "category": "摄像头驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft Basic Render Driver",
+        "version": "10.0.19041.3636",
+        "device_ids": "ROOT\\BASICRENDER\\0000",
+        "newversion": "10.0.19041.3636",
+        "category": "摄像头驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft UEFI-Compliant System",
+        "version": "10.0.19041.1",
+        "device_ids": "ACPI_HAL\\UEFI\\0",
+        "newversion": "10.0.19041.1",
+        "category": "摄像头驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft ACPI-Compliant Control Method Battery",
+        "version": "10.0.19041.1",
+        "device_ids": "ACPI\\PNP0C0A\\1",
+        "newversion": "10.0.19041.1",
+        "category": "摄像头驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft AC Adapter",
+        "version": "10.0.19041.1",
+        "device_ids": "ACPI\\ACPI0003\\2&DABA3FF&0",
+        "newversion": "10.0.19041.1",
+        "category": "摄像头驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft Windows Management Interface for ACPI",
+        "version": "10.0.19041.1",
+        "device_ids": "ACPI\\PNP0C14\\WBAT,ACPI\\PNP0C14\\WAPW,ACPI\\PNP0C14\\AWCC,ACPI\\PNP0C14\\0,ACPI\\PNP0C14\\TESTDEV,ACPI\\PNP0C14\\SAMPLEDEV,ACPI\\PNP0C14\\OPT1,ACPI\\PNP0C14\\OPTM",
+        "newversion": "10.0.19041.1",
+        "category": "摄像头驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft Input Configuration Device",
+        "version": "10.0.19041.1",
+        "device_ids": "HID\\DELL0949&COL03\\5&1011A381&0&0002",
+        "newversion": "10.0.19041.1",
+        "category": "摄像头驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft Bluetooth LE Enumerator",
+        "version": "10.0.19041.3636",
+        "device_ids": "BTH\\MS_BTHLE\\6&25DCD541&4&3",
+        "newversion": "10.0.19041.3636",
+        "category": "摄像头驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft Bluetooth Enumerator",
+        "version": "10.0.19041.4597",
+        "device_ids": "BTH\\MS_BTHBRB\\6&25DCD541&4&1",
+        "newversion": "10.0.19041.4597",
+        "category": "摄像头驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft ACPI-Compliant System",
+        "version": "10.0.19041.4355",
+        "device_ids": "ACPI_HAL\\PNP0C08\\0",
+        "newversion": "10.0.19041.4355",
+        "category": "摄像头驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft Virtual Drive Enumerator",
+        "version": "10.0.19041.1",
+        "device_ids": "ROOT\\VDRVROOT\\0000",
+        "newversion": "10.0.19041.1",
+        "category": "摄像头驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft Hyper-V Virtualization Infrastructure Driver",
+        "version": "10.0.19041.4474",
+        "device_ids": "ROOT\\VID\\0000",
+        "newversion": "10.0.19041.4474",
+        "category": "摄像头驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "NVIDIA Virtual Audio Device (Wave Extensible) (WDM)",
+        "version": "4.65.0.3",
+        "device_ids": "ROOT\\UNNAMED_DEVICE\\0000",
+        "newversion": "4.65.0.3",
+        "category": "音频驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Realtek Audio",
+        "version": "6.0.8996.1",
+        "device_ids": "INTELAUDIO\\FUNC_01&VEN_10EC&DEV_0295&SUBSYS_10280949&REV_1000\\4&2AEB1472&1&0001",
+        "newversion": "6.0.8996.1",
+        "category": "音频驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Realtek PCIe GbE Family Controller",
+        "version": "10.32.1206.2018",
+        "device_ids": "PCI\\VEN_10EC&DEV_8168&SUBSYS_09491028&REV_15\\01000000684CE00000",
+        "newversion": "10.32.1206.2018",
+        "category": "音频驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "NVIDIA High Definition Audio",
+        "version": "1.4.0.1",
+        "device_ids": "HDAUDIO\\FUNC_01&VEN_10DE&DEV_0094&SUBSYS_10280949&REV_1001\\5&2EFD4448&0&0001",
+        "newversion": "1.4.0.1",
+        "category": "音频驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "High Definition Audio Controller",
+        "version": "10.0.19041.4957",
+        "device_ids": "PCI\\VEN_10DE&DEV_10FA&SUBSYS_09491028&REV_A1\\4&2764A01C&0&0108",
+        "newversion": "10.0.19041.4957",
+        "category": "音频驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "HID-compliant system controller",
+        "version": "10.0.19041.3636",
+        "device_ids": "HID\\CONVERTEDDEVICE&COL03\\5&1568F66A&0&0002,HID\\INTC816&COL03\\3&36A7043C&0&0002,HID\\VID_3151&PID_3020&MI_01&COL02\\7&2C0BCEA7&0&0001",
+        "newversion": "10.0.19041.3636",
+        "category": "HID 设备驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "HID-compliant consumer control device",
+        "version": "10.0.19041.1",
+        "device_ids": "HID\\CONVERTEDDEVICE&COL02\\5&1568F66A&0&0001,HID\\INTC816&COL0A\\3&36A7043C&0&0009,HID\\INTC816&COL09\\3&36A7043C&0&0008,HID\\INTC816&COL08\\3&36A7043C&0&0007,HID\\INTC816&COL07\\3&36A7043C&0&0006,HID\\INTC816&COL06\\3&36A7043C&0&0005,HID\\INTC816&COL05\\3&36A7043C&0&0004,HID\\INTC816&COL04\\3&36A7043C&0&0003,HID\\VID_3151&PID_3020&MI_01&COL03\\7&2C0BCEA7&0&0002",
+        "newversion": "10.0.19041.1",
+        "category": "HID 设备驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "HID Keyboard Device",
+        "version": "10.0.19041.1",
+        "device_ids": "HID\\CONVERTEDDEVICE&COL01\\5&1568F66A&0&0000,HID\\INTC816&COL01\\3&36A7043C&0&0000,HID\\VID_3151&PID_3020&MI_00\\7&38E75F89&0&0000",
+        "newversion": "10.0.19041.1",
+        "category": "HID 设备驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "HID-compliant wireless radio controls",
+        "version": "10.0.19041.3636",
+        "device_ids": "HID\\INTC816&COL02\\3&36A7043C&0&0001",
+        "newversion": "10.0.19041.3636",
+        "category": "HID 设备驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "HID-compliant vendor-defined device",
+        "version": "10.0.19041.3636",
+        "device_ids": "HID\\DELL0949&COL04\\5&1011A381&0&0003,HID\\VID_3151&PID_3020&MI_01&COL04\\7&2C0BCEA7&0&0003",
+        "newversion": "10.0.19041.3636",
+        "category": "HID 设备驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "HID-compliant touch pad",
+        "version": "10.0.19041.3636",
+        "device_ids": "HID\\DELL0949&COL02\\5&1011A381&0&0001",
+        "newversion": "10.0.19041.3636",
+        "category": "HID 设备驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "HID-compliant mouse",
+        "version": "10.0.19041.1",
+        "device_ids": "HID\\DELL0949&COL01\\5&1011A381&0&0000,HID\\VID_3151&PID_3020&MI_01&COL01\\7&2C0BCEA7&0&0000",
+        "newversion": "10.0.19041.1",
+        "category": "HID 设备驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Bluetooth LE Generic Attribute Service",
+        "version": "10.0.19041.3636",
+        "device_ids": "BTHLEDEVICE\\{0000180F-0000-1000-8000-00805F9B34FB}_DEV_VID&021235_PID&AA22_REV&0001_1305AA0001E4\\8&2BA31AF4&0&002E",
+        "newversion": "10.0.19041.3636",
+        "category": "蓝牙驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Bluetooth Low Energy GATT compliant HID device",
+        "version": "10.0.19041.4355",
+        "device_ids": "BTHLEDEVICE\\{00001812-0000-1000-8000-00805F9B34FB}_DEV_VID&021235_PID&AA22_REV&0001_1305AA0001E4\\8&2BA31AF4&0&0011",
+        "newversion": "10.0.19041.4355",
+        "category": "蓝牙驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Bluetooth LE Device",
+        "version": "10.0.19041.3636",
+        "device_ids": "BTHLE\\DEV_1305AA0001E4\\7&84F985D&0&1305AA0001E4",
+        "newversion": "10.0.19041.3636",
+        "category": "蓝牙驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Bluetooth Device (RFCOMM Protocol TDI)",
+        "version": "10.0.19041.4355",
+        "device_ids": "BTH\\MS_RFCOMM\\6&25DCD541&4&0",
+        "newversion": "10.0.19041.4355",
+        "category": "蓝牙驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Qualcomm QCA9377 Bluetooth",
+        "version": "10.0.0.1238",
+        "device_ids": "USB\\VID_0CF3&PID_E009\\5&23DEF358&0&14",
+        "newversion": "10.0.0.1238",
+        "category": "蓝牙驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Disk drive",
+        "version": "10.0.19041.4597",
+        "device_ids": "SCSI\\DISK&VEN_NVME&PROD_PC_SN520_NVME_WD\\4&27DF2813&0&010000",
+        "newversion": "10.0.19041.4597",
+        "category": "存储驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft Storage Spaces Controller",
+        "version": "10.0.19041.4355",
+        "device_ids": "ROOT\\SPACEPORT\\0000",
+        "newversion": "10.0.19041.4355",
+        "category": "存储驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Generic PnP Monitor",
+        "version": "10.0.19041.4355",
+        "device_ids": "DISPLAY\\BOE0819\\4&1AB2C996&0&UID265988",
+        "newversion": "10.0.19041.4355",
+        "category": "显示驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "NVIDIA GeForce GTX 1650",
+        "version": "32.0.15.6081",
+        "device_ids": "PCI\\VEN_10DE&DEV_1F91&SUBSYS_09491028&REV_A1\\4&2764A01C&0&0008",
+        "newversion": "32.0.15.6081",
+        "category": "显示驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Microsoft Basic Display Driver",
+        "version": "10.0.19041.3636",
+        "device_ids": "ROOT\\BASICDISPLAY\\0000",
+        "newversion": "10.0.19041.3636",
+        "category": "显示驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "PCI Express Root Complex",
+        "version": "10.0.19041.4842",
+        "device_ids": "ACPI\\PNP0A08\\0",
+        "newversion": "10.0.19041.4842",
+        "category": "系统硬件组件",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "UMBus Root Bus Enumerator",
+        "version": "10.0.19041.1",
+        "device_ids": "ROOT\\UMBUS\\0000",
+        "newversion": "10.0.19041.1",
+        "category": "系统硬件组件",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Composite Bus Enumerator",
+        "version": "10.0.19041.1",
+        "device_ids": "ROOT\\COMPOSITEBUS\\0000",
+        "newversion": "10.0.19041.1",
+        "category": "系统硬件组件",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Volume",
+        "version": "10.0.19041.1",
+        "device_ids": "STORAGE\\VOLUME\\{86FB92E9-5AF0-11EF-BA9B-806E6F6E6963}#00000076E9A00000,STORAGE\\VOLUME\\{86FB92E9-5AF0-11EF-BA9B-806E6F6E6963}#00000072CD600000,STORAGE\\VOLUME\\{86FB92E9-5AF0-11EF-BA9B-806E6F6E6963}#000000728F800000,STORAGE\\VOLUME\\{86FB92E9-5AF0-11EF-BA9B-806E6F6E6963}#0000002330D00000,STORAGE\\VOLUME\\{86FB92E9-5AF0-11EF-BA9B-806E6F6E6963}#0000000030B00000,STORAGE\\VOLUME\\{86FB92E9-5AF0-11EF-BA9B-806E6F6E6963}#0000000028B00000,STORAGE\\VOLUME\\{86FB92E9-5AF0-11EF-BA9B-806E6F6E6963}#0000000000100000",
+        "newversion": "10.0.19041.1",
+        "category": "系统硬件组件",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Volume Manager",
+        "version": "10.0.19041.3636",
+        "device_ids": "ROOT\\VOLMGR\\0000",
+        "newversion": "10.0.19041.3636",
+        "category": "系统硬件组件",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Local Print Queue",
+        "version": "10.0.19041.1",
+        "device_ids": "SWD\\PRINTENUM\\{660C35A9-11D3-48EF-B5EF-650537570DEF},SWD\\PRINTENUM\\{F1ADB184-1317-40F2-9BA3-AD2D4709CBEA},SWD\\PRINTENUM\\{88D7ADE7-6349-4969-9B40-77E633683D2F},SWD\\PRINTENUM\\{03D00097-08A3-4DE2-ABB6-13516DCCD2E2},SWD\\PRINTENUM\\{64A2EEF7-85B8-4647-9A52-5D15AC38E052},SWD\\PRINTENUM\\{09BF0F2B-D315-4208-8883-53ECF0D3F571},SWD\\PRINTENUM\\PRINTQUEUES",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "WAN Miniport (IPv6)",
+        "version": "10.0.19041.1",
+        "device_ids": "SWD\\MSRRAS\\MS_NDISWANIPV6",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "WAN Miniport (IP)",
+        "version": "10.0.19041.1",
+        "device_ids": "SWD\\MSRRAS\\MS_NDISWANIP",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "WAN Miniport (PPPOE)",
+        "version": "10.0.19041.1",
+        "device_ids": "SWD\\MSRRAS\\MS_PPPOEMINIPORT",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "WAN Miniport (PPTP)",
+        "version": "10.0.19041.1",
+        "device_ids": "SWD\\MSRRAS\\MS_PPTPMINIPORT",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "WAN Miniport (L2TP)",
+        "version": "10.0.19041.1",
+        "device_ids": "SWD\\MSRRAS\\MS_L2TPMINIPORT",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "WAN Miniport (IKEv2)",
+        "version": "10.0.19041.1",
+        "device_ids": "SWD\\MSRRAS\\MS_AGILEVPNMINIPORT",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "WAN Miniport (SSTP)",
+        "version": "10.0.19041.1",
+        "device_ids": "SWD\\MSRRAS\\MS_SSTPMINIPORT",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Generic software device",
+        "version": "10.0.19041.1",
+        "device_ids": "SWD\\MSRRAS\\{5E259276-BC7E-40E3-B93B-8F89B5F3ABC0},SWD\\MMDEVAPI\\MICROSOFTGSWAVETABLESYNTH,SWD\\RADIO\\{940727EB-2C1A-4257-8F7A-32FD5C80A9AB},SWD\\RADIO\\BLUETOOTH_B068E627AF0E,SWD\\RADIO\\{3DB5895D-CC28-44B3-AD3D-6F01A782B8D2},SWD\\MSDAS\\{CE958E9A-424F-4C88-86F4-11314821E75A}",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Remote Desktop Device Redirector Bus",
+        "version": "10.0.19041.1",
+        "device_ids": "ROOT\\RDPBUS\\0000",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "System Management Device",
+        "version": "8.2.0.454",
+        "device_ids": "ROOT\\SYSTEM\\0001",
+        "newversion": "8.2.0.454",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Plug and Play Software Device Enumerator",
+        "version": "10.0.19041.1",
+        "device_ids": "ROOT\\SYSTEM\\0000",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "NVVHCI Enumerator",
+        "version": "3.5.3090.2760",
+        "device_ids": "ROOT\\UNNAMED_DEVICE\\0002",
+        "newversion": "3.5.3090.2760",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "NvModuleTracker Device",
+        "version": "6.14.26040.64835",
+        "device_ids": "ROOT\\UNNAMED_DEVICE\\0001",
+        "newversion": "6.14.26040.64835",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "DellInstrumentation Device",
+        "version": "2.9.0.1",
+        "device_ids": "ROOT\\DELLINSTRUMENTATION\\0000",
+        "newversion": "2.9.0.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "System Firmware 1.11.1",
+        "version": "0.1.11.1",
+        "device_ids": "UEFI\\RES_{03C073A0-8AA3-42DD-AF36-7619E6297A47}\\0",
+        "newversion": "0.1.11.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Motherboard resources",
+        "version": "10.0.19041.3636",
+        "device_ids": "ACPI\\INT340E\\2&DABA3FF&0,ACPI\\PNP0C02\\5,ACPI\\PNP0C02\\IOTRAPS,ACPI\\PNP0C02\\PCHRESV,ACPI\\PNP0C02\\1,ACPI\\PNP0C02\\SARESV,ACPI\\PNP0C02\\2",
+        "newversion": "10.0.19041.3636",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Converted Portable Device Control device",
+        "version": "10.0.19041.1",
+        "device_ids": "BUTTONCONVERTER\\CONVERTEDDEVICE\\4&A7B357D&0&0",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Portable Device Control device",
+        "version": "10.0.19041.1",
+        "device_ids": "HID\\INTC816&COL0B\\3&36A7043C&0&000A",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "ACPI Thermal Zone",
+        "version": "10.0.19041.3636",
+        "device_ids": "ACPI\\THERMALZONE\\THM_",
+        "newversion": "10.0.19041.3636",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "ACPI Sleep Button",
+        "version": "10.0.19041.3636",
+        "device_ids": "ACPI\\PNP0C0E\\2&DABA3FF&0",
+        "newversion": "10.0.19041.3636",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "ACPI Power Button",
+        "version": "10.0.19041.3636",
+        "device_ids": "ACPI\\PNP0C0C\\2&DABA3FF&0",
+        "newversion": "10.0.19041.3636",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "ACPI Lid",
+        "version": "10.0.19041.3636",
+        "device_ids": "ACPI\\PNP0C0D\\2&DABA3FF&0",
+        "newversion": "10.0.19041.3636",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Trusted Platform Module 2.0",
+        "version": "10.0.19041.4355",
+        "device_ids": "ACPI\\MSFT0101\\1",
+        "newversion": "10.0.19041.4355",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "ACPI Wake Alarm",
+        "version": "10.0.19041.1",
+        "device_ids": "ACPI\\ACPI000E\\2&DABA3FF&0",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "ACPI Processor Aggregator",
+        "version": "10.0.19041.1",
+        "device_ids": "ACPI\\ACPI000C\\2&DABA3FF&0",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "英特尔(R) 显示器音频",
+        "version": "10.27.0.9",
+        "device_ids": "INTELAUDIO\\FUNC_01&VEN_8086&DEV_280B&SUBSYS_80860101&REV_1000\\4&2AEB1472&1&0201",
+        "newversion": "10.27.0.9",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "英特尔(R)智音技术 OED",
+        "version": "10.23.3349.212",
+        "device_ids": "INTELAUDIO\\DSP_CTLR_DEV_A348&VEN_8086&DEV_0222&SUBSYS_09491028&REV_0010\\4&2AEB1472&1&0800",
+        "newversion": "10.23.3349.212",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "英特尔(R)智音技术音频控制器",
+        "version": "10.23.0.3349",
+        "device_ids": "PCI\\VEN_8086&DEV_A348&SUBSYS_09491028&REV_10\\3&11583659&0&FB",
+        "newversion": "10.23.0.3349",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "PS/2 Compatible Mouse",
+        "version": "10.0.19041.1",
+        "device_ids": "ACPI\\DLL0949\\4&21C71C73&0",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Standard PS/2 Keyboard",
+        "version": "10.0.19041.1",
+        "device_ids": "ACPI\\DLLK0949\\4&21C71C73&0",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "System timer",
+        "version": "10.0.19041.3636",
+        "device_ids": "ACPI\\PNP0100\\4&21C71C73&0",
+        "newversion": "10.0.19041.3636",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Numeric data processor",
+        "version": "10.0.19041.3636",
+        "device_ids": "ACPI\\PNP0C04\\4&21C71C73&0",
+        "newversion": "10.0.19041.3636",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Programmable interrupt controller",
+        "version": "10.0.19041.3636",
+        "device_ids": "ACPI\\PNP0000\\4&21C71C73&0",
+        "newversion": "10.0.19041.3636",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "High precision event timer",
+        "version": "10.0.19041.3636",
+        "device_ids": "ACPI\\PNP0103\\0",
+        "newversion": "10.0.19041.3636",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "I2C HID Device",
+        "version": "10.0.19041.1",
+        "device_ids": "ACPI\\DELL0949\\4&2E681A68&0",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Device Information Service",
+        "version": "10.0.19041.3636",
+        "device_ids": "BTHLEDEVICE\\{0000180A-0000-1000-8000-00805F9B34FB}_DEV_VID&021235_PID&AA22_REV&0001_1305AA0001E4\\8&2BA31AF4&0&000C",
+        "newversion": "10.0.19041.3636",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Generic Attribute Profile",
+        "version": "10.0.19041.3636",
+        "device_ids": "BTHLEDEVICE\\{00001801-0000-1000-8000-00805F9B34FB}_DEV_VID&021235_PID&AA22_REV&0001_1305AA0001E4\\8&2BA31AF4&0&0008",
+        "newversion": "10.0.19041.3636",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Generic Access Profile",
+        "version": "10.0.19041.3636",
+        "device_ids": "BTHLEDEVICE\\{00001800-0000-1000-8000-00805F9B34FB}_DEV_VID&021235_PID&AA22_REV&0001_1305AA0001E4\\8&2BA31AF4&0&0001",
+        "newversion": "10.0.19041.3636",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "ACPI x64-based PC",
+        "version": "10.0.19041.1",
+        "device_ids": "ROOT\\ACPI_HAL\\0000",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "Charge Arbitration Driver",
+        "version": "10.0.19041.1",
+        "device_ids": "ROOT\\CAD\\0000",
+        "newversion": "10.0.19041.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "OrayIddDriver Device",
+        "version": "17.1.58.818",
+        "device_ids": "ROOT\\DISPLAY\\0000",
+        "newversion": "17.1.58.818",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "",
+        "version": "未知",
+        "device_ids": "HTREE\\ROOT\\0",
+        "newversion": "未知",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    },
+    {
+        "name": "",
+        "version": "2:10.0,2:6.3,2:6.2,2:6.1,2:6.0,2:5.2,2:5.1",
+        "device_ids": "OneNote for Windows 10,OneNote (Desktop),Microsoft XPS Document Writer,Microsoft Print to PDF,Fax",
+        "newversion": "2:10.0,2:6.3,2:6.2,2:6.1,2:6.0,2:5.2,2:5.1",
+        "category": "其他驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 0
+    }
+]

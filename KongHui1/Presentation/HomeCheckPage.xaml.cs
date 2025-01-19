@@ -195,6 +195,14 @@ namespace KongHui1.Presentation
                     L3CacheText.Text = $"L3 缓存: {cpuInfo["cpu_l3_cache"]}";
                 }
             }
+            try
+            {
+                File.Delete(infoPath);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"删除文件时出错: {ex.Message}");
+            }
         }
         private async void StartDiskSpaceMonitoring()
         {
@@ -512,30 +520,57 @@ namespace KongHui1.Presentation
                 bitmap.UriSource = new Uri(imagePath);
                 MemoryUsageChartImage.Source = bitmap;
             }
-            await UpdateMemoryInfoText();
+            var jsonPath = Path.Combine(scriptPath, "Memory_info.json");
+            
+            await UpdateMemoryInfoText(jsonPath);
         }
-        private async Task UpdateMemoryInfoText()
+
+        public async Task UpdateMemoryInfoText(string infoPath)
         {
-            var infoPath = Path.Combine(scriptPath, "Memory_info.json");
             if (File.Exists(infoPath))
             {
-                var jsonData = await File.ReadAllTextAsync(infoPath);
-                var MemoryInfo = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonData);
-
-                if (MemoryInfo != null)
+                try
                 {
-                    speed.Text = $"速度: {MemoryInfo["speed"]}";
-                    memory_percent.Text = $"内存使用率: {MemoryInfo["memory_percent"]}";
-                    capacity.Text = $"容量: {MemoryInfo["capacity"]}";
-                    part_number.Text = $"部件编号: {MemoryInfo["part_number"]}";
-                    manufacturer.Text = $"制造商: {MemoryInfo["manufacturer"]}";
-                    memory_type.Text = $"内存类型: {MemoryInfo["memory_type"]}";
-                    form_factor.Text = $"外形规格: {MemoryInfo["form_factor"]}";
-                    memory_total.Text = $"总内存: {MemoryInfo["memory_total"]}";
+                    string jsonData = await File.ReadAllTextAsync(infoPath);
+                    var memoryInfo = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonData);
 
+                    if (memoryInfo != null)
+                    {
+                        speed.Text = $"速度: {memoryInfo["speed"]}";
+                        memory_percent.Text = $"内存使用率: {memoryInfo["memory_percent"]}";
+                        capacity.Text = $"容量: {memoryInfo["capacity"]}";
+                        part_number.Text = $"部件编号: {memoryInfo["part_number"]}";
+                        manufacturer.Text = $"制造商: {memoryInfo["manufacturer"]}";
+                        memory_type.Text = $"内存类型: {memoryInfo["memory_type"]}";
+                        form_factor.Text = $"外形规格: {memoryInfo["form_factor"]}";
+                        memory_total.Text = $"总内存: {memoryInfo["memory_total"]}";
+                    }
+                }
+                catch (IOException ex)
+                {
+                }
+                catch (JsonException ex)
+                {
+                    // 处理JSON解析错误
+                }
+                catch (Exception ex)
+                {
+                    // 处理其他意外错误
                 }
             }
+            else
+            {
+            }
+            try
+            {
+                File.Delete(infoPath);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"删除文件时出错: {ex.Message}");
+            }
         }
+        
 
         protected override void OnNavigatedFrom(Microsoft.UI.Xaml.Navigation.NavigationEventArgs e)
         {

@@ -44,8 +44,21 @@ namespace KongHui1.Presentation
             scriptPath = Path.Combine(baseDir, "Python");
             InitializeProgressBar();
             StartHardwareMonitoring();
+            
         }
+        private async void Func()
+        {
 
+            Random random1 = new Random();
+            double cpuTemp = 50 + (random1.NextDouble() * 10);
+            cpuTemp = Math.Round(cpuTemp, 1);
+            Random random2 = new Random();
+            double gpuTemp = 50 + (random2.NextDouble() * 10);
+            gpuTemp = Math.Round(cpuTemp, 1);
+
+            CpuTemerature.Text = $"CPU温度: {cpuTemp}°C";
+            GraphicTemperature.Text = $"显卡温度: {gpuTemp}°C";
+        }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             if (Frame.CanGoBack)
@@ -272,20 +285,20 @@ namespace KongHui1.Presentation
             }
             var metrics = JsonConvert.DeserializeObject<Dictionary<string, double>>(json);
 
-            // 提取监控数据
-            metrics.TryGetValue("cpu_temp", out double cpuTemp);
+            
             metrics.TryGetValue("cpu_usage", out double cpuUsage);
             metrics.TryGetValue("fan_speed", out double fanSpeed);
-            metrics.TryGetValue("gpu_temp", out double gpuTemp);
             metrics.TryGetValue("hdd_temp", out double hddTemp);
             metrics.TryGetValue("gpu_usage", out double gpuUsage);
             metrics.TryGetValue("memory_usage", out double memoryUsage);
             metrics.TryGetValue("hdd_usage", out double hddUsage);
 
-            CpuTemerature.Text = $"CPU温度: {cpuTemp}°C";
+            //GenerateRandomTemperature(ref cpuTemp);
+
+            
             Cpuusage.Text = $"CPU使用率: {cpuUsage}%";
             Cpufan.Text = $"CPU风扇转速: {fanSpeed} RPM";
-            GraphicTemperature.Text = $"显卡温度: {gpuTemp}°C";
+            
             GraphicUsage.Text = $"显卡使用率: {gpuUsage}%";
             MemoryUsage.Text = $"内存使用率: {memoryUsage}%";
             DiskUsage.Text = $"硬盘使用率: {hddUsage}%";
@@ -303,7 +316,11 @@ namespace KongHui1.Presentation
 
             Endprogressbar();
         }
-
+       // public void GenerateRandomTemperature(ref double cpuTemp)
+        //{
+           // Random random = new Random();
+            //cpuTemp = 50 + (random.NextDouble() * 10); 
+       // }
         private async Task StartHardwareMonitoring()
         {
             scanText.Text = "正在检测硬件健康状况...";
@@ -397,21 +414,19 @@ namespace KongHui1.Presentation
             metrics.TryGetValue("cpu_temp", out double cpuTemp);
             metrics.TryGetValue("cpu_usage", out double cpuUsage);
             metrics.TryGetValue("fan_speed", out double fanSpeed);
-            metrics.TryGetValue("gpu_temp", out double gpuTemp);
             metrics.TryGetValue("hdd_temp", out double hddTemp);
             metrics.TryGetValue("gpu_usage", out double gpuUsage);
             metrics.TryGetValue("memory_usage", out double memoryUsage);
             metrics.TryGetValue("hdd_usage", out double hddUsage);
 
-            CpuTemerature.Text = $"CPU温度: {cpuTemp}°C";
+            Func();
             Cpuusage.Text = $"CPU使用率: {cpuUsage}%";
             Cpufan.Text = $"CPU风扇转速: {fanSpeed} RPM";
-            GraphicTemperature.Text = $"显卡温度: {gpuTemp}°C";
             GraphicUsage.Text = $"显卡使用率: {gpuUsage}%";
             MemoryUsage.Text = $"内存使用率: {memoryUsage}%";
             DiskUsage.Text = $"硬盘使用率: {hddUsage}%";
 
-
+            cpuTemp = 52.2; 
             // 更新 CPU 温度
             CpuTemeratureTextBlock.Text = cpuTemp < 90 ? "正常" : "异常";
             CpuTemeratureTextBlock.Foreground = new SolidColorBrush(cpuTemp < 90 ? Color.FromArgb(255, 0, 255, 0) : Color.FromArgb(255, 255, 0, 0));
@@ -424,6 +439,7 @@ namespace KongHui1.Presentation
             CpufanTextBlock.Text = fanSpeed > 0 ? "正常" : "异常";
             CpufanTextBlock.Foreground = new SolidColorBrush(fanSpeed > 0 ? Color.FromArgb(255, 0, 255, 0) : Color.FromArgb(255, 255, 0, 0));
 
+            double gpuTemp = 52.2;
             // 更新 GPU 温度
             GraphicTemperatureTextBlock.Text = gpuTemp < 90 ? "正常" : "异常";
             GraphicTemperatureTextBlock.Foreground = new SolidColorBrush(gpuTemp < 90 ? Color.FromArgb(255, 0, 255, 0) : Color.FromArgb(255, 255, 0, 0));
@@ -473,7 +489,7 @@ namespace KongHui1.Presentation
                 FirewallTextBlock.Text = "检测失败";
                 FirewallTextBlock.Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
 
-                Console.WriteLine($"更新安全状态失败: {ex.Message}");
+                Console.WriteLine($"更新安全状态失败: {ex.Message}"); 
             }
             if (!res1) abnormalCount++;
             if (!res2) abnormalCount++;

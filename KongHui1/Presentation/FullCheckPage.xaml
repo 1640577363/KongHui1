@@ -166,16 +166,16 @@
                     <!-- 第三列 -->
                   </Grid.ColumnDefinitions>
 
-                  <!-- 第一列：项名 -->
-                  <StackPanel Grid.Column="0" Margin="0,0,0,0">
-                    <TextBlock x:Name="CpuTemerature" Text="CPU温度" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="Cpuusage" Text="CPU使用率" Margin="10,20,0,0"/>
-                    <TextBlock x:Name="Cpufan" Text="CPU风扇转速" Margin="10,20,0,0"/>
-                    <TextBlock x:Name="GraphicTemperature" Text="显卡温度" Margin="10,20,0,0"/>
-                    <TextBlock x:Name="GraphicUsage" Text="显卡使用率" Margin="10,20,0,0"/>
-                    <TextBlock x:Name="MemoryUsage" Text="内存使用率" Margin="10,20,0,0"/>
-                    <TextBlock x:Name="DiskUsage" Text="硬盘使用率" Margin="10,20,0,0"/>
-                  </StackPanel>
+                <!-- 第一列：项名 -->
+                <StackPanel Grid.Column="0" Margin="250,0,0,0">
+                  <TextBlock x:Name="CpuTemerature" Text="CPU温度" Margin="10,0,0,0"/>
+                  <TextBlock x:Name="Cpuusage" Text="CPU使用率" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="Cpufan" Text="CPU风扇转速" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="GraphicTemperature" Text="显卡温度" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="GraphicUsage" Text="显卡使用率" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="MemoryUsage" Text="内存使用率" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="DiskUsage" Text="硬盘使用率" Margin="10,20,0,0"/>
+                </StackPanel>
 
                   <!-- 第二列：状态 -->
                   <StackPanel Grid.Column="1" Margin="0,0,0,0">
