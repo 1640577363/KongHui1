@@ -388,7 +388,7 @@ namespace KongHui1.Presentation
             {
                 FileName = "python",
                 Arguments = ScriptPath2, // 使用相对路径
-                RedirectStandardOutput = true,
+                RedirectStandardOutput = true,            
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 WorkingDirectory = scriptPath // 使用相对路径作为工作目录

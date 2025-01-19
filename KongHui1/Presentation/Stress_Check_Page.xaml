@@ -22,8 +22,40 @@
     <Grid x:Name="Panel1" Visibility="Visible" Margin="20,50,20,20">
       <StackPanel Height="150" Background="#F4F9FF" VerticalAlignment="Top" Margin="0,0,0,0">
         <Grid Margin="50,10,0,0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+
+          <Ellipse x:Name="ScoreCircle" Width="100" Height="100"
+             VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-70,0,0,0">
+            <Ellipse.Fill>
+              <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                <GradientStop Color="#4A90E2" Offset="0.0"/>
+                <!-- 内层蓝色 -->
+                <GradientStop Color="#6EB1F7" Offset="1.0"/>
+                <!-- 外层浅蓝 -->
+              </RadialGradientBrush>
+            </Ellipse.Fill>
+            <Ellipse.Stroke>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFFFFF" Offset="0.0"/>
+                <!-- 白色光边 -->
+                <GradientStop Color="#D6EFFF" Offset="1.0"/>
+                <!-- 浅蓝外边 -->
+              </LinearGradientBrush>
+            </Ellipse.Stroke>
+            <Ellipse.StrokeThickness>4</Ellipse.StrokeThickness>
+          </Ellipse>
+
+          <!-- 居中显示分数文本 -->
+          <TextBlock x:Name="ScoreText" Text="0分" FontSize="24"
+               VerticalAlignment="Center" HorizontalAlignment="Center"
+               Foreground="White" FontWeight="Bold" TextAlignment="Center"  Margin="-70,0,0,0"/>
+
           <!-- 智能检测中的文本 -->
-          <TextBlock x:Name="scanstatusText" Text="压力测试中"
+          <TextBlock x:Name="scanstatusText" Text="压力测试中，需20分钟，请等待"
                            HorizontalAlignment="Left" 
                            VerticalAlignment="Center" 
                            FontSize="25" 
@@ -31,7 +63,7 @@
                            Margin="200,0,0,0"/>
 
           <!-- 取消检测按钮 -->
-          <Grid Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="700,0,0,0">
+          <Grid Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="500,0,50,0">
             <!-- 取消检测按钮 -->
             <Button x:Name="cancelButtonPanel" 
                         Content="取消测试" 
@@ -47,70 +79,83 @@
           </Grid>
         </Grid>
 
+        <!-- 第二行文本：正在扫描病毒和安全防护 -->
+        <TextBlock x:Name="scanText" Text="正在进行压力测试"
+                     HorizontalAlignment="Left" 
+                     VerticalAlignment="Center" 
+                     FontSize="16" 
+                     Margin="250,0,0,0"/>
 
         <!-- 进度条 -->
         <ProgressBar x:Name="progressBar" 
                          Height="20" 
-                         Margin="50,50,50,0" 
+                         Margin="50,5,50,0" 
                          IsIndeterminate="True"/>
       </StackPanel>
+          </Grid>
+        </Viewbox>
+      </Grid>
 
-      <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="0,170,0,0" Background="#F4F9FF">
+      <ScrollViewer  Grid.Row="1" VerticalScrollBarVisibility="Auto"  Margin="0,0,0,0" Background="#F4F9FF">
         <StackPanel>
-          <Expander IsExpanded="True" Margin="50,0,50,0" Background="#F4F9FF" Width="1500">
+          <Viewbox
+             StretchDirection="Both" 
+             VerticalAlignment="Top">
+            <Expander IsExpanded="True" Margin="0,0,0,0" Background="#F4F9FF" Width="1000">
             <Expander.Header>
-              <Grid>
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="Auto"/>
-                  <!-- 第一列 -->
-                  <ColumnDefinition Width="Auto"/>
-                  <!-- 第二列 -->
-                </Grid.ColumnDefinitions>
+                <Grid Width="1000">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <!-- 第一列 -->
+                    <ColumnDefinition Width="700"/>
+                    <!-- 第二列 -->
+                  </Grid.ColumnDefinitions>
                 <!-- 第一列内容 -->
                 <TextBlock Text="硬件压力检测—4项" 
          Foreground="Black" 
          FontSize="16" 
          VerticalAlignment="Center" 
          HorizontalAlignment="Left" 
-         Margin="250,0,0,0"/>
+         Margin="0,0,0,0"/>
                 <TextBlock Text="检查硬件性能" 
          Foreground="#585858" 
          FontSize="14" 
          VerticalAlignment="Center" 
          HorizontalAlignment="Left" 
          Grid.Column="1" 
-         Margin="150,0,0,0"/>
+         Margin="0,0,0,0"/>
               </Grid>
             </Expander.Header>
             <StackPanel>
-              <Grid Width="1500">
-                <!-- 定义三列 -->
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="400"/>
-                  <!-- 第一列 -->
-                  <ColumnDefinition Width="500"/>
-                  <!-- 第二列 -->
-                  <ColumnDefinition Width="500"/>
-                  <!-- 第三列 -->
-                </Grid.ColumnDefinitions>
+                <Grid Width="1000">
+                  <!-- 定义三列 -->
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <!-- 第一列 -->
+                    <ColumnDefinition Width="400"/>
+                    <!-- 第二列 -->
+                    <ColumnDefinition Width="300"/>
+                    <!-- 第三列 -->
+                  </Grid.ColumnDefinitions>
 
                 <!-- 第一列：项名 -->
                 <StackPanel Grid.Column="0" Margin="250,0,0,0">
-                  <TextBlock x:Name="CpuTemerature" Text="CPU温度" Margin="10,0,0,0"/>
-                  <TextBlock x:Name="Cpuusage" Text="CPU使用率" Margin="10,20,0,0"/>
-                  <TextBlock x:Name="Funspeed" Text="风扇转速" Margin="10,20,0,0"/>
-                  <TextBlock x:Name="MemoryUsage" Text="内存使用率" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="CpuTemerature" Text="CPU平均温度" Margin="10,0,0,0"/>
+                  <TextBlock x:Name="Cpuusage" Text="CPU平均使用率" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="GraphicTemperature" Text="显卡平均温度" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="GraphicUsage" Text="显卡平均使用率" Margin="10,20,0,0"/>
+                  <TextBlock x:Name="MemoryUsage" Text="内存平均使用率" Margin="10,20,0,0"/>
                 </StackPanel>
 
                 <!-- 第二列：状态 -->
-                <StackPanel Grid.Column="1" Margin="130,0,0,0">
+                <StackPanel Grid.Column="1" Margin="0,0,0,0">
                   <TextBlock Text="CPU温度性能评估" Margin="10,0,0,0"/>
                   <TextBlock Text="CPU使用率性能评估" Margin="10,20,0,0"/>
                   <TextBlock Text="CPU使用率性能评估" Margin="10,20,0,0"/>
                   <TextBlock Text="内存使用率性能评估" Margin="10,20,0,0"/>
                 </StackPanel>
 
-                <StackPanel Grid.Column="2" Margin="240,0,10,0">
+                <StackPanel Grid.Column="2" Margin="0,0,10,0">
                   <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
                     <TextBlock x:Name="CpuTempText" Text="待检测" Foreground="#00AF11" Margin="10,0,0,0"/>
                     <ProgressRing x:Name="CpuTempRing" IsActive="False" Margin="10,0,0,0" Height="20" Width="20"/>
@@ -131,6 +176,7 @@
               </Grid>
             </StackPanel>
           </Expander>
+          </Viewbox>
         </StackPanel>
       </ScrollViewer>
     </Grid>
