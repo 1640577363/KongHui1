@@ -83,7 +83,8 @@
         <Border Style="{StaticResource CardStyle}" x:Name="Card1" PointerEntered="OnPointerEntered" PointerExited="OnPointerExited">
           <Button Tapped="OnProblemResolutionTapped" Style="{StaticResource NoHoverButtonStyle}">
             <StackPanel>
-              <Image Source="ms-appx:///Images/pro_eli1.png" Width="100" Height="100"/>
+              <Image Source="ms-appx:///Images/pro_eli1.png" Width="100" Height="80"/>
+              <TextBlock Text="问题排除" HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="16" Margin="0,10,0,0" Foreground="Black"/>
             </StackPanel>
           </Button>
         </Border>
@@ -91,21 +92,24 @@
         <Border Style="{StaticResource CardStyle}" x:Name="Card2" PointerEntered="OnPointerEntered"  PointerExited="OnPointerExited">
           <Button Tapped="OnFeedbackTapped" Style="{StaticResource NoHoverButtonStyle}">
             <StackPanel>
-              <Image Source="ms-appx:///Images/pro_fee1.png" Width="100" Height="100"/>
+              <Image Source="ms-appx:///Images/pro_fee1.png" Width="100" Height="80"/>
+              <TextBlock Text="问题反馈" HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="16" Margin="0,10,0,0" Foreground="Black"/>
             </StackPanel>
           </Button>
         </Border>
         <Border Style="{StaticResource CardStyle}" x:Name="Card3" PointerEntered="OnPointerEntered"  PointerExited="OnPointerExited">
           <Button Tapped="OnRepairPlatformTapped" Style="{StaticResource NoHoverButtonStyle}">
             <StackPanel>
-              <Image Source="ms-appx:///Images/main_pla1.png" Width="100" Height="100"/>
+              <Image Source="ms-appx:///Images/main_pla1.png" Width="100" Height="80"/>
+              <TextBlock Text="维修平台" HorizontalAlignment="Center"  FontFamily="Segoe UI" FontSize="16"  Margin="0,10,0,0" Foreground="Black"/>
             </StackPanel>
           </Button>
         </Border>
         <Border Style="{StaticResource CardStyle}" x:Name="Card4" PointerEntered="OnPointerEntered"  PointerExited="OnPointerExited">
           <Button Tapped="OnCompleteQueryTapped" Style="{StaticResource NoHoverButtonStyle}">
             <StackPanel>
-              <Image Source="ms-appx:///Images/mac_que1.png" Width="100" Height="100"/>
+              <Image Source="ms-appx:///Images/mac_que1.png" Width="100" Height="80"/>
+              <TextBlock Text="整机查询" HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="16" Margin="0,10,0,0" Foreground="Black"/>
             </StackPanel>
           </Button>
         </Border>
@@ -113,14 +117,16 @@
 
           <Button Tapped="OnWarrantyQueryTapped" Style="{StaticResource NoHoverButtonStyle}">
             <StackPanel>
-              <Image Source="ms-appx:///Images/war_que1.png" Width="100" Height="100"/>
+              <Image Source="ms-appx:///Images/war_que1.png" Width="100" Height="80"/>
+              <TextBlock Text="质保查询" HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="16" Margin="0,10,0,0" Foreground="Black"/>
             </StackPanel>
           </Button>
         </Border>
         <Border Style="{StaticResource CardStyle}" x:Name="Card6" PointerEntered="OnPointerEntered"  PointerExited="OnPointerExited">
           <Button Tapped="OnAddressQueryTapped" Style="{StaticResource NoHoverButtonStyle}">
             <StackPanel>
-              <Image Source="ms-appx:///Images/add_que1.png" Width="100" Height="100"/>
+              <Image Source="ms-appx:///Images/add_que1.png" Width="100" Height="80"/>
+              <TextBlock Text="地址查询" HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="16" Margin="0,10,0,0" Foreground="Black"/>
             </StackPanel>
           </Button>
         </Border>

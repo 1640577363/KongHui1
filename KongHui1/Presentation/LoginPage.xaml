@@ -57,5 +57,8 @@
 
       </StackPanel>
     </Grid>
+
+    <!-- 右下角的股票代码 -->
+    <TextBlock Text="股票代码：839418" Foreground="Black" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,20"/>
   </Grid>
 </Page>
