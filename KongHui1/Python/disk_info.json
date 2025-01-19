@@ -2,29 +2,29 @@
     {
         "mountpoint": "C:\\",
         "total_size": "140.00 GB",
-        "used_size": "139.62 GB",
-        "free_size": "0.39 GB",
-        "usage_percent": "99.70 %",
-        "read_speed": "516.00 KB/s",
-        "write_speed": "206.50 KB/s",
+        "used_size": "137.28 GB",
+        "free_size": "2.72 GB",
+        "usage_percent": "98.10 %",
+        "read_speed": "58079.50 KB/s",
+        "write_speed": "20.00 KB/s",
         "model": "PC SN520 NVMe WDC 512GB",
         "disk_type": "硬盘 (HDD)",
         "isSystemDisk": "是",
-        "total_read": "338.08 GB",
-        "total_write": "197.44 GB"
+        "total_read": "598.32 GB",
+        "total_write": "241.18 GB"
     },
     {
         "mountpoint": "D:\\",
         "total_size": "317.48 GB",
-        "used_size": "45.10 GB",
-        "free_size": "272.37 GB",
-        "usage_percent": "14.20 %",
-        "read_speed": "516.00 KB/s",
-        "write_speed": "206.50 KB/s",
+        "used_size": "41.61 GB",
+        "free_size": "275.87 GB",
+        "usage_percent": "13.10 %",
+        "read_speed": "58079.50 KB/s",
+        "write_speed": "20.00 KB/s",
         "model": "PC SN520 NVMe WDC 512GB",
         "disk_type": "硬盘 (HDD)",
         "isSystemDisk": "否",
-        "total_read": "338.08 GB",
-        "total_write": "197.44 GB"
+        "total_read": "598.32 GB",
+        "total_write": "241.18 GB"
     }
 ]

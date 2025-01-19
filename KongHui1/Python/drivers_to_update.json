@@ -1,6 +1,20 @@
 [
     {
-        "name": "Realtek High Definition Audio",
-        "newversion": "6.0.9611.1"
+        "name": "Intel(R) Management Engine Interface #1",
+        "version": "2120.100.0.1085",
+        "device_ids": "PCI\\VEN_8086&DEV_A360&SUBSYS_09491028&REV_10\\3&11583659&0&B0",
+        "newversion": "2145.1.42.0",
+        "category": "网络驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 1
+    },
+    {
+        "name": "Qualcomm QCA9377 802.11ac Wireless Adapter",
+        "version": "12.0.0.953",
+        "device_ids": "PCI\\VEN_168C&DEV_0042&SUBSYS_18101028&REV_31\\4&1DBF6EDC&0&00EE",
+        "newversion": "12.0.0.1118",
+        "category": "蓝牙驱动",
+        "update_time": "2025-01-19 10:31:53",
+        "isButton": 1
     }
 ]

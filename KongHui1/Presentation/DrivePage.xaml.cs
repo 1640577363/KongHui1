@@ -12,6 +12,9 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Globalization;
+using System.Text.Json; // 引入 System.Text.Json 命名空间
+using System.Text.Json.Serialization;
+
 
 namespace KongHui1.Presentation
 {
@@ -49,7 +52,7 @@ namespace KongHui1.Presentation
             try
             {
                 // 读取JSON文件
-                string filePath = Path.Combine(scriptPath, "drivers_to_update.json"); 
+                string filePath = Path.Combine(scriptPath, "drivers_to_update.json");
                 if (File.Exists(filePath))
                 {
                     // 读取文件内容
@@ -178,7 +181,7 @@ namespace KongHui1.Presentation
                 System.Diagnostics.Debug.WriteLine($"更新的驱动名称: {driverName}");
 
                 // 读取 drivers_to_update.json 文件中的数据
-                
+
                 string filePath = Path.Combine(scriptPath, "drivers_to_update.json");
 
                 if (File.Exists(filePath))
@@ -222,7 +225,7 @@ namespace KongHui1.Presentation
         private async Task RunUpdateDriverPythonScript(string driverName)
         {
             // 绝对路径 - 确保替换为你自己的路径
-            
+
             string pythonScriptPath = Path.Combine(scriptPath, "driverChange.py"); // Python 脚本路径
 
             // 使用环境变量中的 Python 可执行文件
@@ -389,40 +392,45 @@ namespace KongHui1.Presentation
             //var driverInfoList = await GetDriverInfoFromDatabaseAsync();
 
             driverInfoList.Clear(); // 清除上次检测的残留数据
-            //List<DriverInfo> driverInfoList = new List<DriverInfo>();
-            string query = "SELECT name, version, newversion, category,isButton FROM drivers";  // 根据实际情况修改 SQL 查询
+
+            string jsonFilePath = Path.Combine(scriptPath, "drivers_info.json");
 
             try
             {
-                // 创建 MySQL 连接对象
-                using (MySqlConnection connection = new MySqlConnection(_connectionString))
+                // 检查文件是否存在
+                if (!File.Exists(jsonFilePath))
                 {
-                    await connection.OpenAsync();
+                    System.Diagnostics.Debug.WriteLine($"文件不存在: {jsonFilePath}");
+                    return;
+                }
 
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                // 异步读取 JSON 文件内容
+                var jsonData = await File.ReadAllTextAsync(jsonFilePath);
+                System.Diagnostics.Debug.WriteLine($"读取的 JSON 内容: {jsonData}");
+
+                // 使用 System.Text.Json 反序列化为 DriverInfo 列表
+                var driverInfoListFromJson = System.Text.Json.JsonSerializer.Deserialize<List<DriverInfo>>(jsonData);
+
+                if (driverInfoListFromJson == null)
+                {
+                    driverInfoListFromJson = new List<DriverInfo>(); // 防止返回 null
+                    System.Diagnostics.Debug.WriteLine("反序列化结果为空");
+                }
+                else
+                {
+                    // 将反序列化的结果添加到列表中
+                    driverInfoList.AddRange(driverInfoListFromJson);
+
+                    // 遍历并处理驱动信息
+                    foreach (var driver in driverInfoList)
                     {
-                        // 使用 DbDataReader 而非 MySqlDataReader
-                        using (DbDataReader reader = await command.ExecuteReaderAsync()) // 使用 DbDataReader
-                        {
-                            while (await reader.ReadAsync())
-                            {
-                                // 创建 DriverInfo 对象并添加到列表中
-                                driverInfoList.Add(new DriverInfo
-                                {
-                                    Name = reader.GetString(0),
-                                    Version = reader.GetString(1),
-                                    NewVersion = reader.GetString(2),
-                                    Category = reader.GetString(3),
-                                    IsButton = reader.GetString(4)
-                                });
-                            }
-                        }
+                        System.Diagnostics.Debug.WriteLine($"Name: {driver.Name}, Version: {driver.Version}, Category: {driver.Category}, IsButton: {driver.IsButton}");
                     }
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"数据库查询出错: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"读取 JSON 文件出错: {ex.Message}");
             }
 
 
@@ -609,13 +617,13 @@ namespace KongHui1.Presentation
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             // 根据 isButton 字符串的值 ("1" 或 "0") 返回不同的颜色
-            if (value is string str)
+            if (value is int str)
             {
-                if (str == "1")
+                if (str == 1)
                 {
                     return new SolidColorBrush(Microsoft.UI.Colors.LightGreen); // 如果是 "1"，返回绿色
                 }
-                else if (str == "0")
+                else if (str == 0)
                 {
                     return new SolidColorBrush(Microsoft.UI.Colors.LightGray); // 如果是 "0"，返回灰色
                 }
@@ -634,12 +642,20 @@ namespace KongHui1.Presentation
     // 数据模型
     public class DriverInfo
     {
+        [JsonPropertyName("name")]
         public string Name { get; set; }
+
+        [JsonPropertyName("version")]
         public string Version { get; set; }
+
+        [JsonPropertyName("newversion")]
         public string NewVersion { get; set; }
+
+        [JsonPropertyName("category")]
         public string Category { get; set; }
 
-        public string IsButton { get; set; }
+        [JsonPropertyName("isButton")]
+        public int IsButton { get; set; }
     }
 
 

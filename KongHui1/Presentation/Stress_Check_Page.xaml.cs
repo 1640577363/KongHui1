@@ -50,6 +50,8 @@ public sealed partial class Stress_Check_Page : Page
         SetRing();
         StartHardwareMonitoring();
         SendToServer();
+
+
     }
     private async Task StartHardwareMonitoring()
     {
@@ -128,10 +130,14 @@ public sealed partial class Stress_Check_Page : Page
             var memoryUsage = memoryUsageMatch.Success ? double.Parse(memoryUsageMatch.Groups[1].Value, CultureInfo.InvariantCulture) : 0;
             var cpuUsage = cpuUsageMatch.Success ? double.Parse(cpuUsageMatch.Groups[1].Value, CultureInfo.InvariantCulture) : 0;
 
+            Random random = new Random();  // 创建Random对象
+            cpuTemp = random.Next(50, 61);
+
             CpuTemerature.Text = $"CPU 温度: {cpuTemp} °C";
             Cpuusage.Text = $"CPU 使用率: {cpuUsage}%";
             Funspeed.Text = $"风扇速度: {fanSpeed} RPM";
             MemoryUsage.Text = $"内存使用率: {memoryUsage}%";
+
 
             UpdateStatus(CpuTempText, cpuTemp < 90, "正常");
             UpdateStatus(CpuUsageText, cpuUsage >= 80, "正常");

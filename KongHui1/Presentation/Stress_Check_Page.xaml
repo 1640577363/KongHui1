@@ -67,7 +67,7 @@
                   <!-- 第二列 -->
                 </Grid.ColumnDefinitions>
                 <!-- 第一列内容 -->
-                <TextBlock Text="硬件压力检测—7项" 
+                <TextBlock Text="硬件压力检测—4项" 
          Foreground="Black" 
          FontSize="16" 
          VerticalAlignment="Center" 

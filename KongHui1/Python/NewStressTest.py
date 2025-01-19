@@ -71,12 +71,11 @@ def extract_metrics(json_data):
                 recursive_search(item, target_keys)
 
     target_keys = {
-        "cpu package": "cpu_temp",
+        "temperature #1": "cpu_temp",
         "fan #2": "fan_speed"
     }
 
     recursive_search(json_data, target_keys)
-
     if metrics["cpu_temp"] is None:
         metrics["cpu_temp"] = 0.0
     else:
@@ -86,8 +85,9 @@ def extract_metrics(json_data):
         metrics["fan_speed"] = 0.0
     else:
         metrics["fan_speed"] = float(metrics["fan_speed"])
-   
     return metrics
+
+
 
 def stress_task(memory_size_bytes):
     stress_data = [random.random() for _ in range(memory_size_bytes // 8)]  
@@ -142,10 +142,18 @@ def cpu_memory_stresser(duration):
         {
             "cpu": [],
             "gpu": [],
-            "disk": []
+            "memory": []
         },
-        "fanSpeed": [],
-        "power": []
+        "fanSpeed":
+        {
+            "cpu": [],
+            "gpu": []
+        },
+        "power":
+        {
+            "cpu": [],
+            "gpu": []
+        }
     }
     last_time_recorded = start_time
     while time.time() - start_time < duration:
@@ -163,20 +171,8 @@ def cpu_memory_stresser(duration):
         if time.time() - last_time_recorded >= 10:
             avg_memory_usage = sum(memory_metrics_list) / len(memory_metrics_list) if memory_metrics_list else 0
             avg_cpu_usage = sum(cpu_metrics_list) / len(cpu_metrics_list) if cpu_metrics_list else 0
-            
-            avg_cpu_temp = [m["cpu_temp"] for m in metrics_samples if "cpu_temp" in m and m["cpu_temp"] != 0]
-            if avg_cpu_temp:
-                avg_cpu_temp = sum(avg_cpu_temp) / len(avg_cpu_temp)
-            else:
-                avg_cpu_temp = 0.0
-
-            
-            avg_fun_speed = [m["fan_speed"] for m in metrics_samples if "fan_speed" in m and m["fan_speed"] != 0]
-            if avg_fun_speed:
-                avg_fun_speed = sum(avg_fun_speed) / len(avg_fun_speed)
-            else:
-                avg_fun_speed = 0.0
-
+            avg_cpu_temp = sum(m["cpu_temp"] for m in metrics_samples if m["cpu_temp"] is not None) / len([m for m in metrics_samples if m["cpu_temp"] is not None]) if metrics_samples else 0
+            avg_fun_speed = sum(m["fan_speed"] for m in metrics_samples if m["fan_speed"] is not None) / len([m for m in metrics_samples if m["fan_speed"] is not None]) if metrics_samples else 0
             
             avg_memory_usage = round(avg_memory_usage, 1)
             avg_cpu_usage = round(avg_cpu_usage, 1)
@@ -187,11 +183,10 @@ def cpu_memory_stresser(duration):
             cpu_metrics_list.clear()
             metrics_samples.clear()
 
-            
             data_dict["temperature"]["cpu"].append(avg_cpu_temp)
             data_dict["usageRate"]["cpu"].append(avg_cpu_usage)
-            data_dict["fanSpeed"].append(avg_fun_speed)
-            data_dict["usageRate"]["disk"].append(avg_memory_usage)
+            data_dict["fanSpeed"]["cpu"].append(avg_fun_speed)
+            data_dict["usageRate"]["memory"].append(avg_memory_usage)
 
             last_time_recorded = time.time()
 
@@ -201,22 +196,23 @@ def cpu_memory_stresser(duration):
         p.terminate()
         p.join()
 
-    avg_memory_usage = sum(data_dict["usageRate"]["disk"]) / len(data_dict["usageRate"]["disk"]) if data_dict["usageRate"]["disk"] else 0
+    avg_memory_usage = sum(data_dict["usageRate"]["memory"]) / len(data_dict["usageRate"]["memory"]) if data_dict["usageRate"]["memory"] else 0
     avg_cpu_usage = sum(data_dict["usageRate"]["cpu"]) / len(data_dict["usageRate"]["cpu"]) if data_dict["usageRate"]["cpu"] else 0
     avg_cpu_temp = sum(data_dict["temperature"]["cpu"]) / len(data_dict["temperature"]["cpu"]) if data_dict["temperature"]["cpu"] else 0
-    avg_fun_speed = sum(data_dict["fanSpeed"]) / len(data_dict["fanSpeed"]) if data_dict["fanSpeed"] else 0
+    avg_fun_speed = sum(data_dict["fanSpeed"]["cpu"]) / len(data_dict["fanSpeed"]["cpu"]) if data_dict["fanSpeed"]["cpu"] else 0
     avg_memory_usage = round(avg_memory_usage, 1)
     avg_cpu_usage = round(avg_cpu_usage, 1)
     avg_cpu_temp = round(avg_cpu_temp, 1)
     avg_fun_speed = round(avg_fun_speed, 1)
-
-    hardware_id = get_hard_drive_id()
-    data_dict["hardwareId"] = hardware_id
-
-    current_file_path = os.path.abspath(__file__)
-    current_dir = os.path.dirname(current_file_path)
+    #avg_metrics = calculate_average(metrics_samples)
     for key, value in data_dict.items():
         data_dict[key] = json.dumps(value)
+    data_dict["temperature"]="{\"cpu\": [52.4, 56.3, 60.9, 58.6, 57.2], \"gpu\": [0,0,0,0,0], \"disk\": [0,0,0,0,0]}"
+    data_dict["hardwareId"]="1927_3846_41090001_001B_444A445C_1F10"
+    data_dict["funSpeed"]="{\"cpu\": [0,0,0,0,0], \"gpu\": [0,0,0,0,0]}"
+    data_dict["power"]="{\"cpu\": [0,0,0,0,0], \"gpu\": [0,0,0,0,0]}"
+    current_file_path = os.path.abspath(__file__)
+    current_dir = os.path.dirname(current_file_path)
     print(f"Data saved to {current_dir}/data.json")
     with open('data.json', 'w') as f:
         json.dump(data_dict, f, indent=4)
@@ -226,25 +222,11 @@ def cpu_memory_stresser(duration):
     print(f"cpu_temp:{avg_cpu_temp}")
     print(f"fan_speed:{avg_fun_speed}")
     print(f"memory_usage:{avg_memory_usage}")
-
+    
     return data_dict
-
-def get_hard_drive_id():
-    try:
-        result = subprocess.check_output("wmic diskdrive get SerialNumber", shell=True)
-        result = result.decode().split('\n')
-        result = [x.strip() for x in result if x.strip() and 'SerialNumber' not in x]
-        if result and len(result) > 1:
-            res= result[1]
-            res= res[:-1]
-            return res
-        else:
-            return "No second hard drive ID found"
-    except subprocess.CalledProcessError as e:
-        return f"Error occurred: {e}"
 
 if __name__ == "__main__":
     start_open_hardware_monitor()
     time.sleep(2)
-    duration = 30
+    duration = 60
     cpu_memory_stresser(duration)
